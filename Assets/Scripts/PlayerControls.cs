@@ -13,7 +13,6 @@ public class PlayerControls : MonoBehaviour
    private Rigidbody2D _playerBody;
    private WeaponsHandler shootProjectile;
    public int _weaponNumber = 1;
-  
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +27,16 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Fire Weapon
         if (Input.GetKeyDown(KeyCode.Space))
         {
             shootProjectile.fireWeapon(_weaponNumber);
         }
+        else if (Input.GetKey(KeyCode.Space) && _weaponNumber == 2) // Special firing case for the laser shot.
+        {
+            shootProjectile.fireWeapon(_weaponNumber);
+        }
+        //Weapon Switching
         if (Input.GetKeyDown(KeyCode.Q))
         {
            if (_weaponNumber==3)
@@ -42,7 +47,7 @@ public class PlayerControls : MonoBehaviour
             {
                 _weaponNumber++;
             }
-
+            Debug.Log("Selected Weapon: " + _weaponNumber);
         }
     }
     void FixedUpdate()
@@ -50,12 +55,12 @@ public class PlayerControls : MonoBehaviour
         /*
         float varibles below get the horizontal and vertical axis.
          */
-        float hAxis=Input.GetAxis("Horizontal");
-        float vAxis=Input.GetAxis("Vertical");
+        float hAxis=Input.GetAxisRaw("Horizontal");
+        float vAxis=Input.GetAxisRaw("Vertical");
 
         /*
         sets the velocity the player can move at on the horizontal and vertical axis.
-         */
+        */
         _playerBody.velocity=new Vector2(hAxis*_velocity,vAxis*_velocity);
     }
 }

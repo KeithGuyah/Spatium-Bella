@@ -10,36 +10,25 @@ public class WeaponsHandler : MonoBehaviour
     Third variable represents the rate at which the burst shot can be fired.
     */
    public GameObject BurstShot;
-   public GameObject _spreadShotForward;
-   public GameObject _spreadShotLeft; 
-   public GameObject _spreadShotRight;
+   public GameObject LaserShot;
+   public GameObject _spreadShot;
+   //public GameObject _spreadShotLeft; 
+   //public GameObject _spreadShotRight;
    Vector2 shotStartPos;
    public float _horzOffset = 0.50f;
    public float _vertOffset=1.0f;
    float _fireRate=0.5f;
    float nextFire=0.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
     public void fireWeapon(int weaponNumber)
     {
-
-        
         if(Time.time >nextFire)
         {
             if (weaponNumber == 2)
             {
                 laserCannon();
             }
-            if (weaponNumber == 3)
+            else if (weaponNumber == 3)
             {
                 spreadShot();
             }
@@ -59,19 +48,21 @@ public class WeaponsHandler : MonoBehaviour
     {
         shotStartPos = transform.position;
         shotStartPos += new Vector2(0.0f, _vertOffset);
-        Instantiate(_spreadShotForward, shotStartPos, transform.rotation);
+        Instantiate(_spreadShot, shotStartPos, transform.rotation);
 
-        shotStartPos = transform.position;
-        shotStartPos += new Vector2(-_horzOffset, _vertOffset);
-        Instantiate(_spreadShotLeft, shotStartPos, transform.rotation);
+        //shotStartPos = transform.position;
+        //shotStartPos += new Vector2(-_horzOffset, _vertOffset);
+        //Instantiate(_spreadShotLeft, shotStartPos, transform.rotation);
 
-        shotStartPos = transform.position;
-        shotStartPos += new Vector2(_horzOffset, _vertOffset);
-        Instantiate(_spreadShotRight, shotStartPos, transform.rotation);
+        //shotStartPos = transform.position;
+        //shotStartPos += new Vector2(_horzOffset, _vertOffset);
+        //Instantiate(_spreadShotRight, shotStartPos, transform.rotation);
     }
     void laserCannon()
     {
-
+        shotStartPos = transform.position;
+        shotStartPos += new Vector2(0,_vertOffset);
+        Instantiate(LaserShot, shotStartPos, transform.rotation);
     }
 
 }
