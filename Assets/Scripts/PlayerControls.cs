@@ -12,6 +12,7 @@ public class PlayerControls : MonoBehaviour
    public float _velocity=1.0f;
    private Rigidbody2D _playerBody;
    private WeaponsHandler shootProjectile;
+   public int _weaponNumber = 1;
   
 
     // Start is called before the first frame update
@@ -27,9 +28,21 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Shoot"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            shootProjectile.shoot();
+            shootProjectile.fireWeapon(_weaponNumber);
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+           if (_weaponNumber==3)
+            {
+                _weaponNumber = 1;
+            }
+           else
+            {
+                _weaponNumber++;
+            }
+
         }
     }
     void FixedUpdate()
