@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class BurstShot : MonoBehaviour
 {
-        /*
-    First variable below will define the vertical velocity of the burst shot.
-    Second variable below defines the horizontal velocity of the burst shot.
-    Third variable defines the shots body.
-     */
-   public float _velocityV=5.0f;
-   public float _velocityH=0.0f;
+    /*
+First variable below will define the vertical velocity of the burst shot.
+Second variable below defines the horizontal velocity of the burst shot.
+Third variable defines the shots body.
+ */
+    public float _velocityV = 5.0f;
+    public float _velocityH = 0.0f;
 
-   public float _lifeTime = 0.5f;
+    public float _lifeTime = 0.5f;
 
-   private float _timeElapsed = 0;
-   private Rigidbody2D _shotBody;
+    private float _timeElapsed = 0;
+    private Rigidbody2D _shotBody;
+    private int _weaponDamage = 1;
     // Start is called before the first frame update
-    
+
     void Start()
     {
         /*
         gets the rigid body component of the shot
          */
-        _shotBody=GetComponent<Rigidbody2D>();
+        _shotBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -32,14 +33,24 @@ public class BurstShot : MonoBehaviour
         /*
         defines the velocity of the burst shot.
          */
-        _shotBody.velocity=new Vector2(_velocityH,_velocityV);
+        _shotBody.velocity = new Vector2(_velocityH, _velocityV);
 
         // Removes the entity after a set amount of time.
         _timeElapsed += Time.deltaTime;
-        if(_timeElapsed >= _lifeTime)
+        if (_timeElapsed >= _lifeTime)
         {
             Destroy(gameObject);
         }
     }
+    void OnCollisionEnter2D(Collision2D objectHit)
+    {
+        if (objectHit.gameObject.tag == "Enemy" || objectHit.gameObject.tag == "Player")
+        {
+            Debug.Log(objectHit.gameObject.tag);
+            objectHit.gameObject.GetComponent<HealthHandler>().takeDamage(_weaponDamage);
+            Destroy(gameObject);
+            
+        }
 
+    }
 }
