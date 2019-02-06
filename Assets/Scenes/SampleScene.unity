@@ -188,7 +188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -2.36, y: 0.43, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 790785219}
   - component: {fileID: 790785223}
   - component: {fileID: 790785222}
+  - component: {fileID: 790785224}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -291,7 +292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790785218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.21, y: -1.27, z: 0}
+  m_LocalPosition: {x: -2.427, y: -3.15, z: 0}
   m_LocalScale: {x: 0.67234516, y: 0.67234516, z: 0.67234516}
   m_Children: []
   m_Father: {fileID: 0}
@@ -310,6 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _velocity: 15
+  _weaponNumber: 1
 --- !u!61 &790785223
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -336,3 +338,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.98, y: 2.25}
   m_EdgeRadius: 0
+--- !u!114 &790785224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790785218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f16a27de80a956488966534138a3174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BurstShot: {fileID: 7941105663745963273, guid: 5f2dfb01b4d31e24793f4f0e8b0fa215,
+    type: 3}
+  _spreadShotForward: {fileID: 7941105663745963273, guid: 5f2dfb01b4d31e24793f4f0e8b0fa215,
+    type: 3}
+  _spreadShotLeft: {fileID: 5274647981603013738, guid: 3c9140a50b0c898489d1587c7a7db26b,
+    type: 3}
+  _spreadShotRight: {fileID: 4778241601636300087, guid: 9cd6ce1c547761d40b9fd091c156cfbe,
+    type: 3}
+  _horzOffset: 0.5
+  _vertOffset: 1
