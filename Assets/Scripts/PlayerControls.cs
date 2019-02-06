@@ -23,7 +23,7 @@ public class PlayerControls : MonoBehaviour
          */
         _playerBody= GetComponent<Rigidbody2D>();
         shootProjectile = GetComponent<WeaponsHandler>();
-        _shield = GameObject.Find("Shield").GetComponent<ShieldHandler>();
+        _shield = GameObject.Find("PlayerShield").GetComponent<ShieldHandler>();
     }
 
     // Update is called once per frame

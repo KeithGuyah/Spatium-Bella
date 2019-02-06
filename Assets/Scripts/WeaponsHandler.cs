@@ -22,7 +22,7 @@ public class WeaponsHandler : MonoBehaviour
    
     public void fireWeapon(int weaponNumber)
     {
-        if(Time.time >nextFire)
+        if(Time.time >nextFire && weaponNumber!=2)
         {
             nextFire = Time.time + _fireRate;
             if (weaponNumber == 3)
@@ -34,7 +34,7 @@ public class WeaponsHandler : MonoBehaviour
                 burstShot();
             }
         }
-        if (weaponNumber == 2)
+        else if (weaponNumber == 2)
         {
             laserCannon();
         }
