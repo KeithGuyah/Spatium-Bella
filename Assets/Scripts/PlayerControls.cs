@@ -12,6 +12,7 @@ public class PlayerControls : MonoBehaviour
    public float _velocity=1.0f;
    private Rigidbody2D _playerBody;
    private WeaponsHandler shootProjectile;
+   private ShieldHandler _shield;
    public int _weaponNumber = 1;
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class PlayerControls : MonoBehaviour
          */
         _playerBody= GetComponent<Rigidbody2D>();
         shootProjectile = GetComponent<WeaponsHandler>();
+        _shield = GameObject.Find("Shield").GetComponent<ShieldHandler>();
     }
 
     // Update is called once per frame
@@ -48,6 +50,15 @@ public class PlayerControls : MonoBehaviour
                 _weaponNumber++;
             }
             Debug.Log("Selected Weapon: " + _weaponNumber);
+        }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            _shield.disableShield();
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            _shield.enableShield();
         }
     }
     void FixedUpdate()
