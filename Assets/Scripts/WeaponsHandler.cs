@@ -17,18 +17,15 @@ public class WeaponsHandler : MonoBehaviour
    Vector2 shotStartPos;
    public float _horzOffset = 0.50f;
    public float _vertOffset=1.0f;
-   float _fireRate=0.5f;
+   public float _fireRate=0.5f;
    float nextFire=0.0f;
    
     public void fireWeapon(int weaponNumber)
     {
         if(Time.time >nextFire)
         {
-            if (weaponNumber == 2)
-            {
-                laserCannon();
-            }
-            else if (weaponNumber == 3)
+            nextFire = Time.time + _fireRate;
+            if (weaponNumber == 3)
             {
                 spreadShot();
             }
@@ -36,6 +33,10 @@ public class WeaponsHandler : MonoBehaviour
             {
                 burstShot();
             }
+        }
+        if (weaponNumber == 2)
+        {
+            laserCannon();
         }
     }
     void burstShot()
