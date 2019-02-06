@@ -11,6 +11,10 @@ public class BurstShot : MonoBehaviour
      */
    public float _velocityV=5.0f;
    public float _velocityH=0.0f;
+
+   public float _lifeTime = 0.5f;
+
+   private float _timeElapsed = 0;
    private Rigidbody2D _shotBody;
     // Start is called before the first frame update
     
@@ -29,6 +33,13 @@ public class BurstShot : MonoBehaviour
         defines the velocity of the burst shot.
          */
         _shotBody.velocity=new Vector2(_velocityH,_velocityV);
+
+        // Removes the entity after a set amount of time.
+        _timeElapsed += Time.deltaTime;
+        if(_timeElapsed >= _lifeTime)
+        {
+            Destroy(gameObject);
+        }
     }
 
 }
