@@ -12,17 +12,15 @@ public class WeaponsHandler : MonoBehaviour
    public GameObject BurstShot;
    public GameObject LaserShot;
    public GameObject _spreadShot;
-   //public GameObject _spreadShotLeft; 
-   //public GameObject _spreadShotRight;
-   Vector2 shotStartPos;
    public float _horzOffset = 0.50f;
-   public float _vertOffset=1.0f;
-   public float _fireRate=0.5f;
-   float nextFire=0.0f;
+   public float _vertOffset = 1.0f;
+   public float _fireRate = 0.5f;
+   private float nextFire = 0.0f;
+   private Vector2 shotStartPos;
    
     public void fireWeapon(int weaponNumber)
     {
-        if(Time.time >nextFire && weaponNumber!=2)
+        if(Time.time > nextFire && weaponNumber != 2)
         {
             nextFire = Time.time + _fireRate;
             if (weaponNumber == 3)
@@ -50,14 +48,6 @@ public class WeaponsHandler : MonoBehaviour
         shotStartPos = transform.position;
         shotStartPos += new Vector2(0.0f, _vertOffset);
         Instantiate(_spreadShot, shotStartPos, transform.rotation);
-
-        //shotStartPos = transform.position;
-        //shotStartPos += new Vector2(-_horzOffset, _vertOffset);
-        //Instantiate(_spreadShotLeft, shotStartPos, transform.rotation);
-
-        //shotStartPos = transform.position;
-        //shotStartPos += new Vector2(_horzOffset, _vertOffset);
-        //Instantiate(_spreadShotRight, shotStartPos, transform.rotation);
     }
     void laserCannon()
     {

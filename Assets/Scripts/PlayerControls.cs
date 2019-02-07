@@ -9,7 +9,7 @@ public class PlayerControls : MonoBehaviour
     Second variable will define the players body.
     Third Variable reprsents the time since the last projectile was fired.
      */
-   public float _velocity=1.0f;
+   public float _velocity = 1.0f;
    private Rigidbody2D _playerBody;
    private WeaponsHandler shootProjectile;
    private ShieldHandler _shield;
@@ -21,7 +21,7 @@ public class PlayerControls : MonoBehaviour
         /*
         gets the rigid body component for the player.
          */
-        _playerBody= GetComponent<Rigidbody2D>();
+        _playerBody = GetComponent<Rigidbody2D>();
         shootProjectile = GetComponent<WeaponsHandler>();
         _shield = GameObject.Find("PlayerShield").GetComponent<ShieldHandler>();
     }
@@ -41,7 +41,7 @@ public class PlayerControls : MonoBehaviour
         //Weapon Switching
         if (Input.GetKeyDown(KeyCode.Q))
         {
-           if (_weaponNumber==3)
+           if (_weaponNumber == 3)
             {
                 _weaponNumber = 1;
             }
@@ -66,12 +66,12 @@ public class PlayerControls : MonoBehaviour
         /*
         float varibles below get the horizontal and vertical axis.
          */
-        float hAxis=Input.GetAxisRaw("Horizontal");
-        float vAxis=Input.GetAxisRaw("Vertical");
+        float hAxis = Input.GetAxisRaw("Horizontal");
+        float vAxis = Input.GetAxisRaw("Vertical");
 
         /*
         sets the velocity the player can move at on the horizontal and vertical axis.
         */
-        _playerBody.velocity=new Vector2(hAxis*_velocity,vAxis*_velocity);
+        _playerBody.velocity = new Vector2(hAxis*_velocity, vAxis*_velocity);
     }
 }

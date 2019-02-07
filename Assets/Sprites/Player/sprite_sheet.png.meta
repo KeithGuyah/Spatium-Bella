@@ -3,6 +3,7 @@ guid: b65e414a47284b444906180ca53445a2
 TextureImporter:
   fileIDToRecycleName:
     21300000: sprite_sheet_0
+    21300002: sprite_sheet_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -111,6 +112,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: eb6b644ed0e5c5c4db351a336f602628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 334
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28d2af09cc2b30e42b5d6c004bbb6f61
       vertices: []
       indices: 
       edges: []

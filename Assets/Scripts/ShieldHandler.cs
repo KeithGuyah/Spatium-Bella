@@ -6,11 +6,11 @@ public class ShieldHandler : MonoBehaviour
 {
     private CircleCollider2D shieldCollider;
     private SpriteRenderer shieldRenderer;
-    public int _sheildMaxHP;
+    public int _shieldMaxHP;
     public int _shieldHP;
     void Start()
     {
-        _sheildMaxHP = 10;
+        _shieldMaxHP = 10;
         _shieldHP = 0;
         shieldCollider = GetComponent<CircleCollider2D>();
         shieldRenderer = GetComponent<SpriteRenderer>();
@@ -33,22 +33,21 @@ public class ShieldHandler : MonoBehaviour
     public void addShieldHP(int addshieldHP)
     {
 
-        if ((addshieldHP+_shieldHP)> _sheildMaxHP)
+        if ((addshieldHP+_shieldHP) > _shieldMaxHP)
         {
-            _shieldHP = _sheildMaxHP;
+            _shieldHP = _shieldMaxHP;
             Debug.Log(_shieldHP);
         }
         else
         {
-             _shieldHP+=addshieldHP;
+             _shieldHP += addshieldHP;
             Debug.Log(_shieldHP);
         }
 
     }
     public void addMaxShieldHp(int addMaxshieldHP)
     {
-        _sheildMaxHP += addMaxshieldHP;
+        _shieldMaxHP += addMaxshieldHP;
     }
-
 
 }

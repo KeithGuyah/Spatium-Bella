@@ -17,8 +17,8 @@ Third variable defines the shots body.
     private float _timeElapsed = 0;
     private Rigidbody2D _shotBody;
     private int _weaponDamage = 1;
+    
     // Start is called before the first frame update
-
     void Start()
     {
         /*
@@ -42,15 +42,18 @@ Third variable defines the shots body.
             Destroy(gameObject);
         }
     }
-    void OnCollisionEnter2D(Collision2D objectHit)
+    void OnTriggerEnter2D(Collider2D objectHit)
     {
         if (objectHit.gameObject.tag == "Enemy" || objectHit.gameObject.tag == "Player")
         {
             Debug.Log(objectHit.gameObject.tag);
             objectHit.gameObject.GetComponent<HealthHandler>().takeDamage(_weaponDamage);
             Destroy(gameObject);
-            
         }
-
+        else if(objectHit.gameObject.tag == "MainCamera")
+        {
+            Destroy(gameObject);
+        }
     }
+
 }

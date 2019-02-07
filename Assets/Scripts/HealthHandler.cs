@@ -6,7 +6,7 @@ public class HealthHandler : MonoBehaviour
 {
     public bool _isPlayer = false;
     public bool _isShield = false;
-    public int _maxHP=1;
+    public int _maxHP = 1;
     public int _currentHP;
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,6 @@ public class HealthHandler : MonoBehaviour
     }
     void death()
     {
-
         //put restart level here.
         //Application.LoadLevel(Application.loadedLevel);
     }
