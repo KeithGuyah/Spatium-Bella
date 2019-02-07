@@ -6,12 +6,11 @@ public class HealthHandler : MonoBehaviour
 {
     public bool _isPlayer = false;
     public bool _isShield = false;
-    public int _maxHP = 1;
-    public int _currentHP;
+    public int _maxHP = 10;
+    public int _currentHP=1;
     // Start is called before the first frame update
     void Start()
     {
-        _currentHP = _maxHP;
     }
 
     // Update is called once per frame

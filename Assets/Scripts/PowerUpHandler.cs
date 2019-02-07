@@ -12,10 +12,9 @@ public class PowerUpHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _powerUpCollider = GetComponent<CircleCollider2D>();
     }
 
-    void OnCollisionEnter2D(Collision2D objectHit)
+    void OnTriggerEnter2D(Collider2D objectHit)
     {
         if (objectHit.gameObject.tag == "Player")
         {
@@ -31,11 +30,6 @@ public class PowerUpHandler : MonoBehaviour
                 powerUpShieldMaxHP();
             }
             Destroy(gameObject);
-        }
-        else 
-        {
-            Debug.Log("Other Collision");
-            Physics2D.IgnoreCollision(_powerUpCollider, objectHit.collider, true); 
         }
     }
 

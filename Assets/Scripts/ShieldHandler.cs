@@ -34,8 +34,11 @@ public class ShieldHandler : MonoBehaviour
 
     public void enableShield()
     {
-        shieldCollider.enabled = true;
-        shieldRenderer.enabled = true;
+        if (_shieldHP != 0)
+        {
+            shieldCollider.enabled = true;
+            shieldRenderer.enabled = true;
+        }
     }
 
     public void addShieldHP(int addshieldHP)
