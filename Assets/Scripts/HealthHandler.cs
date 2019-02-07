@@ -17,11 +17,12 @@ public class HealthHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_currentHP>_maxHP)
+        if (_currentHP > _maxHP)
         {
             _currentHP = _maxHP;
         }        
     }
+
     public void takeDamage(int damage)
     {
         _currentHP -= damage;
@@ -43,6 +44,7 @@ public class HealthHandler : MonoBehaviour
             }
         }
     }
+    
     void death()
     {
         //put restart level here.

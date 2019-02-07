@@ -15,11 +15,6 @@ public class PowerUpHandler : MonoBehaviour
         _powerUpCollider = GetComponent<CircleCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void OnCollisionEnter2D(Collision2D objectHit)
     {
         if (objectHit.gameObject.tag == "Player")
@@ -42,18 +37,18 @@ public class PowerUpHandler : MonoBehaviour
             Debug.Log("Other Collision");
             Physics2D.IgnoreCollision(_powerUpCollider, objectHit.collider, true); 
         }
-
     }
+
     void powerUpShield()
     {
-     
         GameObject.Find("PlayerShield").GetComponent<ShieldHandler>().addShieldHP(_powerUpValue);
-        
     }
+
     void powerUpWeapons()
     {
 
     }
+
     void powerUpShieldMaxHP()
     {
         GameObject.Find("PlayerShield").GetComponent<ShieldHandler>().addMaxShieldHp(_powerUpValue);

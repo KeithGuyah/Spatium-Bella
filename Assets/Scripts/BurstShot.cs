@@ -11,12 +11,10 @@ Third variable defines the shots body.
  */
     public float _velocityV = 5.0f;
     public float _velocityH = 0.0f;
-
     public float _lifeTime = 0.5f;
-
+    public int _weaponDamage = 1;
     private float _timeElapsed = 0;
     private Rigidbody2D _shotBody;
-    private int _weaponDamage = 1;
     
     // Start is called before the first frame update
     void Start()

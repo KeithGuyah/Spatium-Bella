@@ -6,6 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     public float _speed = 0.5f;
     private Rigidbody2D _cameraBody;
+    
     // Start is called before the first frame update
     void Start()
     {
