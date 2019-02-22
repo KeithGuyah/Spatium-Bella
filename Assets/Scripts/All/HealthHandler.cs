@@ -23,8 +23,7 @@ public class HealthHandler : MonoBehaviour
         //if (_currentHP > _maxHP)
         //{
         //    _currentHP = _maxHP;
-        //}
-
+        //
         _entityAnimator.SetInteger("currentHP", _currentHP);
     }
 

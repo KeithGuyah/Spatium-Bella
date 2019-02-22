@@ -70,16 +70,19 @@ public class PlayerControls : MonoBehaviour
         /*
         float varibles below get the horizontal and vertical axis.
          */
+        float hAxis = 0;
+        float vAxis = 0;
+        
         if(_controlsEnabled)
         {
-            float hAxis = Input.GetAxisRaw("Horizontal");
-            float vAxis = Input.GetAxisRaw("Vertical");
-
-            /*
-            sets the velocity the player can move at on the horizontal and vertical axis.
-            */
-            _playerBody.velocity = new Vector2(hAxis*_velocity, vAxis*_velocity);
+            hAxis = Input.GetAxisRaw("Horizontal");
+            vAxis = Input.GetAxisRaw("Vertical");
         }
+
+        /*
+        sets the velocity the player can move at on the horizontal and vertical axis.
+        */
+        _playerBody.velocity = new Vector2(hAxis * _velocity, vAxis * _velocity);
     }
 
     public void DisableControls()
