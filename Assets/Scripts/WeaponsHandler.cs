@@ -9,8 +9,8 @@ public class WeaponsHandler : MonoBehaviour
     Second variable represents the position the burst shot should be created at.
     Third variable represents the rate at which the burst shot can be fired.
     */
-   public GameObject BurstShot;
-   public GameObject LaserShot;
+   public GameObject _burstShot;
+   public GameObject _laserShot;
    public GameObject _spreadShot;
    public float _horzOffset = 0.50f;
    public float _vertOffset = 1.0f;
@@ -18,42 +18,42 @@ public class WeaponsHandler : MonoBehaviour
    private float nextFire = 0.0f;
    private Vector2 shotStartPos;
    
-    public void fireWeapon(int weaponNumber)
+    public void FireWeapon(int weaponNumber)
     {
         if(Time.time > nextFire && weaponNumber != 2)
         {
             nextFire = Time.time + _fireRate;
             if (weaponNumber == 3)
             {
-                spreadShot();
+                SpreadShot();
             }
             else
             {
-                burstShot();
+                BurstShot();
             }
         }
         else if (weaponNumber == 2)
         {
-            laserCannon();
+            LaserCannon();
         }
     }
-    void burstShot()
+    void BurstShot()
     {
         shotStartPos = transform.position;
         shotStartPos += new Vector2(0.0f, _vertOffset);
-        Instantiate(BurstShot, shotStartPos, transform.rotation);
+        Instantiate(_burstShot, shotStartPos, transform.rotation);
     }
-    void spreadShot()
+    void SpreadShot()
     {
         shotStartPos = transform.position;
         shotStartPos += new Vector2(0.0f, _vertOffset);
         Instantiate(_spreadShot, shotStartPos, transform.rotation);
     }
-    void laserCannon()
+    void LaserCannon()
     {
         shotStartPos = transform.position;
         shotStartPos += new Vector2(0,_vertOffset);
-        Instantiate(LaserShot, shotStartPos, transform.rotation);
+        Instantiate(_laserShot, shotStartPos, transform.rotation);
     }
 
 }

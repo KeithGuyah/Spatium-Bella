@@ -35,7 +35,7 @@ public class PowerUpHandler : MonoBehaviour
 
     void powerUpShield()
     {
-        GameObject.Find("PlayerShield").GetComponent<ShieldHandler>().addShieldHP(_powerUpValue);
+        GameObject.Find("PlayerShield").GetComponent<ShieldHandler>().AddShieldHP(_powerUpValue);
     }
 
     void powerUpWeapons()
@@ -45,7 +45,7 @@ public class PowerUpHandler : MonoBehaviour
 
     void powerUpShieldMaxHP()
     {
-        GameObject.Find("PlayerShield").GetComponent<ShieldHandler>().addMaxShieldHp(_powerUpValue);
+        GameObject.Find("PlayerShield").GetComponent<ShieldHandler>().AddMaxShieldHp(_powerUpValue);
     }
 
 }

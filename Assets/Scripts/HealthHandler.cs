@@ -7,45 +7,53 @@ public class HealthHandler : MonoBehaviour
     public bool _isPlayer = false;
     public bool _isShield = false;
     public int _maxHP = 10;
-    public int _currentHP=1;
+    private int _currentHP = 1;
+    private Animator _entityAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
+        _entityAnimator = GetComponent<Animator>();
+        _currentHP = _maxHP;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_currentHP > _maxHP)
-        {
-            _currentHP = _maxHP;
-        }        
+        //if (_currentHP > _maxHP)
+        //{
+        //    _currentHP = _maxHP;
+        //}
+
+        _entityAnimator.SetInteger("currentHP", _currentHP);
     }
 
-    public void takeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         _currentHP -= damage;
+    }
 
-        if (_currentHP <= 0)
+    public void EntityDestroyStart()
+    {
+        // Prevent's shots from blocking entities playing the destroy animation. Also prevents the player from moving when they run out of health.
+        GetComponent<Collider2D>().enabled = false;
+
+        //Disable the player's controls.
+        if(_isPlayer)
         {
-            if (_isPlayer == true)
-            {
-                Destroy(gameObject);
-                death();
-            }
-            else if (_isShield == true)
-            {
-                //need to workout mechanics for if sheild health is equal to zero.
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            GetComponent<PlayerControls>().DisableControls();
         }
     }
-    
-    void death()
+    public void EntityDestroyEnd()
     {
+        if (_isShield == true)
+        {
+        
+        }
+        else //Enemy or Player
+        {
+            Destroy(gameObject);
+        }
         //put restart level here.
         //Application.LoadLevel(Application.loadedLevel);
     }

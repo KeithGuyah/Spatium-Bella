@@ -45,7 +45,7 @@ Third variable defines the shots body.
         if (objectHit.gameObject.tag == "Enemy" || objectHit.gameObject.tag == "Player")
         {
             Debug.Log(objectHit.gameObject.tag);
-            objectHit.gameObject.GetComponent<HealthHandler>().takeDamage(_weaponDamage);
+            objectHit.gameObject.GetComponent<HealthHandler>().TakeDamage(_weaponDamage);
             Destroy(gameObject);
         }
         else if(objectHit.gameObject.tag == "MainCamera")

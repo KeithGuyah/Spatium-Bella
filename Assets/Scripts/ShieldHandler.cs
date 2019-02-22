@@ -18,7 +18,7 @@ public class ShieldHandler : MonoBehaviour
         _shieldHP = 0;
         shieldCollider = GetComponent<CircleCollider2D>();
         shieldRenderer = GetComponent<SpriteRenderer>();
-        disableShield();
+        DisableShield();
     }
 
     void Update()
@@ -26,13 +26,13 @@ public class ShieldHandler : MonoBehaviour
         transform.position = transform.parent.position;
     }
 
-    public void disableShield()
+    public void DisableShield()
     {
         shieldCollider.enabled = false;
         shieldRenderer.enabled = false;
     }
 
-    public void enableShield()
+    public void EnableShield()
     {
         if (_shieldHP != 0)
         {
@@ -41,7 +41,7 @@ public class ShieldHandler : MonoBehaviour
         }
     }
 
-    public void addShieldHP(int addshieldHP)
+    public void AddShieldHP(int addshieldHP)
     {
         if ((addshieldHP+_shieldHP) > _shieldMaxHP)
         {
@@ -55,7 +55,7 @@ public class ShieldHandler : MonoBehaviour
         }
     }
 
-    public void addMaxShieldHp(int addMaxshieldHP)
+    public void AddMaxShieldHp(int addMaxshieldHP)
     {
         _shieldMaxHP += addMaxshieldHP;
     }
