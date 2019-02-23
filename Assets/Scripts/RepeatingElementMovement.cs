@@ -5,6 +5,8 @@ using UnityEngine;
 public class RepeatingElementMovement : MonoBehaviour
 {
     public float _speed = 1f;
+    public Transform _cameraTransform;
+    public float _repeatOffset = 10;
     private Rigidbody2D _entityBody;
     
     // Start is called before the first frame update
@@ -17,5 +19,13 @@ public class RepeatingElementMovement : MonoBehaviour
     void Update()
     {
         _entityBody.velocity = new Vector2(0,_speed);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("MainCamera") && other.gameObject.name == "CameraTriggerDown")
+        {
+            transform.position = new Vector2(_cameraTransform.position.x,_cameraTransform.position.y + _repeatOffset);
+        }
     }
 }
