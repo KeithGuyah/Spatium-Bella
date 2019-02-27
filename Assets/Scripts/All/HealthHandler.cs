@@ -7,7 +7,7 @@ public class HealthHandler : MonoBehaviour
     public bool _isPlayer = false;
     public bool _isShield = false;
     public int _maxHP = 1;
-    private int _currentHP = 1;
+    public int _currentHP = 1;
     private Animator _entityAnimator;
     private Collider2D _entityCollider2D;
     private LivesHandler _playerLivesHandler;
@@ -37,7 +37,14 @@ public class HealthHandler : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        _currentHP -= damage;
+        if (_currentHP <= damage)
+        {
+            _currentHP = 0;
+        }
+        else
+        {
+            _currentHP -= damage;
+        }
         _entityAnimator.SetInteger("currentHP", _currentHP);
     }
 

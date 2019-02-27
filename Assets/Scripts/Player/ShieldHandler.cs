@@ -31,6 +31,18 @@ public class ShieldHandler : MonoBehaviour
         shieldCollider.enabled = false;
         shieldRenderer.enabled = false;
     }
+    public void TakeDamage(int damage)
+    {
+        if (_shieldHP <= damage)
+        {
+            _shieldHP = 0;
+            DisableShield();
+        }
+        else
+        {
+            _shieldHP = _shieldHP - damage;
+        }
+    }
 
     public void EnableShield()
     {
@@ -43,6 +55,10 @@ public class ShieldHandler : MonoBehaviour
 
     public void AddShieldHP(int addshieldHP)
     {
+        if (_shieldHP==0)//Shield was disabled but because this method is called the shield health is about to be greater than zero.
+        {
+            EnableShield();
+        }
         if ((addshieldHP+_shieldHP) > _shieldMaxHP)
         {
             _shieldHP = _shieldMaxHP;

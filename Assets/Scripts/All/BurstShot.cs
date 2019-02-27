@@ -51,5 +51,10 @@ Third variable defines the shots body.
         {
             Destroy(gameObject);
         }
+        else if (objectHit.gameObject.tag == "PlayerShield")
+        {
+            objectHit.gameObject.GetComponent<ShieldHandler>().TakeDamage(_weaponDamage);
+        }
+
     }
 }

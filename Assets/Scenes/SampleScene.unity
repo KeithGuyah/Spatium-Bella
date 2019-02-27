@@ -932,7 +932,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isPlayer: 1
   _isShield: 0
-  _maxHP: 1
+  _maxHP: 5
+  _currentHP: 1
 --- !u!95 &790785226
 Animator:
   serializedVersion: 3
@@ -1943,7 +1944,7 @@ PrefabInstance:
     - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
         type: 3}
       propertyPath: _shieldHP
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
         type: 3}
