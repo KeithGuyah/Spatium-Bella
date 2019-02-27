@@ -39,7 +39,12 @@ public class PlayerControls : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.Space) && _weaponNumber == 2) // Special firing case for the laser shot.
             {
-                shootProjectile.FireWeapon(_weaponNumber);
+                //shootProjectile.FireWeapon(_weaponNumber);
+                shootProjectile.LaserCannonEnable();
+            }
+            else if (Input.GetKeyUp(KeyCode.Space) && _weaponNumber==2)
+            {
+                shootProjectile.LaserCannonDisable();
             }
             //Weapon Switching
             if (Input.GetKeyDown(KeyCode.Q))
