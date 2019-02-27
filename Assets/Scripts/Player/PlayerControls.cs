@@ -89,4 +89,9 @@ public class PlayerControls : MonoBehaviour
     {
         _controlsEnabled = false;
     }
+
+    public void EnableControls()
+    {
+        _controlsEnabled = true;
+    }
 }

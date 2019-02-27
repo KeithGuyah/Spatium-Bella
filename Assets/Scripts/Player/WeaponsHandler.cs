@@ -52,7 +52,7 @@ public class WeaponsHandler : MonoBehaviour
     void LaserCannon()
     {
         shotStartPos = transform.position;
-        shotStartPos += new Vector2(0,_vertOffset);
+        shotStartPos += new Vector2(0, _vertOffset);
         Instantiate(_laserShot, shotStartPos, transform.rotation);
     }
 

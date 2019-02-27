@@ -6,15 +6,24 @@ public class HealthHandler : MonoBehaviour
 {
     public bool _isPlayer = false;
     public bool _isShield = false;
-    public int _maxHP = 10;
+    public int _maxHP = 1;
     private int _currentHP = 1;
     private Animator _entityAnimator;
+    private Collider2D _entityCollider2D;
+    private LivesHandler _playerLivesHandler;
 
     // Start is called before the first frame update
     void Start()
     {
         _entityAnimator = GetComponent<Animator>();
+        _entityCollider2D = GetComponent<Collider2D>();
         _currentHP = _maxHP;
+        _entityAnimator.SetInteger("currentHP", _currentHP);
+
+        if(_isPlayer)
+        {
+            _playerLivesHandler = GetComponent<LivesHandler>();
+        }
     }
 
     // Update is called once per frame
@@ -24,32 +33,43 @@ public class HealthHandler : MonoBehaviour
         //{
         //    _currentHP = _maxHP;
         //
-        _entityAnimator.SetInteger("currentHP", _currentHP);
     }
 
     public void TakeDamage(int damage)
     {
         _currentHP -= damage;
+        _entityAnimator.SetInteger("currentHP", _currentHP);
     }
 
-    public void EntityDestroyStart()
+    public void SetHealth(int value)
     {
-        // Prevent's shots from blocking entities playing the destroy animation. Also prevents the player from moving when they run out of health.
-        GetComponent<Collider2D>().enabled = false;
+        _currentHP = value;
+        _entityAnimator.SetInteger("currentHP", _currentHP);
+    }
 
-        //Disable the player's controls.
+    public void EntityDestroyStart() // Activates when the 'currentHP' float in the entities animator component is <= 0. 
+    {
         if(_isPlayer)
         {
-            GetComponent<PlayerControls>().DisableControls();
+            _playerLivesHandler.PlayerDeathStart();
+        }
+        else
+        {
+            // Prevent's shots from blocking entities playing the destroy animation.
+            _entityCollider2D.enabled = false;
         }
     }
     public void EntityDestroyEnd()
     {
-        if (_isShield == true)
+        if (_isShield)
         {
         
         }
-        else //Enemy or Player
+        else if(_isPlayer)
+        {
+            _playerLivesHandler.PlayerDeathEnd();
+        }
+        else
         {
             Destroy(gameObject);
         }
