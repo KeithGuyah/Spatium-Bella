@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthHandler : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class HealthHandler : MonoBehaviour
     private Animator _entityAnimator;
     private Collider2D _entityCollider2D;
     private LivesHandler _playerLivesHandler;
+    public Text _healthBarText;
+    public Image _healthSlider;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +22,7 @@ public class HealthHandler : MonoBehaviour
         _entityCollider2D = GetComponent<Collider2D>();
         _currentHP = _maxHP;
         _entityAnimator.SetInteger("currentHP", _currentHP);
-
-        if(_isPlayer)
-        {
-            _playerLivesHandler = GetComponent<LivesHandler>();
-        }
+        setHealthUI();
     }
 
     // Update is called once per frame
@@ -37,6 +36,7 @@ public class HealthHandler : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+      
         if (_currentHP <= damage)
         {
             _currentHP = 0;
@@ -45,13 +45,24 @@ public class HealthHandler : MonoBehaviour
         {
             _currentHP -= damage;
         }
+        setHealthUI();
         _entityAnimator.SetInteger("currentHP", _currentHP);
+    }
+    public void setHealthUI()
+    {
+        if (_isPlayer)
+        {
+            _healthBarText.text = _currentHP + "/" + _maxHP;
+            _healthSlider.fillAmount = (float)_currentHP / (float)_maxHP;
+        }
     }
 
     public void SetHealth(int value)
     {
         _currentHP = value;
         _entityAnimator.SetInteger("currentHP", _currentHP);
+
+        setHealthUI();
     }
 
     public void EntityDestroyStart() // Activates when the 'currentHP' float in the entities animator component is <= 0. 

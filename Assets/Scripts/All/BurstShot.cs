@@ -44,6 +44,7 @@ Third variable defines the shots body.
     {
         if (objectHit.gameObject.tag == "Enemy" || objectHit.gameObject.tag == "Player")
         {
+           
             objectHit.gameObject.GetComponent<HealthHandler>().TakeDamage(_weaponDamage);
             Destroy(gameObject);
         }
@@ -54,6 +55,7 @@ Third variable defines the shots body.
         else if (objectHit.gameObject.tag == "PlayerShield")
         {
             objectHit.gameObject.GetComponent<ShieldHandler>().TakeDamage(_weaponDamage);
+            Destroy(gameObject);
         }
 
     }

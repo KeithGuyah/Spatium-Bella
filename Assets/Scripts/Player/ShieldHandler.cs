@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShieldHandler : MonoBehaviour
 {
@@ -8,14 +9,15 @@ public class ShieldHandler : MonoBehaviour
     
     private SpriteRenderer shieldRenderer;
 
-    public int _shieldMaxHP;
-
-    public int _shieldHP;
+    public int _shieldMaxHP=5;
+    public Text _shieldBarText;
+    public Image _shieldSlider;
+    public bool _isPlayer;
+    public int _shieldHP=0;
 
     void Start()
     {
-        _shieldMaxHP = 10;
-        _shieldHP = 0;
+        setShieldUI();
         shieldCollider = GetComponent<CircleCollider2D>();
         shieldRenderer = GetComponent<SpriteRenderer>();
         DisableShield();
@@ -31,16 +33,26 @@ public class ShieldHandler : MonoBehaviour
         shieldCollider.enabled = false;
         shieldRenderer.enabled = false;
     }
+    public void setShieldUI()
+    {
+        if (_isPlayer)
+        {
+            _shieldBarText.text = _shieldHP + "/" + _shieldMaxHP;
+            _shieldSlider.fillAmount = (float)_shieldHP / (float)_shieldMaxHP;
+        }
+    }
     public void TakeDamage(int damage)
     {
         if (_shieldHP <= damage)
         {
             _shieldHP = 0;
             DisableShield();
+            setShieldUI();
         }
         else
         {
             _shieldHP = _shieldHP - damage;
+            setShieldUI();
         }
     }
 
@@ -62,11 +74,13 @@ public class ShieldHandler : MonoBehaviour
         if ((addshieldHP+_shieldHP) > _shieldMaxHP)
         {
             _shieldHP = _shieldMaxHP;
+            setShieldUI();
             Debug.Log(_shieldHP);
         }
         else
         {
              _shieldHP += addshieldHP;
+            setShieldUI();
             Debug.Log(_shieldHP);
         }
     }
@@ -74,6 +88,7 @@ public class ShieldHandler : MonoBehaviour
     public void AddMaxShieldHp(int addMaxshieldHP)
     {
         _shieldMaxHP += addMaxshieldHP;
+        setShieldUI();
     }
 
 }
