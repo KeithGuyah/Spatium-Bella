@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - HealthBar
   - ShieldBar
+  - EnemyMoveNode
   layers:
   - Default
   - TransparentFX
