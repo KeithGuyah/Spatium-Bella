@@ -37,7 +37,6 @@ public class HealthHandler : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-      
         if (_currentHP <= damage)
         {
             _currentHP = 0;

@@ -6,6 +6,7 @@ public class EnemyMovementNode : MonoBehaviour
 {
     public GameObject _nextMoveNode;
     public float _speed = 5;
+    public bool _changeSpeed = false;
 
     public GameObject SendNextMoveNode()
     {

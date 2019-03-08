@@ -119,6 +119,8 @@ MonoBehaviour:
   _velocityH: -2
   _lifeTime: 1.5
   _weaponDamage: 1
+  _tracksPlayer: 0
+  _trackingSpeed: 5
 --- !u!61 &3094118072233674393
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -160,7 +162,7 @@ GameObject:
   - component: {fileID: 8955231039987323883}
   m_Layer: 0
   m_Name: SpreadShot
-  m_TagString: Projectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,6 +268,8 @@ MonoBehaviour:
   _velocityH: 0
   _lifeTime: 1.5
   _weaponDamage: 1
+  _tracksPlayer: 0
+  _trackingSpeed: 5
 --- !u!61 &8955231039987323883
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -411,6 +415,8 @@ MonoBehaviour:
   _velocityH: 2
   _lifeTime: 1.5
   _weaponDamage: 1
+  _tracksPlayer: 0
+  _trackingSpeed: 5
 --- !u!61 &446934727800292931
 BoxCollider2D:
   m_ObjectHideFlags: 0

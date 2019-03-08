@@ -16,6 +16,7 @@ public class PlayerControls : MonoBehaviour
    private Rigidbody2D _playerBody;
    private WeaponsHandler shootProjectile;
    private ShieldHandler _shield;
+   private Animator _playerAnimator;
    public bool _laserCannonEnabled = false;
    public bool _spreadShotEnabled = false;
    private bool _controlsEnabled = true;
@@ -29,6 +30,7 @@ public class PlayerControls : MonoBehaviour
         _weaponNumber = 1;
         _playerBody = GetComponent<Rigidbody2D>();
         shootProjectile = GetComponent<WeaponsHandler>();
+        _playerAnimator = GetComponent<Animator>();
         _shield = GameObject.Find("PlayerShield").GetComponent<ShieldHandler>();
     }
 
@@ -110,19 +112,22 @@ public class PlayerControls : MonoBehaviour
         /*
         float varibles below get the horizontal and vertical axis.
          */
-        float hAxis = 0;
-        float vAxis = 0;
+        int hAxis = 0;
+        int vAxis = 0;
         
         if(_controlsEnabled)
         {
-            hAxis = Input.GetAxisRaw("Horizontal");
-            vAxis = Input.GetAxisRaw("Vertical");
+            hAxis = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
+            vAxis = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
         }
 
         /*
         sets the velocity the player can move at on the horizontal and vertical axis.
         */
         _playerBody.velocity = new Vector2(hAxis * _velocity, vAxis * _velocity);
+
+        //Update animator
+        _playerAnimator.SetInteger("horizMovement", hAxis);
     }
 
     public void DisableControls()

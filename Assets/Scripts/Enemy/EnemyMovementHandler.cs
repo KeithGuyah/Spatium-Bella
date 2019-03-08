@@ -59,14 +59,14 @@ public class EnemyMovementHandler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "EnemyMoveNode" || other.gameObject == _nextMoveNode)
+        if(other.gameObject == _nextMoveNode)
         {
             EnemyMovementNode _nextNodeScript = other.gameObject.GetComponent<EnemyMovementNode>();
             _nextMoveNode = _nextNodeScript.SendNextMoveNode();
             
             if(_nextMoveNode != null) //Re-calculate destination vector only if we received another node.
             {
-                _speed = _nextNodeScript.SetSpeed();
+                //_speed = _nextNodeScript.SetSpeed();
                 _movementVector = CreateDestinationVector2();
             }
         }

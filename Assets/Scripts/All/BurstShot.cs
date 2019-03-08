@@ -13,6 +13,9 @@ Third variable defines the shots body.
     public float _velocityH = 0.0f;
     public float _lifeTime = 0.5f;
     public int _weaponDamage = 1;
+    public bool _tracksPlayer = false;
+    public float _trackingSpeed = 5.0f;
+    private Vector2 _trackingDirection;
     private float _timeElapsed = 0;
     private Rigidbody2D _shotBody;
     
@@ -23,6 +26,15 @@ Third variable defines the shots body.
         gets the rigid body component of the shot
          */
         _shotBody = GetComponent<Rigidbody2D>();
+
+        if(_tracksPlayer)
+        {
+            // Find player's position
+            Transform _playerPosition = GameObject.Find("Player").GetComponent<Transform>();
+
+            // Create vector2
+            _trackingDirection = _playerPosition.position - gameObject.transform.position;
+        }
     }
 
     // Update is called once per frame
@@ -31,7 +43,14 @@ Third variable defines the shots body.
         /*
         defines the velocity of the burst shot.
          */
-        _shotBody.velocity = new Vector2(_velocityH, _velocityV);
+         if(_tracksPlayer)
+         {
+            _shotBody.velocity = _trackingDirection.normalized * _trackingSpeed;
+         }
+         else
+         {
+            _shotBody.velocity = new Vector2(_velocityH, _velocityV);
+         }
 
         // Removes the entity after a set amount of time.
         _timeElapsed += Time.deltaTime;
@@ -42,8 +61,16 @@ Third variable defines the shots body.
     }
     void OnTriggerEnter2D(Collider2D objectHit)
     {
-        if (objectHit.gameObject.tag == "Enemy" || objectHit.gameObject.tag == "Player")
+        if (objectHit.gameObject.tag == "Enemy")
         {
+            if(!gameObject.CompareTag("Projectile"))
+            {
+                objectHit.gameObject.GetComponent<HealthHandler>().TakeDamage(_weaponDamage);
+                Destroy(gameObject);
+            }
+        }
+        else if(objectHit.gameObject.tag == "Player")
+        {   
             objectHit.gameObject.GetComponent<HealthHandler>().TakeDamage(_weaponDamage);
             Destroy(gameObject);
         }

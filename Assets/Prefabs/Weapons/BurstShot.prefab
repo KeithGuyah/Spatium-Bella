@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2036891920839126245}
   m_Layer: 0
   m_Name: BurstShot
-  m_TagString: Projectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +119,8 @@ MonoBehaviour:
   _velocityH: 0
   _lifeTime: 1.5
   _weaponDamage: 1
+  _tracksPlayer: 0
+  _trackingSpeed: 5
 --- !u!61 &2036891920839126245
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -5,13 +5,14 @@ using UnityEngine;
 public class LivesHandler : MonoBehaviour
 {
     public int _lives = 3;
-    private bool _isDead = false;
+    public bool _isDead = false;
     private float _respawnTimer = 0;
     private float _respawnTimerMax = 2;
     private Vector2 _playerRespawnPoint;
     private PlayerControls _playerControls;
     private SpriteRenderer _playerSpriteRenderer;
     private HealthHandler _playerHealthHandler;
+    private Collider2D _playerCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class LivesHandler : MonoBehaviour
         _playerControls = GetComponent<PlayerControls>();
         _playerSpriteRenderer = GetComponent<SpriteRenderer>();
         _playerHealthHandler = GetComponent<HealthHandler>();
+        _playerCollider = GetComponent<Collider2D>();
         _playerRespawnPoint = new Vector2(0, -4);
     }
 
@@ -46,6 +48,7 @@ public class LivesHandler : MonoBehaviour
     public void PlayerDeathStart()
     {
         _playerControls.DisableControls();
+        _playerCollider.enabled = false;
         _isDead = true;
     }
 
@@ -58,10 +61,11 @@ public class LivesHandler : MonoBehaviour
 
     public void PlayerRespawn()
     {
+        _playerHealthHandler.SetHealth(_playerHealthHandler._maxHP);
         _isDead = false;
         transform.position = _playerRespawnPoint;
-        _playerHealthHandler.SetHealth(_playerHealthHandler._maxHP);
         _playerControls.EnableControls();
+        _playerCollider.enabled = true;
         _playerSpriteRenderer.enabled = true;
     }
 }

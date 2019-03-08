@@ -135,3 +135,5 @@ MonoBehaviour:
   _velocityH: 0
   _lifeTime: 1.5
   _weaponDamage: 1
+  _tracksPlayer: 1
+  _trackingSpeed: 5

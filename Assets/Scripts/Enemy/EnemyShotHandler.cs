@@ -9,6 +9,7 @@ public class EnemyShotHandler : MonoBehaviour
     public float _horizontalOffset = 0;
     public float _frequency = 0.5f;
     private float _timer = 0;
+    
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -16,7 +17,7 @@ public class EnemyShotHandler : MonoBehaviour
         if(_timer >= _frequency)
         {
             _timer = 0;
-            Instantiate(_projectile,new Vector2(transform.position.x + _horizontalOffset,transform.position.y + _verticalOffset),transform.rotation);
+            Instantiate(_projectile, new Vector2(transform.position.x + _horizontalOffset,transform.position.y + _verticalOffset),transform.rotation);
         }
     }
 }
