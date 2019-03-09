@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform _enemyObjectContainer;
     public int _amount = 1;
     private bool _spawnStart = false;
-    private float _spawnDelay = 35.0f;
+    public float _spawnDelay = 35.0f;
     private float _timer = 0;
 
     void Update()
