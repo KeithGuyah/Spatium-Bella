@@ -105,6 +105,10 @@ public class PlayerControls : MonoBehaviour
             {
                 _shield.EnableShield();
             }
+            if (Input.GetKey(KeyCode.P))
+            {
+                GameObject.Find("Game State Manager").GetComponent<GameStateManager>().SetEndLevel();
+            }
         }
     }
     void FixedUpdate()

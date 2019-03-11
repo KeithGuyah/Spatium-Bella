@@ -50,9 +50,18 @@ public class GameStateManager : MonoBehaviour
                 }
             break;
             case state.gameOver:
-            
+
+            break;
+            case state.endLevel:
+                
             break;
         }
+    }
+
+    public void SetEndLevel()
+    {
+        _uiAnimator.SetBool("startOutro", true);
+        gameState = state.endLevel;  
     }
 
     public void SetGameOver()
