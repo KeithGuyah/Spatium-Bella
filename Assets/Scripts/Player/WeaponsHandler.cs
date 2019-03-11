@@ -10,7 +10,6 @@ public class WeaponsHandler : MonoBehaviour
     Third variable represents the rate at which the burst shot can be fired.
     */
    public GameObject _burstShot;
-   //public GameObject _laserShot;
    public GameObject _spreadShot;
    public LineRenderer _laserCannon;
    public int _laserCannonDamage=1;
@@ -37,12 +36,6 @@ public class WeaponsHandler : MonoBehaviour
                 BurstShot();
             }
         }
-        /*
-        else if (weaponNumber == 2)
-        {
-            LaserCannon();
-        }
-        */
     }
     void BurstShot()
     {
@@ -58,22 +51,20 @@ public class WeaponsHandler : MonoBehaviour
     }
     
     void LaserCannon()
-    {
-        //shotStartPos = transform.position;
-        //shotStartPos += new Vector2(0, _vertOffset);
-        //Instantiate(_laserShot, shotStartPos, transform.rotation);  
+    { 
         if (_laserCannon.enabled == true)
         {
             shotStartPos = transform.position;
             shotStartPos += new Vector2(0, _vertOffset);
-
 
             hitInfo = Physics2D.Raycast(shotStartPos, transform.up);
             if (hitInfo)
             {
                 Debug.Log(hitInfo.transform.name + " has been hit");
             }
+
             _laserCannon.SetPosition(0, shotStartPos);
+
             if (hitInfo.transform.tag == "Enemy")
             {
                 _laserCannon.SetPosition(1, hitInfo.point);
@@ -84,21 +75,15 @@ public class WeaponsHandler : MonoBehaviour
                 _laserCannon.SetPosition(1, shotStartPos + new Vector2(0, 10));
             }
         }
-
     }
     public void LaserCannonDamage()
     {
-        
         Debug.Log(Time.time);
-        if (Time.time   > _nextFire)
-       {
+        if (Time.time > _nextFire)
+        {
            _nextFire= _laserCannonDamageRate + Time.time;
             hitInfo.transform.gameObject.GetComponent<HealthHandler>().TakeDamage(_laserCannonDamage);
-            
         }
-
-        
-        
     }
     
     public void LaserCannonEnable()

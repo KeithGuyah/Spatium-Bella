@@ -10,8 +10,8 @@ public class EnemySpawner : MonoBehaviour
     public Transform _nodeSpawnLocation;
     public Transform _enemyObjectContainer;
     public int _amount = 1;
-    private bool _spawnStart = false;
     public float _spawnDelay = 35.0f;
+    private bool _spawnStart = false;
     private float _timer = 0;
 
     void Update()
@@ -63,8 +63,12 @@ public class EnemySpawner : MonoBehaviour
         Gizmos.DrawLine(transform.position,new Vector2(transform.position.x + 5, transform.position.y));
         Gizmos.DrawLine(transform.position,new Vector2(transform.position.x - 5, transform.position.y));
 
+        Gizmos.color = Color.red;
+
         // Enemy object spawn location
         Gizmos.DrawWireCube(_enemySpawnLocation.transform.position, new Vector3(0.5f,0.5f,0.5f));
+
+        Gizmos.color = Color.green;
 
         // Node object spawn location
         Gizmos.DrawWireCube(_nodeSpawnLocation.transform.position, new Vector3(0.5f,0.5f,0.5f));

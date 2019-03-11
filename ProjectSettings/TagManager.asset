@@ -8,6 +8,8 @@ TagManager:
   - PlayerShield
   - HealthBar
   - ShieldBar
+  - MovementNode
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -44,6 +46,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 3351331999
+    locked: 0
+  - name: Projectile
+    uniqueID: 2134671753
     locked: 0
   - name: Default
     uniqueID: 0

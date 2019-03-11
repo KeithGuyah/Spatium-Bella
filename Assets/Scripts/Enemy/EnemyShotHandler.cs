@@ -5,13 +5,17 @@ using UnityEngine;
 public class EnemyShotHandler : MonoBehaviour
 {
     public GameObject _projectile;
-    public float _verticalOffset = -0.5f;
+    public float _verticalOffset = 0;
     public float _horizontalOffset = 0;
-    public float _frequency = 0.5f;
+    public float _frequency = 0;
     private float _timer = 0;
-    
+    void Start()
+    {
+        _timer = _frequency;
+    }
+
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         _timer += Time.deltaTime;
         if(_timer >= _frequency)

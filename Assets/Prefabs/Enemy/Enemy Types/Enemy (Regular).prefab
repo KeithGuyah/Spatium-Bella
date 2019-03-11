@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 9179292598464061454}
   - component: {fileID: 5668907244064897002}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy (Regular)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,9 +164,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 8993046786818117842, guid: 1d2c9d49cb5440a478a73e6a0ce02200,
     type: 3}
-  _verticalOffset: -1
+  _verticalOffset: 0
   _horizontalOffset: 0
-  _frequency: 1
+  _frequency: 1.2
 --- !u!114 &9179292598464061454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextMoveNode: {fileID: 0}
+  _speed: 5
+  _currentBehaviour: 1
 --- !u!95 &5668907244064897002
 Animator:
   serializedVersion: 3

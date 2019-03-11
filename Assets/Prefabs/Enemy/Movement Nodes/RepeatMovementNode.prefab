@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7679679500234507534}
   m_Layer: 0
   m_Name: RepeatMovementNode
-  m_TagString: Untagged
+  m_TagString: MovementNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nextMoveNode: {fileID: 8280194804019815259}
   _speed: 5
+  _changeSpeed: 0
 --- !u!61 &7679679500234507534
 BoxCollider2D:
   m_ObjectHideFlags: 0

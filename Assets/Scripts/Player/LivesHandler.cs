@@ -13,6 +13,7 @@ public class LivesHandler : MonoBehaviour
     private SpriteRenderer _playerSpriteRenderer;
     private HealthHandler _playerHealthHandler;
     private Collider2D _playerCollider;
+    private GameStateManager _gameStateManager;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class LivesHandler : MonoBehaviour
         _playerHealthHandler = GetComponent<HealthHandler>();
         _playerCollider = GetComponent<Collider2D>();
         _playerRespawnPoint = new Vector2(0, -4);
+        _gameStateManager = GameObject.Find("Game State Manager").GetComponent<GameStateManager>();
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class LivesHandler : MonoBehaviour
         // Check if the player ran out of lives.
         if(_lives <= 0)
         {
-            
+            _gameStateManager.SetContinue();
         }
 
         // Check if we need to respawn the player.
@@ -67,5 +69,10 @@ public class LivesHandler : MonoBehaviour
         _playerControls.EnableControls();
         _playerCollider.enabled = true;
         _playerSpriteRenderer.enabled = true;
+    }
+
+    public void RefreshLives()
+    {
+        _lives = 3;
     }
 }

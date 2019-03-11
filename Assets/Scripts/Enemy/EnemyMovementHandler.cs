@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyMovementHandler : MonoBehaviour
 {
+    public enum _behaviours {wait, delete};
     public GameObject _nextMoveNode = null;
     public float _speed = 5;
+    public _behaviours _currentBehaviour;
     private Vector2 _movementVector;
     private Rigidbody2D _entityRigidBody2D;
     private bool _moveEntity = true;
@@ -68,6 +70,15 @@ public class EnemyMovementHandler : MonoBehaviour
             {
                 //_speed = _nextNodeScript.SetSpeed();
                 _movementVector = CreateDestinationVector2();
+            }
+            else
+            {
+                switch(_currentBehaviour)
+                {
+                    case _behaviours.delete:
+                        Destroy(gameObject);
+                    break;
+                }
             }
         }
     }
