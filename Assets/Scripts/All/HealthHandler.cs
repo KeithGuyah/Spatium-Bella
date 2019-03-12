@@ -47,6 +47,10 @@ public class HealthHandler : MonoBehaviour
         }
         setHealthUI();
         _entityAnimator.SetInteger("currentHP", _currentHP);
+        if(!_entityAnimator.gameObject.CompareTag("Player"))
+        {
+            _entityAnimator.SetTrigger("playDamageAnimation");
+        }
     }
     public void setHealthUI()
     {

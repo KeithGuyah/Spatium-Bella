@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LivesHandler : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class LivesHandler : MonoBehaviour
     private HealthHandler _playerHealthHandler;
     private Collider2D _playerCollider;
     private GameStateManager _gameStateManager;
+    private Text _livesUIText;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +24,10 @@ public class LivesHandler : MonoBehaviour
         _playerSpriteRenderer = GetComponent<SpriteRenderer>();
         _playerHealthHandler = GetComponent<HealthHandler>();
         _playerCollider = GetComponent<Collider2D>();
-        _playerRespawnPoint = new Vector2(0, -4);
+        _playerRespawnPoint = new Vector2(0, -3);
         _gameStateManager = GameObject.Find("Game State Manager").GetComponent<GameStateManager>();
+        _livesUIText = GameObject.Find("Lives Counter").GetComponent<Text>();
+        RefreshUIText();
     }
 
     // Update is called once per frame
@@ -58,6 +62,7 @@ public class LivesHandler : MonoBehaviour
     {
         _playerSpriteRenderer.enabled = false;
         _lives -= 1;
+        RefreshUIText();
         Debug.Log("Player lives: " + _lives);
     }
 
@@ -74,5 +79,11 @@ public class LivesHandler : MonoBehaviour
     public void RefreshLives()
     {
         _lives = 3;
+        RefreshUIText();
+    }
+
+    private void RefreshUIText()
+    {
+        _livesUIText.text = _lives.ToString();
     }
 }

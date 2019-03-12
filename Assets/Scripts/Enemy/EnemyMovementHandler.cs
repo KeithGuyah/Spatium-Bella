@@ -10,11 +10,12 @@ public class EnemyMovementHandler : MonoBehaviour
     public _behaviours _currentBehaviour;
     private Vector2 _movementVector;
     private Rigidbody2D _entityRigidBody2D;
-    private bool _moveEntity = true;
+    private GameStateManager _gameStateManager;
 
     void Start()
     {
         _entityRigidBody2D = GetComponent<Rigidbody2D>();
+        _gameStateManager = GameObject.Find("Game State Manager").GetComponent<GameStateManager>();
 
         if(_nextMoveNode != null)
         {
@@ -24,23 +25,25 @@ public class EnemyMovementHandler : MonoBehaviour
 
     void Update()
     {
-        if(_moveEntity)
+        if(_gameStateManager.StateIsRunning() && _nextMoveNode != null)
         {
-            if(_nextMoveNode != null)
-            {
-                _entityRigidBody2D.velocity = _movementVector.normalized * _speed;
-            }
-            else
-            {
-                StopMovement();
-            }
+            StartMovement();
+            _entityRigidBody2D.velocity = _movementVector.normalized * _speed;
+        }
+        else
+        {
+            StopMovement();
         }
     }
 
     public void StopMovement()
     {
-        _moveEntity = false;
         _entityRigidBody2D.velocity = new Vector2(0,0);
+    }
+
+    public void StartMovement()
+    {
+        _movementVector = CreateDestinationVector2();
     }
 
     public void SetMoveNode(GameObject node)
@@ -69,7 +72,7 @@ public class EnemyMovementHandler : MonoBehaviour
             if(_nextMoveNode != null) //Re-calculate destination vector only if we received another node.
             {
                 //_speed = _nextNodeScript.SetSpeed();
-                _movementVector = CreateDestinationVector2();
+                _entityRigidBody2D.velocity = CreateDestinationVector2();
             }
             else
             {
@@ -80,6 +83,10 @@ public class EnemyMovementHandler : MonoBehaviour
                     break;
                 }
             }
+        }
+        else if(other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<HealthHandler>().TakeDamage(1);
         }
     }
 

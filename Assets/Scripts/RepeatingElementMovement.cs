@@ -9,17 +9,26 @@ public class RepeatingElementMovement : MonoBehaviour
     public float _repeatOffset = 10;
     public bool _doNotRepeat = false;
     private Rigidbody2D _entityBody;
+    private GameStateManager _gameStateManager;
     
     // Start is called before the first frame update
     void Start()
     {
         _entityBody = GetComponent<Rigidbody2D>();
+        _gameStateManager = GameObject.Find("Game State Manager").GetComponent<GameStateManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _entityBody.velocity = new Vector2(0,_speed);
+        if(_gameStateManager.StateIsRunning())
+        {
+            _entityBody.velocity = new Vector2(0,_speed);
+        }
+        else
+        {
+        _entityBody.velocity = new Vector2(0,0);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

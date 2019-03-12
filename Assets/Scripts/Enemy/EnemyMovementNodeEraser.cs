@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovementNodeEraser : MonoBehaviour
 {
     private bool _startDestroyTimer = false;
-    private float _destroyTimer = 8.0f;
+    private float _destroyTimer = 5.0f;
     void Update()
     {
         if(_startDestroyTimer)

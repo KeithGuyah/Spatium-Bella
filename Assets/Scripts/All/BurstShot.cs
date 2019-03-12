@@ -18,6 +18,7 @@ Third variable defines the shots body.
     private Vector2 _trackingDirection;
     private float _timeElapsed = 0;
     private Rigidbody2D _shotBody;
+    private GameStateManager _gameStateManager;
     
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,8 @@ Third variable defines the shots body.
         gets the rigid body component of the shot
          */
         _shotBody = GetComponent<Rigidbody2D>();
+
+        _gameStateManager = GameObject.Find("Game State Manager").GetComponent<GameStateManager>();
 
         if(_tracksPlayer)
         {
@@ -43,20 +46,23 @@ Third variable defines the shots body.
         /*
         defines the velocity of the burst shot.
          */
-         if(_tracksPlayer)
+         if(_gameStateManager.StateIsRunning())
          {
-            _shotBody.velocity = _trackingDirection.normalized * _trackingSpeed;
-         }
-         else
-         {
-            _shotBody.velocity = new Vector2(_velocityH, _velocityV);
-         }
+            if(_tracksPlayer)
+            {
+                _shotBody.velocity = _trackingDirection.normalized * _trackingSpeed;
+            }
+            else
+            {
+                _shotBody.velocity = new Vector2(_velocityH, _velocityV);
+            }
 
-        // Removes the entity after a set amount of time.
-        _timeElapsed += Time.deltaTime;
-        if (_timeElapsed >= _lifeTime)
-        {
-            Destroy(gameObject);
+            // Removes the entity after a set amount of time.
+            _timeElapsed += Time.deltaTime;
+            if (_timeElapsed >= _lifeTime)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     void OnTriggerEnter2D(Collider2D objectHit)

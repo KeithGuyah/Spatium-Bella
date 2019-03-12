@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour
 {
     public enum state {running, paused, endLevel, atContinueScreen, gameOver};
@@ -10,7 +10,7 @@ public class GameStateManager : MonoBehaviour
     private bool _playedIntro = false;
     private Animator _uiAnimator;
     private Text _continueCounter;
-    private float _continueTimer = 10;
+    private float _timer = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,6 @@ public class GameStateManager : MonoBehaviour
         switch(gameState)
         {
             case state.running:
-
                 // Play level intro at the start of the level
                 if(!_playedIntro)
                 {
@@ -35,26 +34,32 @@ public class GameStateManager : MonoBehaviour
                 }
             break;
             case state.atContinueScreen:
-            _continueCounter.text = Mathf.RoundToInt(_continueTimer).ToString();
-            _continueTimer -= Time.deltaTime;
+                _continueCounter.text = Mathf.RoundToInt(_timer).ToString();
+                _timer -= Time.deltaTime;
                 if(Input.anyKeyDown)
                 {
                     GameObject.Find("Player").GetComponent<LivesHandler>().RefreshLives();
                     _uiAnimator.SetBool("showContinue", false);
-                     SetRunning();
+                    SetRunning();
                 }
-                if(_continueTimer <= 0)
+                if(_timer <= 0)
                 {
-                    _continueTimer = 0;
+                    _timer = 0;
                     SetGameOver();
                 }
             break;
-            case state.gameOver:
+        }
+    }
 
-            break;
-            case state.endLevel:
-                
-            break;
+    public bool StateIsRunning()
+    {
+        if(gameState == state.running)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
