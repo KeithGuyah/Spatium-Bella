@@ -148,6 +148,7 @@ MonoBehaviour:
   _isShield: 0
   _maxHP: 25
   _currentHP: 1
+  _scoreValue: 15000
   _healthBarText: {fileID: 0}
   _healthSlider: {fileID: 0}
 --- !u!114 &8189812143193331458

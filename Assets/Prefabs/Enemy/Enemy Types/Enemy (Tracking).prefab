@@ -148,6 +148,7 @@ MonoBehaviour:
   _isShield: 0
   _maxHP: 1
   _currentHP: 1
+  _scoreValue: 200
   _healthBarText: {fileID: 0}
   _healthSlider: {fileID: 0}
 --- !u!114 &2467325593522403741
@@ -181,6 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nextMoveNode: {fileID: 0}
   _speed: 5
+  _waitTime: 10
   _currentBehaviour: 0
 --- !u!95 &3493493676092595070
 Animator:

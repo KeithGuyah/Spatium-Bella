@@ -12,6 +12,9 @@ public class PlayerControls : MonoBehaviour
      */
    public float _velocity = 1.0f;
    public int _weaponNumber = 1;
+   public int _score;
+   public int _deathPenalty;
+   public Text _scoreTextUI;
    public float _fireRate = 0.25f;
    private float _nextFire = 0.0f;
    private Rigidbody2D _playerBody;
@@ -23,6 +26,8 @@ public class PlayerControls : MonoBehaviour
    public bool _spreadShotEnabled = false;
    private bool _controlsEnabled = true;
    private bool _firingEnabled = true;
+   
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +36,7 @@ public class PlayerControls : MonoBehaviour
         gets the rigid body component for the player.
          */
         _weaponNumber = 1;
+        _score = 0;
         _playerBody = GetComponent<Rigidbody2D>();
         shootProjectile = GetComponent<WeaponsHandler>();
         _playerAnimator = GetComponent<Animator>();
@@ -39,7 +45,7 @@ public class PlayerControls : MonoBehaviour
         ShowHideWeaponUI();
         ShowSelectedWeapon();
     }
-
+    
     void ResetSelectedWeaponsUI()
     {
         GameObject.Find("Burst").GetComponent<RectTransform>().localPosition = new Vector3 (-130,10,0);
@@ -211,5 +217,20 @@ public class PlayerControls : MonoBehaviour
     {
         _spreadShotEnabled = true;
         ShowHideWeaponUI();
+    }
+    public void increaseScore(int scoreValue)
+    {
+        _score +=scoreValue;
+        _scoreTextUI.text = _score.ToString();
+    }
+    public void decreaseScore()
+    {
+        _score -= _deathPenalty;
+
+        if (_score<=0)
+        {
+            _score = 0;
+        }
+        _scoreTextUI.text = _score.ToString();
     }
 }

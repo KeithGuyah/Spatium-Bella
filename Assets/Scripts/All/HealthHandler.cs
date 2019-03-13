@@ -9,6 +9,7 @@ public class HealthHandler : MonoBehaviour
     public bool _isShield = false;
     public int _maxHP = 1;
     public int _currentHP = 1;
+    public int _scoreValue = 0;
     private Animator _entityAnimator;
     private Collider2D _entityCollider2D;
     private LivesHandler _playerLivesHandler;
@@ -31,6 +32,7 @@ public class HealthHandler : MonoBehaviour
         if (_currentHP <= damage)
         {
             _currentHP = 0;
+            score();
         }
         else
         {
@@ -57,7 +59,17 @@ public class HealthHandler : MonoBehaviour
             _healthSlider.fillAmount = (float)_currentHP / (float)_maxHP;
         }
     }
-
+    public void score()
+    {
+        if (_isPlayer==false)
+        {
+            GameObject.Find("Player").GetComponent<PlayerControls>().increaseScore(_scoreValue);
+        }
+        if (_isPlayer)
+        {
+            GameObject.Find("Player").GetComponent<PlayerControls>().decreaseScore();
+        }
+    }
     public void SetHealth(int value)
     {
         _currentHP = value;

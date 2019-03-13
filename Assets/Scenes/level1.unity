@@ -3727,6 +3727,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 788bedfcee96b3642ada40c5e7f49be9, type: 3}
+--- !u!114 &1824939411 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9050950781873277770, guid: d9f647594f9fb6c4f992a187cd73bdbd,
+    type: 3}
+  m_PrefabInstance: {fileID: 161957734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1828311608
 GameObject:
   m_ObjectHideFlags: 0
@@ -4308,6 +4320,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _laserCannonEnabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523979941307414001, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: _scoreTextUI
+      value: 
+      objectReference: {fileID: 1824939411}
+    - target: {fileID: 1523979941307414001, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: _deathPenalty
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2973189942537200081, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
