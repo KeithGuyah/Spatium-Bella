@@ -26,15 +26,6 @@ public class HealthHandler : MonoBehaviour
         setHealthUI();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (_currentHP > _maxHP)
-        //{
-        //    _currentHP = _maxHP;
-        //
-    }
-
     public void TakeDamage(int damage)
     {
         if (_currentHP <= damage)
@@ -45,6 +36,12 @@ public class HealthHandler : MonoBehaviour
         {
             _currentHP -= damage;
         }
+
+        if(_isPlayer && _playerLivesHandler.IsPlayerInvincible())
+        {
+            _currentHP = _maxHP;
+        }
+
         setHealthUI();
         _entityAnimator.SetInteger("currentHP", _currentHP);
         if(!_entityAnimator.gameObject.CompareTag("Player"))
@@ -71,11 +68,7 @@ public class HealthHandler : MonoBehaviour
 
     public void EntityDestroyStart() // Activates when the 'currentHP' float in the entities animator component is <= 0. 
     {
-        if (_isShield)
-        {
-        
-        }
-        else if(_isPlayer)
+        if(_isPlayer)
         {
             _playerLivesHandler.PlayerDeathStart();
         }
@@ -90,11 +83,8 @@ public class HealthHandler : MonoBehaviour
     }
     public void EntityDestroyEnd()
     {
-        if (_isShield)
-        {
-            
-        }
-        else if(_isPlayer)
+
+        if(_isPlayer)
         {
             _playerLivesHandler.PlayerDeathEnd();
         }
@@ -102,7 +92,5 @@ public class HealthHandler : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //put restart level here.
-        //Application.LoadLevel(Application.loadedLevel);
     }
 }

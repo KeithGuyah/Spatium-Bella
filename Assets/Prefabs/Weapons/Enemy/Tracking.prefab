@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _velocityV: 0
   _velocityH: 0
-  _lifeTime: 1.5
+  _lifeTime: 3
   _weaponDamage: 1
   _tracksPlayer: 1
   _trackingSpeed: 7

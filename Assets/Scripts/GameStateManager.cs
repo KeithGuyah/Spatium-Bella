@@ -38,6 +38,7 @@ public class GameStateManager : MonoBehaviour
                 _timer -= Time.deltaTime;
                 if(Input.anyKeyDown)
                 {
+                    _timer = 10;
                     GameObject.Find("Player").GetComponent<LivesHandler>().RefreshLives();
                     _uiAnimator.SetBool("showContinue", false);
                     SetRunning();

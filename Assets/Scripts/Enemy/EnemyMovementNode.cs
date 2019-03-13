@@ -5,22 +5,29 @@ using UnityEngine;
 public class EnemyMovementNode : MonoBehaviour
 {
     public GameObject _nextMoveNode;
-    public float _speed = 5;
-    public bool _changeSpeed = false;
+    public enum _behaviours {delete, wait};
+    public _behaviours _currentBehaviour = _behaviours.delete;
 
     public GameObject SendNextMoveNode()
     {
         return _nextMoveNode;
     }
 
-    public float SetSpeed()
+    public int GetBehaviour()
     {
-        return _speed;
+        return (int)_currentBehaviour;
     }
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        if(_currentBehaviour == _behaviours.delete)
+        {
+            Gizmos.color = Color.red;
+        }
+        else if(_currentBehaviour == _behaviours.wait)
+        {
+            Gizmos.color = Color.blue;
+        }
 
         //Node location
         Gizmos.DrawWireCube(transform.position, new Vector3(0.5f,0.5f,0));

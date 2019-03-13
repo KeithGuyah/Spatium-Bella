@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class EnemyMovementHandler : MonoBehaviour
 {
-    public enum _behaviours {wait, delete};
+    public enum _behaviours {delete, wait};
     public GameObject _nextMoveNode = null;
     public float _speed = 5;
-    public _behaviours _currentBehaviour;
+    public float _waitTime = 10;
+    public _behaviours _currentBehaviour = _behaviours.delete;
     private Vector2 _movementVector;
     private Rigidbody2D _entityRigidBody2D;
     private GameStateManager _gameStateManager;
+    private float _timer = 0;
 
     void Start()
     {
@@ -27,8 +29,20 @@ public class EnemyMovementHandler : MonoBehaviour
     {
         if(_gameStateManager.StateIsRunning() && _nextMoveNode != null)
         {
-            StartMovement();
-            _entityRigidBody2D.velocity = _movementVector.normalized * _speed;
+            if(_currentBehaviour == _behaviours.wait)
+            {
+                _timer += Time.deltaTime;
+
+                if(_timer >= _waitTime)
+                {
+                    SetBehaviour((int)_behaviours.delete);
+                }
+            }
+            else
+            {
+                StartMovement();
+                _entityRigidBody2D.velocity = _movementVector.normalized * _speed;
+            }
         }
         else
         {
@@ -36,6 +50,30 @@ public class EnemyMovementHandler : MonoBehaviour
         }
     }
 
+    public void SetBehaviour(int _behaviourIndex)
+    {
+        switch(_behaviourIndex)
+        {
+            case 0:
+                _currentBehaviour = _behaviours.delete;
+            break;
+            case 1:
+                _currentBehaviour = _behaviours.wait;
+                StopMovement();
+            break;
+            default:
+                _currentBehaviour = _behaviours.delete;
+            break;
+        }
+    }
+
+    public void SetSpeed(float _newSpeed)
+    {
+        if(_newSpeed > 0)
+        {
+            _speed = _newSpeed;
+        }
+    }
     public void StopMovement()
     {
         _entityRigidBody2D.velocity = new Vector2(0,0);
@@ -71,22 +109,27 @@ public class EnemyMovementHandler : MonoBehaviour
             
             if(_nextMoveNode != null) //Re-calculate destination vector only if we received another node.
             {
-                //_speed = _nextNodeScript.SetSpeed();
                 _entityRigidBody2D.velocity = CreateDestinationVector2();
+                SetBehaviour(_nextNodeScript.GetBehaviour());
             }
             else
             {
-                switch(_currentBehaviour)
+                if(_currentBehaviour == _behaviours.delete)
                 {
-                    case _behaviours.delete:
-                        Destroy(gameObject);
-                    break;
+                    Destroy(gameObject);
                 }
             }
         }
         else if(other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<HealthHandler>().TakeDamage(1);
+            if(!GameObject.Find("Shield").GetComponent<CircleCollider2D>().enabled)
+            {
+                other.gameObject.GetComponent<HealthHandler>().TakeDamage(1);
+            }
+        }
+        else if(other.gameObject.tag == "PlayerShield")
+        {
+            other.gameObject.GetComponent<ShieldHandler>().TakeDamage(1);
         }
     }
 

@@ -7,7 +7,8 @@ public class LivesHandler : MonoBehaviour
 {
     public int _lives = 3;
     public bool _isDead = false;
-    private float _respawnTimer = 0;
+    private bool _isInvincible = false;
+    private float _timer = 0;
     private float _respawnTimerMax = 2;
     private Vector2 _playerRespawnPoint;
     private PlayerControls _playerControls;
@@ -15,6 +16,7 @@ public class LivesHandler : MonoBehaviour
     private HealthHandler _playerHealthHandler;
     private Collider2D _playerCollider;
     private GameStateManager _gameStateManager;
+    private Animator _playerAnimator;
     private Text _livesUIText;
 
     // Start is called before the first frame update
@@ -27,12 +29,24 @@ public class LivesHandler : MonoBehaviour
         _playerRespawnPoint = new Vector2(0, -3);
         _gameStateManager = GameObject.Find("Game State Manager").GetComponent<GameStateManager>();
         _livesUIText = GameObject.Find("Lives Counter").GetComponent<Text>();
+        _playerAnimator = GetComponent<Animator>();
         RefreshUIText();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(_isInvincible)
+        {
+            _timer += Time.deltaTime;
+            if(_timer >= 3)
+            {
+                _timer = 0;
+                _isInvincible = false;
+                _playerAnimator.SetBool("isInvincible", _isInvincible);
+            }
+        }
+
         // Check if the player ran out of lives.
         if(_lives <= 0)
         {
@@ -42,10 +56,10 @@ public class LivesHandler : MonoBehaviour
         // Check if we need to respawn the player.
         if(_isDead && _lives > 0)
         {
-            _respawnTimer += Time.deltaTime;
-            if(_respawnTimer >= _respawnTimerMax)
+            _timer += Time.deltaTime;
+            if(_timer >= _respawnTimerMax)
             {
-                _respawnTimer = 0;
+                _timer = 0;
                 PlayerRespawn();
             }
         }
@@ -63,12 +77,13 @@ public class LivesHandler : MonoBehaviour
         _playerSpriteRenderer.enabled = false;
         _lives -= 1;
         RefreshUIText();
-        Debug.Log("Player lives: " + _lives);
     }
 
     public void PlayerRespawn()
     {
         _playerHealthHandler.SetHealth(_playerHealthHandler._maxHP);
+        _isInvincible = true;
+        _playerAnimator.SetBool("isInvincible", _isInvincible);
         _isDead = false;
         transform.position = _playerRespawnPoint;
         _playerControls.EnableControls();
@@ -80,6 +95,11 @@ public class LivesHandler : MonoBehaviour
     {
         _lives = 3;
         RefreshUIText();
+    }
+
+    public bool IsPlayerInvincible()
+    {
+        return _isInvincible;
     }
 
     private void RefreshUIText()

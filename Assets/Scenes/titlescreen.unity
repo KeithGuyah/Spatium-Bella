@@ -758,7 +758,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TITLE SCREEN
+  m_Text: SPATIUM BELLA
 --- !u!222 &1644692994
 CanvasRenderer:
   m_ObjectHideFlags: 0

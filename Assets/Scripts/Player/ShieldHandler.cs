@@ -6,20 +6,20 @@ using UnityEngine.UI;
 public class ShieldHandler : MonoBehaviour
 {
     private CircleCollider2D shieldCollider;
-    
     private SpriteRenderer shieldRenderer;
-
-    public int _shieldMaxHP=5;
+    private PlayerControls _playerControls;
+    public int _shieldMaxHP = 5;
     public Text _shieldBarText;
     public Image _shieldSlider;
     public bool _isPlayer;
-    public int _shieldHP=0;
+    public int _shieldHP = 0;
 
     void Start()
     {
         setShieldUI();
         shieldCollider = GetComponent<CircleCollider2D>();
         shieldRenderer = GetComponent<SpriteRenderer>();
+        _playerControls = GetComponentInParent<PlayerControls>();
         DisableShield();
     }
 
@@ -28,11 +28,6 @@ public class ShieldHandler : MonoBehaviour
         transform.position = transform.parent.position;
     }
 
-    public void DisableShield()
-    {
-        shieldCollider.enabled = false;
-        shieldRenderer.enabled = false;
-    }
     public void setShieldUI()
     {
         if (_isPlayer)
@@ -62,7 +57,15 @@ public class ShieldHandler : MonoBehaviour
         {
             shieldCollider.enabled = true;
             shieldRenderer.enabled = true;
+            _playerControls.DisableFiring();
         }
+    }
+
+    public void DisableShield()
+    {
+        shieldCollider.enabled = false;
+        shieldRenderer.enabled = false;
+        _playerControls.EnableFiring();
     }
 
     public void AddShieldHP(int addshieldHP)

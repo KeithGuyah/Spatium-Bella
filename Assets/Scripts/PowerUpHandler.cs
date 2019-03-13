@@ -10,38 +10,63 @@ public class PowerUpHandler : MonoBehaviour
     public bool _isShieldMaxHP_PU = false;
     public bool _isLaserCannonEnabled_PU = false;
     public bool _isSpreadShotEnabled_PU = false;
-    private CircleCollider2D _powerUpCollider;
-    // Start is called before the first frame update
+    private Rigidbody2D _powerUpRigidBody;
+    private Vector2 _movementVelocity;
+    private float _timer = 0;
+
     void Start()
     {
+        _powerUpRigidBody = GetComponent<Rigidbody2D>();
+        _movementVelocity = new Vector2(4,4);
+    }
+
+    void Update()
+    {
+        _powerUpRigidBody.velocity = _movementVelocity;
+        _timer = Time.deltaTime;
+        if(_timer >= 10)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D objectHit)
     {
         if (objectHit.gameObject.tag == "Player")
         {
-            Debug.Log(objectHit.gameObject.tag);
+            //Debug.Log(objectHit.gameObject.tag);
             if (_isSheild_PU == true)
             {
-                Debug.Log("Collison detected");
+                //Debug.Log("Collison detected");
                 powerUpShield();
             }
             if (_isShieldMaxHP_PU == true)
             {
-                Debug.Log("Collison detected");
+                //Debug.Log("Collison detected");
                 powerUpShieldMaxHP();
             }
             if (_isLaserCannonEnabled_PU == true)
             {
-                Debug.Log("Collison detected");
+                //Debug.Log("Collison detected");
                 powerUpEnableLaserCannon();
             }
             if (_isSpreadShotEnabled_PU == true)
             {
-                Debug.Log("Collison detected");
+                //Debug.Log("Collison detected");
                 powerUpEnableSpreadShot();
             }
             Destroy(gameObject);
+        }
+        else if(objectHit.gameObject.tag == "MainCamera")
+        {
+            if(objectHit.name == "CameraTriggerLeft" || objectHit.name == "CameraTriggerRight")
+            {
+                _movementVelocity = new Vector2(_powerUpRigidBody.velocity.x * -1, _powerUpRigidBody.velocity.y);
+            }
+            else if(objectHit.name == "CameraTriggerUp" || objectHit.name == "CameraTriggerDown")
+            {
+                _movementVelocity = new Vector2(_powerUpRigidBody.velocity.x ,_powerUpRigidBody.velocity.y * -1);
+            }
         }
     }
 

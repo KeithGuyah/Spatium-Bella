@@ -24,10 +24,10 @@ public class WeaponsHandler : MonoBehaviour
    
     public void FireWeapon(int weaponNumber)
     {
-        if(Time.time > nextFire && weaponNumber != 2)
+        if(Time.time > nextFire && weaponNumber != 3)
         {
             nextFire = Time.time + _fireRate;
-            if (weaponNumber == 3)
+            if (weaponNumber == 2)
             {
                 SpreadShot();
             }

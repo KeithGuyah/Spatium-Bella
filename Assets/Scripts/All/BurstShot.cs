@@ -76,9 +76,12 @@ Third variable defines the shots body.
             }
         }
         else if(objectHit.gameObject.tag == "Player")
-        {   
-            objectHit.gameObject.GetComponent<HealthHandler>().TakeDamage(_weaponDamage);
-            Destroy(gameObject);
+        {
+            if(!GameObject.Find("Shield").GetComponent<CircleCollider2D>().enabled)
+            {
+                objectHit.gameObject.GetComponent<HealthHandler>().TakeDamage(_weaponDamage);
+                Destroy(gameObject);
+            }
         }
         else if(objectHit.gameObject.tag == "MainCamera")
         {

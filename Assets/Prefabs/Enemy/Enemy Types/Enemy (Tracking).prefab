@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nextMoveNode: {fileID: 0}
   _speed: 5
-  _currentBehaviour: 1
+  _currentBehaviour: 0
 --- !u!95 &3493493676092595070
 Animator:
   serializedVersion: 3

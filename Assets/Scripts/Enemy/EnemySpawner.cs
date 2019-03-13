@@ -9,8 +9,10 @@ public class EnemySpawner : MonoBehaviour
     public Transform _enemySpawnLocation;
     public Transform _nodeSpawnLocation;
     public Transform _enemyObjectContainer;
+    public Transform _movementNodeContainer;
     public int _amount = 1;
     public float _spawnDelay = 35.0f;
+    public float _speedOverride = 0;
     private bool _spawnStart = false;
     private float _timer = 0;
 
@@ -23,6 +25,11 @@ public class EnemySpawner : MonoBehaviour
             if(_timer >= _spawnDelay)
             {
                 _enemyObject = Instantiate(_enemyObject,_enemySpawnLocation.transform.position,_enemySpawnLocation.transform.rotation,_enemyObjectContainer);
+                if(_speedOverride > 0)
+                {
+                    _enemyObject.GetComponent<EnemyMovementHandler>().SetSpeed(_speedOverride);
+
+                }
 
                 if(_nodeObject != null)
                 {
@@ -50,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
             if(_nodeObject != null)
             {
                 //Spawn node object
-                _nodeObject = Instantiate(_nodeObject,_nodeSpawnLocation.transform.position,_nodeSpawnLocation.transform.rotation,_enemyObjectContainer);
+                _nodeObject = Instantiate(_nodeObject,_nodeSpawnLocation.transform.position,_nodeSpawnLocation.transform.rotation,_movementNodeContainer);
             }
         }
     }
