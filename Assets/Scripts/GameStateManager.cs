@@ -49,6 +49,9 @@ public class GameStateManager : MonoBehaviour
                     SetGameOver();
                 }
             break;
+            case state.endLevel:
+            
+            break;
         }
     }
 

@@ -12,7 +12,6 @@ public class EnemyShotHandler : MonoBehaviour
     private GameStateManager _gameStateManager;
     void Start()
     {
-        _timer = _frequency;
         _gameStateManager = GameObject.Find("Game State Manager").GetComponent<GameStateManager>();
     }
 
@@ -25,8 +24,18 @@ public class EnemyShotHandler : MonoBehaviour
             if(_timer >= _frequency)
             {
                 _timer = 0;
-                Instantiate(_projectile, new Vector2(transform.position.x + _horizontalOffset,transform.position.y + _verticalOffset),transform.rotation);
+                FireProjectile();
             }
         }
+    }
+
+    public void FireProjectile()
+    {
+        Instantiate(_projectile, new Vector2(transform.position.x + _horizontalOffset,transform.position.y + _verticalOffset),transform.rotation);
+    }
+
+    public void ChangeFrequency(float _newFrequency)
+    {
+        _frequency = _newFrequency;
     }
 }

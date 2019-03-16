@@ -25,7 +25,7 @@ public class EnemyMovementHandler : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(_gameStateManager.StateIsRunning() && _nextMoveNode != null)
         {
@@ -35,6 +35,7 @@ public class EnemyMovementHandler : MonoBehaviour
 
                 if(_timer >= _waitTime)
                 {
+                    _timer = 0;
                     SetBehaviour((int)_behaviours.delete);
                 }
             }

@@ -12,6 +12,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: RegularShot
       objectReference: {fileID: 0}
+    - target: {fileID: 7118867432563323067, guid: 13deecae45278dc40bb72c0cb893672b,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 692650395
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118867432563323067, guid: 13deecae45278dc40bb72c0cb893672b,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817372709168499855, guid: 13deecae45278dc40bb72c0cb893672b,
+        type: 3}
+      propertyPath: _tracksPlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817372709168499855, guid: 13deecae45278dc40bb72c0cb893672b,
+        type: 3}
+      propertyPath: _velocityV
+      value: -8
+      objectReference: {fileID: 0}
     - target: {fileID: 810903591585425956, guid: 13deecae45278dc40bb72c0cb893672b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,16 +86,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5817372709168499855, guid: 13deecae45278dc40bb72c0cb893672b,
-        type: 3}
-      propertyPath: _tracksPlayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5817372709168499855, guid: 13deecae45278dc40bb72c0cb893672b,
-        type: 3}
-      propertyPath: _velocityV
-      value: -8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13deecae45278dc40bb72c0cb893672b, type: 3}

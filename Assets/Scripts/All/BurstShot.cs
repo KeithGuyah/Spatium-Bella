@@ -41,7 +41,7 @@ Third variable defines the shots body.
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         /*
         defines the velocity of the burst shot.
@@ -59,10 +59,15 @@ Third variable defines the shots body.
 
             // Removes the entity after a set amount of time.
             _timeElapsed += Time.deltaTime;
+
             if (_timeElapsed >= _lifeTime)
             {
                 Destroy(gameObject);
             }
+        }
+        else
+        {
+            _shotBody.velocity = new Vector2(0, 0);
         }
     }
     void OnTriggerEnter2D(Collider2D objectHit)

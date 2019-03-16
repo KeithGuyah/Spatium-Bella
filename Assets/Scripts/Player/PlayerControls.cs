@@ -12,9 +12,6 @@ public class PlayerControls : MonoBehaviour
      */
    public float _velocity = 1.0f;
    public int _weaponNumber = 1;
-   public int _score;
-   public int _deathPenalty;
-   public Text _scoreTextUI;
    public float _fireRate = 0.25f;
    private float _nextFire = 0.0f;
    private Rigidbody2D _playerBody;
@@ -26,8 +23,6 @@ public class PlayerControls : MonoBehaviour
    public bool _spreadShotEnabled = false;
    private bool _controlsEnabled = true;
    private bool _firingEnabled = true;
-   
-
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +31,6 @@ public class PlayerControls : MonoBehaviour
         gets the rigid body component for the player.
          */
         _weaponNumber = 1;
-        _score = 0;
         _playerBody = GetComponent<Rigidbody2D>();
         shootProjectile = GetComponent<WeaponsHandler>();
         _playerAnimator = GetComponent<Animator>();
@@ -107,7 +101,6 @@ public class PlayerControls : MonoBehaviour
                     }
                     else if (Input.GetKey(KeyCode.Space) && _weaponNumber == 3) // Special firing case for the laser shot.
                     {
-                        //shootProjectile.FireWeapon(_weaponNumber);
                         shootProjectile.LaserCannonEnable();
                     }
                     else if (Input.GetKeyUp(KeyCode.Space) && _weaponNumber == 3)
@@ -161,14 +154,14 @@ public class PlayerControls : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(_gameStateManager.StateIsRunning())
-        {
             /*
             float varibles below get the horizontal and vertical axis.
             */
             int hAxis = 0;
             int vAxis = 0;
-            
+
+        if(_gameStateManager.StateIsRunning())
+        {
             if(_controlsEnabled)
             {
                 hAxis = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
@@ -188,6 +181,20 @@ public class PlayerControls : MonoBehaviour
             //Update animator
             _playerAnimator.SetInteger("horizMovement", hAxis);
         }
+        else
+        {
+            _playerBody.velocity = new Vector2(0,0);
+        }
+    }
+
+    public void ForceStopAllMovement()
+    {
+        _playerBody.velocity = new Vector2(0,0);
+    }
+
+    public int ReturnPlayerControllerXAxis()
+    {
+        return Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
     }
 
     public void EnableFiring()
@@ -217,20 +224,5 @@ public class PlayerControls : MonoBehaviour
     {
         _spreadShotEnabled = true;
         ShowHideWeaponUI();
-    }
-    public void increaseScore(int scoreValue)
-    {
-        _score +=scoreValue;
-        _scoreTextUI.text = _score.ToString();
-    }
-    public void decreaseScore()
-    {
-        _score -= _deathPenalty;
-
-        if (_score<=0)
-        {
-            _score = 0;
-        }
-        _scoreTextUI.text = _score.ToString();
     }
 }

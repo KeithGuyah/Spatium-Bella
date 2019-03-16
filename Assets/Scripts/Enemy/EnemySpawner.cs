@@ -13,32 +13,21 @@ public class EnemySpawner : MonoBehaviour
     public int _amount = 1;
     public float _spawnDelay = 35.0f;
     public float _speedOverride = 0;
+    public float _fireRateOverride = 0;
     private bool _spawnStart = false;
     private float _timer = 0;
 
-    void Update()
+    void FixedUpdate()
     {
-        if(_spawnStart)
+        if(_spawnStart && _spawnDelay > 0)
         {
-            _timer += Time.time;
+            _timer += Time.deltaTime;
 
             if(_timer >= _spawnDelay)
             {
-                _enemyObject = Instantiate(_enemyObject,_enemySpawnLocation.transform.position,_enemySpawnLocation.transform.rotation,_enemyObjectContainer);
-                if(_speedOverride > 0)
-                {
-                    _enemyObject.GetComponent<EnemyMovementHandler>().SetSpeed(_speedOverride);
-
-                }
-
-                if(_nodeObject != null)
-                {
-                    // Attach the node to the enemy object.
-                    _enemyObject.GetComponent<EnemyMovementHandler>().SetMoveNode(_nodeObject);
-                }
+                SpawnEnemy();
 
                 _timer = 0;
-                _amount -= 1;
             }
         }
                 
@@ -46,6 +35,34 @@ public class EnemySpawner : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void SpawnEnemy()
+    {
+        _enemyObject = Instantiate(_enemyObject,_enemySpawnLocation.transform.position,_enemySpawnLocation.transform.rotation,_enemyObjectContainer);
+        EnemyMovementHandler _enemyMovementHandler = _enemyObject.GetComponent<EnemyMovementHandler>();
+        EnemyShotHandler _enemyShotHandler = _enemyObject.GetComponent<EnemyShotHandler>();
+
+        //Set new speed
+        if(_speedOverride > 0)
+        {
+            _enemyMovementHandler.SetSpeed(_speedOverride);
+
+        }
+
+        //Attach node if available
+        if(_nodeObject != null)
+        {
+            // Attach the node to the enemy object.
+            _enemyMovementHandler.SetMoveNode(_nodeObject);
+        }
+
+        if(_fireRateOverride > 0)
+        {
+            _enemyShotHandler.ChangeFrequency(_fireRateOverride);
+        }
+
+        _amount -= 1;
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -59,6 +76,9 @@ public class EnemySpawner : MonoBehaviour
                 //Spawn node object
                 _nodeObject = Instantiate(_nodeObject,_nodeSpawnLocation.transform.position,_nodeSpawnLocation.transform.rotation,_movementNodeContainer);
             }
+
+             //Spawn first enemy
+            SpawnEnemy();
         }
     }
 

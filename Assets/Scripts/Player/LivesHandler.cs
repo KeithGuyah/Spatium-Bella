@@ -67,6 +67,7 @@ public class LivesHandler : MonoBehaviour
 
     public void PlayerDeathStart()
     {
+        _playerControls.ForceStopAllMovement();
         _playerControls.DisableControls();
         _playerCollider.enabled = false;
         _isDead = true;
@@ -79,7 +80,7 @@ public class LivesHandler : MonoBehaviour
         RefreshUIText();
     }
 
-    public void PlayerRespawn()
+    void PlayerRespawn()
     {
         _playerHealthHandler.SetHealth(_playerHealthHandler._maxHP);
         _isInvincible = true;
@@ -102,7 +103,7 @@ public class LivesHandler : MonoBehaviour
         return _isInvincible;
     }
 
-    private void RefreshUIText()
+    void RefreshUIText()
     {
         _livesUIText.text = _lives.ToString();
     }

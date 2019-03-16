@@ -44,18 +44,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
+  - name: Background 0
     uniqueID: 3351331999
     locked: 0
-  - name: Projectile
+  - name: Background 1
     uniqueID: 2134671753
+    locked: 0
+  - name: Background 2
+    uniqueID: 692650395
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Cloud
+  - name: Foreground 2
+    uniqueID: 3677754103
+    locked: 0
+  - name: Foreground 1
     uniqueID: 3297105527
     locked: 0
-  - name: Foreground
+  - name: Foreground 0
     uniqueID: 3428428817
     locked: 0

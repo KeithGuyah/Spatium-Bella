@@ -63,11 +63,11 @@ public class HealthHandler : MonoBehaviour
     {
         if (_isPlayer==false)
         {
-            GameObject.Find("Player").GetComponent<PlayerControls>().increaseScore(_scoreValue);
+            GameObject.Find("Player").GetComponent<PlayerScore>().IncreaseScore(_scoreValue);
         }
         if (_isPlayer)
         {
-            GameObject.Find("Player").GetComponent<PlayerControls>().decreaseScore();
+            GameObject.Find("Player").GetComponent<PlayerScore>().DecreaseScore();
         }
     }
     public void SetHealth(int value)

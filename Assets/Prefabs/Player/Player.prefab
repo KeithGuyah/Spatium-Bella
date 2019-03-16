@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1523979941307414015}
   - component: {fileID: 1523979941307414014}
   - component: {fileID: 1523979941307414012}
+  - component: {fileID: 8676464566988334850}
   - component: {fileID: 1523979941307414013}
   m_Layer: 0
   m_Name: Player
@@ -190,6 +191,7 @@ MonoBehaviour:
   _isShield: 0
   _maxHP: 1
   _currentHP: 1
+  _scoreValue: 0
   _healthBarText: {fileID: 0}
   _healthSlider: {fileID: 0}
 --- !u!114 &1523979941307414012
@@ -206,6 +208,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lives: 3
   _isDead: 0
+--- !u!114 &8676464566988334850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523979941307414005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7657c8c1b80ba4e49ae542ad1cf65699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: 0
+  _deathPenalty: 0
+  _scoreTextUI: {fileID: 0}
 --- !u!95 &1523979941307414013
 Animator:
   serializedVersion: 3
@@ -394,6 +411,41 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116747, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: _sheildMaxHP
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: _shieldHP
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: _shieldMaxHP
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: _shieldBarText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: _shieldSlider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: _isPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4351786959806116746, guid: bf2ab1380b2fd27499b567006d0faf3d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -467,41 +519,6 @@ PrefabInstance:
     - target: {fileID: 4351786959806116790, guid: bf2ab1380b2fd27499b567006d0faf3d,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116747, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: _sheildMaxHP
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: _shieldHP
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: _shieldMaxHP
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: _shieldBarText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: _shieldSlider
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: _isPlayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4351786959806116745, guid: bf2ab1380b2fd27499b567006d0faf3d,
