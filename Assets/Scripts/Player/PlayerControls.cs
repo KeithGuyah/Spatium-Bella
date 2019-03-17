@@ -94,23 +94,23 @@ public class PlayerControls : MonoBehaviour
                 if(_firingEnabled)
                 {
                     //Fire Weapon
-                    if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextFire)
+                    if (Input.GetButtonDown("Fire1") && Time.time > _nextFire)
                     {
                         _nextFire = _fireRate + Time.time;
                         shootProjectile.FireWeapon(_weaponNumber);
                     }
-                    else if (Input.GetKey(KeyCode.Space) && _weaponNumber == 3) // Special firing case for the laser shot.
+                    else if (Input.GetButton("Fire1") && _weaponNumber == 3) // Special firing case for the laser shot.
                     {
                         shootProjectile.LaserCannonEnable();
                     }
-                    else if (Input.GetKeyUp(KeyCode.Space) && _weaponNumber == 3)
+                    else if (Input.GetButtonUp("Fire1") && _weaponNumber == 3)
                     {
                         shootProjectile.LaserCannonDisable();
                     }
                 }
 
                 //Weapon Switching
-                if (Input.GetKeyDown(KeyCode.Q))
+                if (Input.GetButtonDown("Fire2"))
                 {
                     if (_weaponNumber == 1 && _spreadShotEnabled)
                     {
@@ -136,16 +136,15 @@ public class PlayerControls : MonoBehaviour
                     {
                         _weaponNumber = 1;
                     }
-                    //Debug.Log("Selected Weapon: " + _weaponNumber);
                     ShowSelectedWeapon();
                 }
 
                 //Shield Enable/Disable
-                if (Input.GetKeyUp(KeyCode.E))
+                if (Input.GetButtonUp("Fire3"))
                 {
                     _shield.DisableShield();
                 }
-                if (Input.GetKey(KeyCode.E))
+                if (Input.GetButton("Fire3"))
                 {
                     _shield.EnableShield();
                 }
