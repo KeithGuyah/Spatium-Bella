@@ -51,8 +51,6 @@ public class RepeatingElementMovement : MonoBehaviour
                         _moveXOffset -= 0.5f;
                     }
 
-                    Debug.Log(Mathf.Abs(_moveXOffset));
-
                     //Determine if we should apply the left/right movement if the left/right movement key is down
                     if(Mathf.Abs(_playerControllerX) > 0 && Mathf.Abs(_playerX) <= 6.4)
                     {

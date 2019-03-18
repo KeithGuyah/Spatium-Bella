@@ -230,7 +230,7 @@ PrefabInstance:
     - target: {fileID: 5805557677363929088, guid: 788bedfcee96b3642ada40c5e7f49be9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5805557677326655087, guid: 788bedfcee96b3642ada40c5e7f49be9,
         type: 3}
@@ -678,6 +678,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &725600670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9050950781873277770, guid: d9f647594f9fb6c4f992a187cd73bdbd,
+    type: 3}
+  m_PrefabInstance: {fileID: 534487485}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &751188317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3044139294259035425, guid: c36d976fb858c7c489916c11824b85c8,
@@ -1145,12 +1157,12 @@ PrefabInstance:
     - target: {fileID: 5805557677363929088, guid: 788bedfcee96b3642ada40c5e7f49be9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.53
+      value: 3.44
       objectReference: {fileID: 0}
     - target: {fileID: 5805557677363929088, guid: 788bedfcee96b3642ada40c5e7f49be9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.62
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5805557677326655087, guid: 788bedfcee96b3642ada40c5e7f49be9,
         type: 3}
@@ -2295,6 +2307,11 @@ PrefabInstance:
       propertyPath: _spreadShotEnabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8676464566988334850, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: _scoreTextUI
+      value: 
+      objectReference: {fileID: 725600670}
     - target: {fileID: 1523979941307414000, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
       propertyPath: m_IsTrigger
