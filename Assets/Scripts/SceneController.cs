@@ -14,14 +14,13 @@ public class SceneController : MonoBehaviour
         if(sceneNumber != 3)
         {
             sceneNumber++;
+            SceneManager.LoadScene("level" + sceneNumber);
         }
         else
         {
             Debug.Log("Invalid scene index. Returning to title screen.");
             LoadTitle();
         }
-
-            SceneManager.LoadScene("level" + sceneNumber);
     }
 
     public void LoadTitle()
