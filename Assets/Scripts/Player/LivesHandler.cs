@@ -15,6 +15,7 @@ public class LivesHandler : MonoBehaviour
     private SpriteRenderer _playerSpriteRenderer;
     private HealthHandler _playerHealthHandler;
     private Collider2D _playerCollider;
+    private WeaponsHandler _playerWeaponsHandler;
     private GameStateManager _gameStateManager;
     private Animator _playerAnimator;
     private Text _livesUIText;
@@ -26,6 +27,7 @@ public class LivesHandler : MonoBehaviour
         _playerSpriteRenderer = GetComponent<SpriteRenderer>();
         _playerHealthHandler = GetComponent<HealthHandler>();
         _playerCollider = GetComponent<Collider2D>();
+        _playerWeaponsHandler = GetComponent<WeaponsHandler>();
         _playerRespawnPoint = new Vector2(0, -3);
         _gameStateManager = GameObject.Find("Game State Manager").GetComponent<GameStateManager>();
         _livesUIText = GameObject.Find("Lives Counter").GetComponent<Text>();
@@ -69,6 +71,7 @@ public class LivesHandler : MonoBehaviour
     {
         _playerControls.ForceStopAllMovement();
         _playerControls.DisableControls();
+        _playerWeaponsHandler.LaserCannonDisable();
         _playerCollider.enabled = false;
         _isDead = true;
     }

@@ -12,27 +12,42 @@ public class WeaponsHandler : MonoBehaviour
    public GameObject _burstShot;
    public GameObject _spreadShot;
    public LineRenderer _laserCannon;
-   public int _laserCannonDamage=1;
-   public float _laserCannonDamageRate = 1.0f;
+   public int _laserCannonDamage = 1;
+   public float _laserCannonDamageRate = 0.25f;
+   public float _burstFireRate = 0.15f;
+   public float _spreadFireRate = 0.25f;
    public float _horzOffset = 0.50f;
    public float _vertOffset = 1.0f;
-   public float _fireRate = 0.5f;
-   private float _nextFire = 0.0f;
-   private float nextFire = 0.0f;
    private RaycastHit2D hitInfo;
    private Vector2 shotStartPos;
+   private float _timer = 0;
    
+    void FixedUpdate()
+    {
+        LaserCannon();
+
+        if(_timer > 0)
+        {
+            _timer -= Time.deltaTime;
+        }
+        else if(_timer < 0)
+        {
+            _timer = 0;
+        }
+    }
+
     public void FireWeapon(int weaponNumber)
     {
-        if(Time.time > nextFire && weaponNumber != 3)
+        if(_timer == 0 && weaponNumber != 3)
         {
-            nextFire = Time.time + _fireRate;
             if (weaponNumber == 2)
             {
+                _timer = _spreadFireRate;
                 SpreadShot();
             }
             else
             {
+                _timer = _burstFireRate;
                 BurstShot();
             }
         }
@@ -49,14 +64,15 @@ public class WeaponsHandler : MonoBehaviour
         shotStartPos += new Vector2(0.0f, _vertOffset);
         Instantiate(_spreadShot, shotStartPos, transform.rotation);
     }
-    
     void LaserCannon()
     { 
         if (_laserCannon.enabled == true)
         {
+            //Determine laser start position (Position 0)
             shotStartPos = transform.position;
             shotStartPos += new Vector2(0, _vertOffset);
 
+            //Send a raycast upward
             hitInfo = Physics2D.Raycast(shotStartPos, transform.up);
             if (hitInfo)
             {
@@ -65,10 +81,11 @@ public class WeaponsHandler : MonoBehaviour
 
             _laserCannon.SetPosition(0, shotStartPos);
 
+            //Set laser end position (Position 1)
             if (hitInfo.transform.tag == "Enemy")
             {
                 _laserCannon.SetPosition(1, hitInfo.point);
-                LaserCannonDamage();   
+                LaserCannonDamage();
             }
             else
             {
@@ -78,12 +95,17 @@ public class WeaponsHandler : MonoBehaviour
     }
     public void LaserCannonDamage()
     {
-        Debug.Log(Time.time);
-        if (Time.time > _nextFire)
+        if (_timer == 0)
         {
-           _nextFire= _laserCannonDamageRate + Time.time;
+           _timer = _laserCannonDamageRate;
             hitInfo.transform.gameObject.GetComponent<HealthHandler>().TakeDamage(_laserCannonDamage);
         }
+    }
+
+    public void ResetLaserPosition()
+    {
+        _laserCannon.SetPosition(0, new Vector2(0, 0));
+        _laserCannon.SetPosition(1, new Vector2(0, 0));
     }
     
     public void LaserCannonEnable()
@@ -92,10 +114,7 @@ public class WeaponsHandler : MonoBehaviour
     }
     public void LaserCannonDisable()
     {
+        ResetLaserPosition();
         _laserCannon.enabled = false;
-    }
-    void Update()
-    {
-        LaserCannon();
     }
 }

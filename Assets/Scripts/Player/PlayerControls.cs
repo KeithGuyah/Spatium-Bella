@@ -12,8 +12,6 @@ public class PlayerControls : MonoBehaviour
      */
    public float _velocity = 1.0f;
    public int _weaponNumber = 1;
-   public float _fireRate = 0.25f;
-   private float _nextFire = 0.0f;
    private Rigidbody2D _playerBody;
    private WeaponsHandler shootProjectile;
    private ShieldHandler _shield;
@@ -27,9 +25,6 @@ public class PlayerControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        gets the rigid body component for the player.
-         */
         _weaponNumber = 1;
         _playerBody = GetComponent<Rigidbody2D>();
         shootProjectile = GetComponent<WeaponsHandler>();
@@ -94,9 +89,8 @@ public class PlayerControls : MonoBehaviour
                 if(_firingEnabled)
                 {
                     //Fire Weapon
-                    if (Input.GetButtonDown("Fire1") && Time.time > _nextFire)
+                    if (Input.GetButtonDown("Fire1"))
                     {
-                        _nextFire = _fireRate + Time.time;
                         shootProjectile.FireWeapon(_weaponNumber);
                     }
                     else if (Input.GetButton("Fire1") && _weaponNumber == 3) // Special firing case for the laser shot.
@@ -112,6 +106,10 @@ public class PlayerControls : MonoBehaviour
                 //Weapon Switching
                 if (Input.GetButtonDown("Fire2"))
                 {
+                    //Disable laser cannon
+                    shootProjectile.LaserCannonDisable();
+
+                    //Switching logic
                     if (_weaponNumber == 1 && _spreadShotEnabled)
                     {
                         _weaponNumber = 2;
@@ -148,6 +146,7 @@ public class PlayerControls : MonoBehaviour
                 {
                     _shield.EnableShield();
                 }
+
             }
         }
     }

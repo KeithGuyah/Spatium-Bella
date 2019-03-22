@@ -8674,10 +8674,35 @@ PrefabInstance:
       propertyPath: m_UseWorldSpace
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1523979941927286109, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523979941927286109, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2973189942537200081, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523979941307414015, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: _burstFireRate
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523979941307414015, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: _spreadFireRate
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523979941307414015, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: _laserCannonDamageRate
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 660288c76b9979a40a4dcc32b71383ee, type: 3}
