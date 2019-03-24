@@ -45,7 +45,7 @@ public class EnemyMovementHandler : MonoBehaviour
                 _entityRigidBody2D.velocity = _movementVector.normalized * _speed;
             }
         }
-        else
+        else // Stop moevement when the game state is stopped.
         {
             StopMovement();
         }
@@ -103,6 +103,25 @@ public class EnemyMovementHandler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            if(!GameObject.Find("Shield").GetComponent<CircleCollider2D>().enabled)
+            {
+                /* The above check prevents the player hitbox from being hit while the shield is active.
+                 * The player's hitbox is technically still active even though the shield hitbox is surrounding the player
+                 * and can still be hit if a projectile/enemy somehow goes past the shield.
+                 */
+                other.gameObject.GetComponent<HealthHandler>().TakeDamage(1);
+            }
+        }
+        else if(other.gameObject.CompareTag("PlayerShield"))
+        {
+            other.gameObject.GetComponent<ShieldHandler>().TakeDamage(1);
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
         if(other.gameObject == _nextMoveNode)
         {
             EnemyMovementNode _nextNodeScript = other.gameObject.GetComponent<EnemyMovementNode>();
@@ -113,24 +132,13 @@ public class EnemyMovementHandler : MonoBehaviour
                 _entityRigidBody2D.velocity = CreateDestinationVector2();
                 SetBehaviour(_nextNodeScript.GetBehaviour());
             }
-            else
+            else // If we hit the last node, then delete this enemy.
             {
                 if(_currentBehaviour == _behaviours.delete)
                 {
                     Destroy(gameObject);
                 }
             }
-        }
-        else if(other.gameObject.CompareTag("Player"))
-        {
-            if(!GameObject.Find("Shield").GetComponent<CircleCollider2D>().enabled)
-            {
-                other.gameObject.GetComponent<HealthHandler>().TakeDamage(1);
-            }
-        }
-        else if(other.gameObject.tag == "PlayerShield")
-        {
-            other.gameObject.GetComponent<ShieldHandler>().TakeDamage(1);
         }
     }
 

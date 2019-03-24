@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public enum direction {left,right,up,down};
     public GameObject _enemyObject;
     public GameObject _nodeObject;
     public Transform _enemySpawnLocation;
@@ -11,43 +12,47 @@ public class EnemySpawner : MonoBehaviour
     public Transform _enemyObjectContainer;
     public Transform _movementNodeContainer;
     public int _amount = 1;
-    public float _spawnDelay = 35.0f;
+    public direction _spawnDirection = direction.left; 
     public float _speedOverride = 0;
     public float _fireRateOverride = 0;
-    private bool _spawnStart = false;
-    private float _timer = 0;
+    public float _spawnOffset = 1;
 
-    void FixedUpdate()
+    void MultipleEnemySpawn()
     {
-        if(_spawnStart && _spawnDelay > 0)
+        for(int i = 0; i < _amount; i++)
         {
-            _timer += Time.deltaTime;
-
-            if(_timer >= _spawnDelay)
+            switch(_spawnDirection)
             {
-                SpawnEnemy();
-
-                _timer = 0;
+                case direction.left:
+                    _enemySpawnLocation.position -= new Vector3(_spawnOffset,0,0);
+                break;
+                case direction.right:
+                    _enemySpawnLocation.position += new Vector3(_spawnOffset,0,0);
+                break;
+                case direction.up:
+                    _enemySpawnLocation.position += new Vector3(0,_spawnOffset,0);
+                break;
+                case direction.down:
+                    _enemySpawnLocation.position -= new Vector3(0,_spawnOffset,0);
+                break;
             }
+            //
+            SpawnEnemy();
         }
-                
-        if(_amount <= 0)
-        {
-            Destroy(gameObject);
-        }
+
+        Destroy(this.gameObject);
     }
 
     void SpawnEnemy()
     {
-        _enemyObject = Instantiate(_enemyObject,_enemySpawnLocation.transform.position,_enemySpawnLocation.transform.rotation,_enemyObjectContainer);
-        EnemyMovementHandler _enemyMovementHandler = _enemyObject.GetComponent<EnemyMovementHandler>();
-        EnemyShotHandler _enemyShotHandler = _enemyObject.GetComponent<EnemyShotHandler>();
+        GameObject _newEnemyObject = Instantiate(_enemyObject,_enemySpawnLocation.transform.position,_enemySpawnLocation.transform.rotation,_enemyObjectContainer);
+        EnemyMovementHandler _enemyMovementHandler = _newEnemyObject.GetComponent<EnemyMovementHandler>();
+        EnemyShotHandler _enemyShotHandler = _newEnemyObject.GetComponent<EnemyShotHandler>();
 
         //Set new speed
         if(_speedOverride > 0)
         {
             _enemyMovementHandler.SetSpeed(_speedOverride);
-
         }
 
         //Attach node if available
@@ -57,28 +62,36 @@ public class EnemySpawner : MonoBehaviour
             _enemyMovementHandler.SetMoveNode(_nodeObject);
         }
 
+        //Override fire rate
         if(_fireRateOverride > 0)
         {
             _enemyShotHandler.ChangeFrequency(_fireRateOverride);
         }
-
-        _amount -= 1;
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("MainCamera"))
         {
-            _spawnStart = true;
-
+            // Spawn movement node if available.
             if(_nodeObject != null)
             {
-                //Spawn node object
                 _nodeObject = Instantiate(_nodeObject,_nodeSpawnLocation.transform.position,_nodeSpawnLocation.transform.rotation,_movementNodeContainer);
             }
 
-             //Spawn first enemy
+             // Spawn first enemy
             SpawnEnemy();
+            _amount -= 1;
+
+            // Spawn additional enemies.
+            if(_amount > 1)
+            {
+                MultipleEnemySpawn();
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
