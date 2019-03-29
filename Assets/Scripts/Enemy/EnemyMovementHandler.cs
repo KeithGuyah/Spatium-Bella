@@ -45,7 +45,7 @@ public class EnemyMovementHandler : MonoBehaviour
                 _entityRigidBody2D.velocity = _movementVector.normalized * _speed;
             }
         }
-        else // Stop moevement when the game state is stopped.
+        else // Stop movement when the game state is stopped.
         {
             StopMovement();
         }

@@ -15,10 +15,17 @@ Third variable defines the shots body.
     public int _weaponDamage = 1;
     public bool _tracksPlayer = false;
     public float _trackingSpeed = 5.0f;
+    public bool _destroyOnHit = true;
     private Vector2 _trackingDirection;
     private float _timeElapsed = 0;
     private Rigidbody2D _shotBody;
     private GameStateManager _gameStateManager;
+
+    public void SetVelocity(Vector2 _newVelocity)
+    {
+        _velocityH = _newVelocity.x;
+        _velocityV = _newVelocity.y;
+    }
     
     // Start is called before the first frame update
     void Start()
@@ -70,6 +77,15 @@ Third variable defines the shots body.
             _shotBody.velocity = new Vector2(0, 0);
         }
     }
+
+    void RemoveProjectile()
+    {
+        if(_destroyOnHit)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D objectHit)
     {
         if (objectHit.gameObject.CompareTag("Enemy"))
@@ -77,7 +93,7 @@ Third variable defines the shots body.
             if(!gameObject.CompareTag("Projectile"))
             {
                 objectHit.gameObject.GetComponent<HealthHandler>().TakeDamage(_weaponDamage);
-                Destroy(gameObject);
+                RemoveProjectile();
             }
         }
         else if(objectHit.gameObject.CompareTag("Player"))
@@ -85,12 +101,12 @@ Third variable defines the shots body.
             if(!GameObject.Find("Shield").GetComponent<CircleCollider2D>().enabled)
             {
                 objectHit.gameObject.GetComponent<HealthHandler>().TakeDamage(_weaponDamage);
-                Destroy(gameObject);
+                RemoveProjectile();
             }
         }
         else if(objectHit.gameObject.CompareTag("MainCamera") )
         {
-            Destroy(gameObject);
+            RemoveProjectile();
         }
         else if(objectHit.gameObject.CompareTag("Destructible") || objectHit.gameObject.CompareTag("Indestructable"))
         {
@@ -108,17 +124,17 @@ Third variable defines the shots body.
                 _enviromentCollisionScript.RemoveTile(_collisionVector);
 
                 // Remove the projectile
-                Destroy(gameObject);
+                RemoveProjectile();
             }
             else
             {
-                Destroy(gameObject);
+                RemoveProjectile();
             }
         }
         else if (objectHit.gameObject.CompareTag("PlayerShield"))
         {
             objectHit.gameObject.GetComponent<ShieldHandler>().TakeDamage(_weaponDamage);
-            Destroy(gameObject);
+            RemoveProjectile();
         }
 
     }

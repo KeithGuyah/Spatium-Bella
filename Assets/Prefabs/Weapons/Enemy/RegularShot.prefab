@@ -32,6 +32,11 @@ PrefabInstance:
       propertyPath: _velocityV
       value: -8
       objectReference: {fileID: 0}
+    - target: {fileID: 5817372709168499855, guid: 13deecae45278dc40bb72c0cb893672b,
+        type: 3}
+      propertyPath: _lifeTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 810903591585425956, guid: 13deecae45278dc40bb72c0cb893672b,
         type: 3}
       propertyPath: m_LocalPosition.x
