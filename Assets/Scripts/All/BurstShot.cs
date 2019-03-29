@@ -72,7 +72,7 @@ Third variable defines the shots body.
     }
     void OnTriggerEnter2D(Collider2D objectHit)
     {
-        if (objectHit.gameObject.tag == "Enemy")
+        if (objectHit.gameObject.CompareTag("Enemy"))
         {
             if(!gameObject.CompareTag("Projectile"))
             {
@@ -80,7 +80,7 @@ Third variable defines the shots body.
                 Destroy(gameObject);
             }
         }
-        else if(objectHit.gameObject.tag == "Player")
+        else if(objectHit.gameObject.CompareTag("Player"))
         {
             if(!GameObject.Find("Shield").GetComponent<CircleCollider2D>().enabled)
             {
@@ -88,11 +88,34 @@ Third variable defines the shots body.
                 Destroy(gameObject);
             }
         }
-        else if(objectHit.gameObject.tag == "MainCamera")
+        else if(objectHit.gameObject.CompareTag("MainCamera") )
         {
             Destroy(gameObject);
         }
-        else if (objectHit.gameObject.tag == "PlayerShield")
+        else if(objectHit.gameObject.CompareTag("Destructible") || objectHit.gameObject.CompareTag("Indestructable"))
+        {
+            if(objectHit.gameObject.CompareTag("Destructible"))
+            {
+                EnvironmentCollisionHandler _enviromentCollisionScript = objectHit.gameObject.GetComponent<EnvironmentCollisionHandler>();
+
+                Vector3 _collisionVector = new Vector3(transform.position.x,transform.position.y + 0.3f,transform.position.z);
+                _enviromentCollisionScript.RemoveTile(_collisionVector);
+
+                _collisionVector.x += 0.1f;
+                _enviromentCollisionScript.RemoveTile(_collisionVector);
+
+                _collisionVector.x -= 0.2f;
+                _enviromentCollisionScript.RemoveTile(_collisionVector);
+
+                // Remove the projectile
+                Destroy(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (objectHit.gameObject.CompareTag("PlayerShield"))
         {
             objectHit.gameObject.GetComponent<ShieldHandler>().TakeDamage(_weaponDamage);
             Destroy(gameObject);

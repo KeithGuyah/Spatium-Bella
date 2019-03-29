@@ -204,6 +204,11 @@ public class PlayerControls : MonoBehaviour
         _firingEnabled = false;
     }
 
+    public bool ControlsEnabled()
+    {
+        return _controlsEnabled;
+    }
+
     public void DisableControls()
     {
         _controlsEnabled = false;

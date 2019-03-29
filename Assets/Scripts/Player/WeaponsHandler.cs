@@ -82,10 +82,26 @@ public class WeaponsHandler : MonoBehaviour
             _laserCannon.SetPosition(0, shotStartPos);
 
             //Set laser end position (Position 1)
-            if (hitInfo.transform.tag == "Enemy")
+            if (hitInfo.transform.CompareTag("Enemy"))
             {
                 _laserCannon.SetPosition(1, hitInfo.point);
                 LaserCannonDamage();
+            }
+            else if(hitInfo.transform.CompareTag("Destructible") || hitInfo.transform.CompareTag("Indestructable"))
+            {
+                if(hitInfo.transform.CompareTag("Destructible"))
+                {
+                    EnvironmentCollisionHandler _enviromentCollisionScript = hitInfo.transform.gameObject.GetComponent<EnvironmentCollisionHandler>();
+
+                    Vector3 _collisionVector = new Vector3(hitInfo.point.x,hitInfo.point.y + 0.3f,0);
+                    _enviromentCollisionScript.RemoveTile(_collisionVector);
+
+                    _laserCannon.SetPosition(1, hitInfo.point);
+                }
+                else
+                {
+                    _laserCannon.SetPosition(1, hitInfo.point);
+                }
             }
             else
             {

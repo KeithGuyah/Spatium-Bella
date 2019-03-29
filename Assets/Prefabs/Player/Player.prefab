@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1523979941307414014}
   - component: {fileID: 1523979941307414012}
   - component: {fileID: 8676464566988334850}
+  - component: {fileID: 4615431939657623825}
   - component: {fileID: 1523979941307414013}
   m_Layer: 0
   m_Name: Player
@@ -150,7 +151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _velocity: 15
   _weaponNumber: 1
-  _fireRate: 0.25
   _laserCannonEnabled: 0
   _spreadShotEnabled: 0
 --- !u!114 &1523979941307414015
@@ -172,9 +172,10 @@ MonoBehaviour:
   _laserCannon: {fileID: 1523979941927286109}
   _laserCannonDamage: 1
   _laserCannonDamageRate: 0.5
+  _burstFireRate: 0.15
+  _spreadFireRate: 0.25
   _horzOffset: 1
   _vertOffset: 1
-  _fireRate: 0.1
 --- !u!114 &1523979941307414014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,8 +222,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _score: 0
-  _deathPenalty: 0
   _scoreTextUI: {fileID: 0}
+--- !u!114 &4615431939657623825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523979941307414005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02409622f63355f42929e124bdf36be2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &1523979941307414013
 Animator:
   serializedVersion: 3
@@ -308,7 +320,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -866538479
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -411,41 +423,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116747, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: _sheildMaxHP
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: _shieldHP
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: _shieldMaxHP
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: _shieldBarText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: _shieldSlider
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
-        type: 3}
-      propertyPath: _isPlayer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4351786959806116746, guid: bf2ab1380b2fd27499b567006d0faf3d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -519,6 +496,41 @@ PrefabInstance:
     - target: {fileID: 4351786959806116790, guid: bf2ab1380b2fd27499b567006d0faf3d,
         type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116747, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: _sheildMaxHP
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: _shieldHP
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: _shieldMaxHP
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: _shieldBarText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: _shieldSlider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351786959806116744, guid: bf2ab1380b2fd27499b567006d0faf3d,
+        type: 3}
+      propertyPath: _isPlayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4351786959806116745, guid: bf2ab1380b2fd27499b567006d0faf3d,

@@ -559,13 +559,13 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -20.100037
       objectReference: {fileID: 0}
-    - target: {fileID: 1433275475, guid: d9f647594f9fb6c4f992a187cd73bdbd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 443111337, guid: d9f647594f9fb6c4f992a187cd73bdbd, type: 3}
       propertyPath: m_Text
       value: M I S S I O N  2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433275475, guid: d9f647594f9fb6c4f992a187cd73bdbd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9f647594f9fb6c4f992a187cd73bdbd, type: 3}
@@ -1518,6 +1518,7 @@ MonoBehaviour:
   _repeatOffset: 10
   _doNotRepeat: 1
   _moveWithPlayer: 0
+  _xMoveDirectionMax: 1.13
 --- !u!50 &1649320091
 Rigidbody2D:
   serializedVersion: 4
@@ -2378,11 +2379,6 @@ PrefabInstance:
       propertyPath: _shieldBarText
       value: 
       objectReference: {fileID: 385437922}
-    - target: {fileID: 2973189942537200109, guid: 660288c76b9979a40a4dcc32b71383ee,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1523979941307414001, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
       propertyPath: _spreadShotEnabled
@@ -2396,6 +2392,11 @@ PrefabInstance:
     - target: {fileID: 1523979941307414000, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
       propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2973189942537200109, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
