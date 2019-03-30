@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isPlayer: 0
   _isShield: 0
-  _maxHP: 2
+  _maxHP: 5
   _currentHP: 1
   _scoreValue: 1000
   _healthBarText: {fileID: 0}

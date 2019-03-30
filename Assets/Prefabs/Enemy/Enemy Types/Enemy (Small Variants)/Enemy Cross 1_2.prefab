@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1715967476}
   - component: {fileID: 1715967475}
   m_Layer: 0
-  m_Name: Enemy (Small Cross 1_2)
+  m_Name: Enemy Cross 1_2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isPlayer: 0
   _isShield: 0
-  _maxHP: 2
+  _maxHP: 5
   _currentHP: 1
   _scoreValue: 1000
   _healthBarText: {fileID: 0}

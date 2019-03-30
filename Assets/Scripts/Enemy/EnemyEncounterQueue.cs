@@ -82,15 +82,17 @@ public class EnemyEncounterQueue : MonoBehaviour
             if(_enemySpawners[i] != null)
             {
                 _nextSpawnerTransform = _enemySpawners[i].transform;
+                Debug.Log("Moving to next encounter: " + _nextSpawnerTransform.name);
                 break;
             }
         }
 
-        Debug.Log("Moving to next encounter: " + _nextSpawnerTransform.name);
-
         // Set the enemy spawner group object's location to just above the next enemy spawner.
-        this.gameObject.transform.position -= 
-        new Vector3(0, _nextSpawnerTransform.position.y - (_cameraOffset + _yOffset), 0);
+        if(_nextSpawnerTransform != null)
+        {
+            this.gameObject.transform.position -= 
+            new Vector3(0, _nextSpawnerTransform.position.y - (_cameraOffset + _yOffset), 0);
+        }
     }
 
     void UpdateSpawnerArray()
