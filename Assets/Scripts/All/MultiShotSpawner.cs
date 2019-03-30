@@ -7,7 +7,6 @@ public class MultiShotSpawner : MonoBehaviour
     public enum type {CrossShot1, CrossShot2, CrossShotAll, EightShot1, EightShot2, EightShotAll};
     public type _shotType = type.CrossShot1;
     public GameObject _projectileBase;
-    private int _numberOfProjectiles = 0;
     private GameObject _projectile;
     private Vector2[] _projectileVelocityArray;
 

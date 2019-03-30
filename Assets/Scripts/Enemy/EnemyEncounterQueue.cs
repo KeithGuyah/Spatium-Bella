@@ -7,6 +7,7 @@ public class EnemyEncounterQueue : MonoBehaviour
     public GameObject _enemyContainer;
     public float _timer = 0;
     public float _waitTime = 1;
+    public bool _enabled = true;
     private float _yOffset = 1; // A small offset so that the enemy spawner trigger isn't directly over the camera trigger.
     private float _cameraOffset = 5; // The distance between the middle of the screen (0,0) and the top of the screen.
     private Transform[] _enemySpawners;
@@ -20,45 +21,44 @@ public class EnemyEncounterQueue : MonoBehaviour
         // Initialize the enemy spawner array.
         UpdateSpawnerArray();
 
-        //Debug stuff. Uncomment this to get a list of all transform objects that were found.
-    /*  for(int i = 0; i < _enemySpawners.Length; i++)
-        {
-            if(_enemySpawners[i] != null)
-            {
-                Debug.Log(_enemySpawners[i].name +  ": " + _enemySpawners[i].transform.position.x + ", " + _enemySpawners[i].transform.position.y);
-            }
-        } 
-    */
-
         //Remove first result since it's the parent object's transform.
         _enemySpawners[0] = null;
+    }
+
+    public void Enable()
+    {
+        _enabled = true;
+        _timer = _waitTime;
+    }
+
+    public void Disable()
+    {
+        _enabled = false;
+        _timer = _waitTime;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Debug stuff. Press this to instantly go to the next encounter.
-        if(Input.GetKeyDown(KeyCode.H))
+        if(_enabled)
         {
-            GoToNextEncounter();
-        }
+            // Activate the timer when the enemies container does not contain enemies.
+            if(_enemyContainer.transform.childCount == 0)
+            {
+                _timer -=  Time.deltaTime;
+            }
+            else // Reset the timer if enemies appeared.
+            {
+                _timer = _waitTime;
+            }
 
-        // Activate the timer when the enemies container does not contain enemies.
-        if(_enemyContainer.transform.childCount == 0)
-        {
-            _timer -=  Time.deltaTime;
-        }
-        else // Reset the timer if enemies appeared.
-        {
-            _timer = _waitTime;
-        }
-
-        // If it's been x amount of seconds and there aren't any enemies to shoot at...
-        // then go to the next encounter so the player isn't waiting for the screen to scroll down.
-        if(_timer <= 0)
-        {
-            _timer = _waitTime;
-            GoToNextEncounter();
+            // If it's been x amount of seconds and there aren't any enemies to shoot at...
+            // then go to the next encounter so the player isn't waiting for the screen to scroll down.
+            if(_timer <= 0)
+            {
+                _timer = _waitTime;
+                GoToNextEncounter();
+            }
         }
     }
 
