@@ -11424,7 +11424,7 @@ PrefabInstance:
     - target: {fileID: 1523979941307414014, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
       propertyPath: _maxHP
-      value: 1
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 2973189942537200110, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}

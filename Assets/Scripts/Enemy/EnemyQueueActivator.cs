@@ -10,7 +10,14 @@ public class EnemyQueueActivator : MonoBehaviour
     {
         if(other.CompareTag("MainCamera") && other.gameObject.name == "CameraTriggerUp")
         {
-            _enemyEncounterQueue.Enable();
+            if(_enemyEncounterQueue._enabled)
+            {
+                _enemyEncounterQueue.Disable();
+            }
+            else
+            {
+                _enemyEncounterQueue.Enable();
+            }
             Destroy(this.gameObject);
         }
     }

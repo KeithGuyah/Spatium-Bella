@@ -7,6 +7,7 @@ public class EnemyShotHandler : MonoBehaviour
     public GameObject _projectile;
     public GameObject _projectile2;
     private GameObject _currentProjectile;
+    private HealthHandler _healthHandler;
     public float _verticalOffset = 0;
     public float _horizontalOffset = 0;
     public float _frequency = 0;
@@ -15,6 +16,7 @@ public class EnemyShotHandler : MonoBehaviour
     void Start()
     {
         _gameStateManager = GameObject.Find("Game State Manager").GetComponent<GameStateManager>();
+        _healthHandler = GetComponent<HealthHandler>();
         _currentProjectile = _projectile;
     }
 
@@ -24,7 +26,8 @@ public class EnemyShotHandler : MonoBehaviour
         if(_gameStateManager.StateIsRunning())
         {
             _timer += Time.deltaTime;
-            if(_timer >= _frequency)
+
+            if(_timer >= _frequency && _healthHandler._currentHP > 0)
             {
                 _timer = 0;
                 FireProjectile();

@@ -155,7 +155,7 @@ MonoBehaviour:
   _isShield: 0
   _maxHP: 2
   _currentHP: 1
-  _scoreValue: 1000
+  _scoreValue: 1200
   _healthBarText: {fileID: 0}
   _healthSlider: {fileID: 0}
 --- !u!114 &2912969586030646530
@@ -204,6 +204,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyLaser (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804500839554544333, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: _speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 20735819614975172, guid: 9421d707c078fc040a2292f3805d5166,
         type: 3}
@@ -310,11 +320,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
-        type: 3}
-      propertyPath: _speed
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9421d707c078fc040a2292f3805d5166, type: 3}
 --- !u!4 &192385297018178361 stripped
@@ -334,6 +339,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyLaser (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804500839554544333, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: _speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 20735819614975172, guid: 9421d707c078fc040a2292f3805d5166,
         type: 3}
@@ -440,11 +455,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
-        type: 3}
-      propertyPath: _speed
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9421d707c078fc040a2292f3805d5166, type: 3}
 --- !u!4 &1177626404939186949 stripped
@@ -464,6 +474,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyLaser (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804500839554544333, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: _speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 20735819614975172, guid: 9421d707c078fc040a2292f3805d5166,
         type: 3}
@@ -570,11 +590,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
-        type: 3}
-      propertyPath: _speed
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9421d707c078fc040a2292f3805d5166, type: 3}
 --- !u!4 &1556101153437868424 stripped
@@ -594,6 +609,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyLaser (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804500839554544333, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: _speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 20735819614975172, guid: 9421d707c078fc040a2292f3805d5166,
         type: 3}
@@ -700,11 +725,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
-        type: 3}
-      propertyPath: _speed
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9421d707c078fc040a2292f3805d5166, type: 3}
 --- !u!4 &1958866836746297873 stripped
@@ -724,6 +744,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyLaser (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804500839554544333, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: _speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 20735819614975172, guid: 9421d707c078fc040a2292f3805d5166,
         type: 3}
@@ -830,11 +860,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
-        type: 3}
-      propertyPath: _speed
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9421d707c078fc040a2292f3805d5166, type: 3}
 --- !u!4 &4210749893861708757 stripped
@@ -854,6 +879,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyLaser (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804500839554544333, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: _speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 20735819614975172, guid: 9421d707c078fc040a2292f3805d5166,
         type: 3}
@@ -960,11 +995,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
-        type: 3}
-      propertyPath: _speed
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9421d707c078fc040a2292f3805d5166, type: 3}
 --- !u!4 &4639354419919706061 stripped
@@ -984,6 +1014,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyLaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: _speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 20735819614975172, guid: 9421d707c078fc040a2292f3805d5166,
         type: 3}
@@ -1055,11 +1090,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.033
       objectReference: {fileID: 0}
-    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
-        type: 3}
-      propertyPath: _speed
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9421d707c078fc040a2292f3805d5166, type: 3}
 --- !u!4 &5330174563589632986 stripped
@@ -1079,6 +1109,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyLaser (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804500839554544333, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
+        type: 3}
+      propertyPath: _speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 20735819614975172, guid: 9421d707c078fc040a2292f3805d5166,
         type: 3}
@@ -1184,11 +1224,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288353281223105901, guid: 9421d707c078fc040a2292f3805d5166,
-        type: 3}
-      propertyPath: _speed
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9421d707c078fc040a2292f3805d5166, type: 3}
