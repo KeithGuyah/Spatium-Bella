@@ -5,16 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    int sceneNumber = 0;
+    private int sceneNumber = 0;
+    private int sceneNumberMax = 5;
 
     public void LoadNextLevel()
     {
         sceneNumber = SceneManager.GetActiveScene().buildIndex;
-        
-        if(sceneNumber != 3)
+        //sceneNumberMax = SceneManager.sceneCount;
+
+        if(sceneNumber != sceneNumberMax)
         {
             sceneNumber++;
-            SceneManager.LoadScene("level" + sceneNumber);
+            SceneManager.LoadScene(sceneNumber);
         }
         else
         {
