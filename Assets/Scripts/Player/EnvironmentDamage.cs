@@ -7,6 +7,7 @@ public class EnvironmentDamage : MonoBehaviour
     private bool _cameraFlag = false;
     private bool _environmentFlag = false;
     private HealthHandler _playerHealthHandler;
+    private RaycastHit2D _raycastInfo;
 
     // Start is called before the first frame update
     void Start()
@@ -32,30 +33,29 @@ public class EnvironmentDamage : MonoBehaviour
         }
     }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if(_cameraFlag)
+        {
+            _raycastInfo = Physics2D.Raycast(new Vector2(transform.position.x,transform.position.y + 0.31f), transform.up);
+            //Debug.Log(_raycastInfo.transform.tag);
+            if(_raycastInfo.transform.CompareTag("Indestructable") || _raycastInfo.transform.CompareTag("Destructible"))
+            {
+                Debug.Log(_raycastInfo.transform.tag + ": " + _raycastInfo.distance);
+                if(_raycastInfo.distance <= 0.1f)
+                {
+                    _playerHealthHandler.SetHealth(0);
+                }
+            }
+        }
+    }
+
     void OnTriggerExit2D(Collider2D other)
     {
         if(other.gameObject.name == "CameraTriggerDown")
         {
             _cameraFlag = false;
             //Debug.Log("CAM OFF");
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.CompareTag("Indestructable") || other.gameObject.CompareTag("Destructible"))
-        {
-            _environmentFlag = true;
-            //Debug.Log("ENV ON");
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D other)
-    {
-       if(other.gameObject.CompareTag("Indestructable") || other.gameObject.CompareTag("Destructible") )
-        {
-            _environmentFlag = false;
-            //Debug.Log("ENV OFF");
         }
     }
 }
