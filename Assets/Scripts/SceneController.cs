@@ -7,21 +7,25 @@ public class SceneController : MonoBehaviour
 {
     private int sceneNumber = 0;
     private int sceneNumberMax = 5;
-
-    public void LoadNextLevel()
+    void Start()
     {
         sceneNumber = SceneManager.GetActiveScene().buildIndex;
-        //sceneNumberMax = SceneManager.sceneCount;
+        sceneNumberMax = SceneManager.sceneCountInBuildSettings - 1;
 
-        if(sceneNumber != sceneNumberMax)
+        //Debug.Log("Current scene index: " + sceneNumber);
+        //Debug.Log("Final scene index: " + sceneNumberMax);
+    }
+    public void LoadNextLevel()
+    {
+        if(sceneNumber == sceneNumberMax)
         {
-            sceneNumber++;
-            SceneManager.LoadScene(sceneNumber);
+            Debug.Log("Reached last scene. Returning to title screen.");
+            LoadTitle();
         }
         else
         {
-            Debug.Log("Invalid scene index. Returning to title screen.");
-            LoadTitle();
+            sceneNumber++;
+            SceneManager.LoadScene(sceneNumber);
         }
     }
 

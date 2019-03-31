@@ -11477,7 +11477,7 @@ PrefabInstance:
     - target: {fileID: 1523979941307414014, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
       propertyPath: _maxHP
-      value: 99
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2973189942537200110, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
@@ -11519,6 +11519,21 @@ PrefabInstance:
       propertyPath: _scoreTextUI
       value: 
       objectReference: {fileID: 1824939411}
+    - target: {fileID: 2973189942537200109, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523979941927286110, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523979941927286110, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1523979941307414003, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -11544,15 +11559,10 @@ PrefabInstance:
       propertyPath: _laserCannonDamageRate
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 1523979941927286110, guid: 660288c76b9979a40a4dcc32b71383ee,
+    - target: {fileID: 2973189942537200081, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
-      propertyPath: m_LocalScale.x
+      propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523979941927286110, guid: 660288c76b9979a40a4dcc32b71383ee,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1523979941927286109, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
@@ -11577,16 +11587,6 @@ PrefabInstance:
     - target: {fileID: 1523979941927286109, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2973189942537200081, guid: 660288c76b9979a40a4dcc32b71383ee,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2973189942537200109, guid: 660288c76b9979a40a4dcc32b71383ee,
-        type: 3}
-      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
