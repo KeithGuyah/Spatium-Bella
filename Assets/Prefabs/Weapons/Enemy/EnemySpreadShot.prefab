@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 692650395
-  m_SortingLayer: -3
+  m_SortingLayerID: -2016346325
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 8606e8f4d01e8de4e816a48fb3d27e03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -121,6 +121,7 @@ MonoBehaviour:
   _weaponDamage: 1
   _tracksPlayer: 0
   _trackingSpeed: 5
+  _destroyOnHit: 1
 --- !u!61 &5070562971761035683
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -215,8 +216,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 692650395
-  m_SortingLayer: -3
+  m_SortingLayerID: -2016346325
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 8606e8f4d01e8de4e816a48fb3d27e03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -268,6 +269,7 @@ MonoBehaviour:
   _weaponDamage: 1
   _tracksPlayer: 0
   _trackingSpeed: 5
+  _destroyOnHit: 1
 --- !u!61 &678671519055719299
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -417,6 +419,7 @@ MonoBehaviour:
   _weaponDamage: 1
   _tracksPlayer: 0
   _trackingSpeed: 5
+  _destroyOnHit: 1
 --- !u!61 &1036017978464191521
 BoxCollider2D:
   m_ObjectHideFlags: 0
