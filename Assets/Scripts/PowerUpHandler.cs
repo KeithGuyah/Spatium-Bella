@@ -10,6 +10,7 @@ public class PowerUpHandler : MonoBehaviour
     public bool _isShieldMaxHP_PU = false;
     public bool _isLaserCannonEnabled_PU = false;
     public bool _isSpreadShotEnabled_PU = false;
+    public bool _static = true;
     private Rigidbody2D _powerUpRigidBody;
     private Vector2 _movementVelocity;
     private float _timer = 0;
@@ -17,12 +18,28 @@ public class PowerUpHandler : MonoBehaviour
     void Start()
     {
         _powerUpRigidBody = GetComponent<Rigidbody2D>();
-        _movementVelocity = new Vector2(4,4);
+        
+        if(_static)
+        {
+            _movementVelocity = new Vector2(0,0);
+        }
+        else
+        {
+            _movementVelocity = new Vector2(4,4);
+        }
     }
 
     void Update()
     {
-        _powerUpRigidBody.velocity = _movementVelocity;
+        if(!_static)
+        {
+            _powerUpRigidBody.velocity = _movementVelocity;
+        }
+        else
+        {
+            _powerUpRigidBody.velocity = new Vector2(0,0);
+        }
+
         _timer = Time.deltaTime;
         if(_timer >= 10)
         {
@@ -57,7 +74,7 @@ public class PowerUpHandler : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        else if(objectHit.gameObject.tag == "MainCamera")
+        else if(objectHit.gameObject.tag == "MainCamera" && !_static)
         {
             if(objectHit.name == "CameraTriggerLeft" || objectHit.name == "CameraTriggerRight")
             {

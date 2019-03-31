@@ -137,3 +137,4 @@ MonoBehaviour:
   _isShieldMaxHP_PU: 0
   _isLaserCannonEnabled_PU: 0
   _isSpreadShotEnabled_PU: 1
+  _static: 0
