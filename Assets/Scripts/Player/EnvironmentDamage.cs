@@ -29,7 +29,6 @@ public class EnvironmentDamage : MonoBehaviour
         if(other.gameObject.name == "CameraTriggerDown")
         {
             _cameraFlag = true;
-            //Debug.Log("CAM ON");
         }
     }
 
@@ -41,7 +40,7 @@ public class EnvironmentDamage : MonoBehaviour
             //Debug.Log(_raycastInfo.transform.tag);
             if(_raycastInfo.transform.CompareTag("Indestructable") || _raycastInfo.transform.CompareTag("Destructible"))
             {
-                Debug.Log(_raycastInfo.transform.tag + ": " + _raycastInfo.distance);
+                //Debug.Log(_raycastInfo.transform.tag + ": " + _raycastInfo.distance);
                 if(_raycastInfo.distance <= 0.1f)
                 {
                     _playerHealthHandler.SetHealth(0);
@@ -55,7 +54,6 @@ public class EnvironmentDamage : MonoBehaviour
         if(other.gameObject.name == "CameraTriggerDown")
         {
             _cameraFlag = false;
-            //Debug.Log("CAM OFF");
         }
     }
 }
