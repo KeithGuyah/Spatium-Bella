@@ -1,0 +1,17 @@
+Version 1.5
+
+*fixed volume level because old version sound is so loud.
+New version, you can hear in a natural feeling.
+
+*noise reduction 2 tracks.
+Castle
+MysteryRoom
+It has been considerably improved.
+and
+change of loop position.
+
+*new track
+PsychedelicSpace
+
+2014/01
+Yutaka Masaki
