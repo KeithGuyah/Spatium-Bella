@@ -121,6 +121,7 @@ MonoBehaviour:
   _weaponDamage: 1
   _tracksPlayer: 0
   _trackingSpeed: 5
+  _destroyOnHit: 1
 --- !u!61 &2036891920839126245
 BoxCollider2D:
   m_ObjectHideFlags: 0

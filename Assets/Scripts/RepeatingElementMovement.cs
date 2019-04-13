@@ -40,32 +40,42 @@ public class RepeatingElementMovement : MonoBehaviour
             if(_moveWithPlayer && _playerControlScript.ControlsEnabled())
             {
                 int _playerControllerX = _playerControlScript.ReturnPlayerControllerXAxis();
-                float _playerX = _playerTransform.position.x;
 
-                //Determine if we should move the screen left or right.
-                if(_playerControllerX > 0 && _entityBody.position.x < _xMoveDirectionMax)
+                if(Mathf.Abs(_playerControllerX) > 0)
                 {
-                    _xMoveDirection = 3f;
-                }
-                else if(_playerControllerX < 0 && _entityBody.position.x > (_xMoveDirectionMax * -1))
-                {
-                    _xMoveDirection = -3f;
-                }
-                else if(_playerControllerX == 0)
-                {
-                    _xMoveDirection = 0;
-                }
+                    float _playerX = _playerTransform.position.x;
+                    float _cameraEdgeDist = 0;
 
-                //Determine if we should apply the left/right movement if the left/right movement key is down
-                if(Mathf.Abs(_playerControllerX) > 0 && Mathf.Abs(_playerX) < 6.4)
-                {
-                    _entityBody.velocity = new Vector2(_xMoveDirection,_entityBody.velocity.y);
-                }
-                else // Player X axis value is 0 (Player is at a standstill).
-                {
-                    _entityBody.velocity = new Vector2(0,_entityBody.velocity.y);
-                }
+                    // Determine player distance from the edge of the camera.
+                    if(_playerX > 0)
+                    {
+                        _cameraEdgeDist = _playerX / 6.4f;
+                    }
+                    else if(_playerX < 0)
+                    {
+                        _cameraEdgeDist = _playerX / -6.4f;
+                    }
 
+                    // If we aren't at the edge of the camera.
+                    if(_cameraEdgeDist < 1)
+                    {
+                        if(_playerControllerX > 0)
+                        {
+                            if(_entityBody.position.x < 1.13f)
+                            {
+                                _entityBody.velocity = new Vector2(2.5f,_entityBody.velocity.y);
+                            }
+                        }
+                        else if(_playerControllerX < 0)
+                        {
+                            if(_entityBody.position.x > -1.13f)
+                            {
+                                _entityBody.velocity = new Vector2(-2.5f,_entityBody.velocity.y);
+                            }
+                        }
+                    }
+
+                }
             }
         }
         else

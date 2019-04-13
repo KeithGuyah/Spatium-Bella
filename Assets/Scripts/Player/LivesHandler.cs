@@ -19,6 +19,7 @@ public class LivesHandler : MonoBehaviour
     private GameStateManager _gameStateManager;
     private Animator _playerAnimator;
     private Text _livesUIText;
+    public EntityAudio _playerAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +70,7 @@ public class LivesHandler : MonoBehaviour
 
     public void PlayerDeathStart()
     {
+        _playerAudio.PlayDestroyAudio();
         _playerControls.ForceStopAllMovement();
         _playerControls.DisableControls();
         _playerWeaponsHandler.LaserCannonDisable();

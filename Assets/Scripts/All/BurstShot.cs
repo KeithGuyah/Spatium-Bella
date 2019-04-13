@@ -133,8 +133,11 @@ Third variable defines the shots body.
         }
         else if (objectHit.gameObject.CompareTag("PlayerShield"))
         {
-            objectHit.gameObject.GetComponent<ShieldHandler>().TakeDamage(_weaponDamage);
-            RemoveProjectile();
+            if (objectHit.gameObject.CompareTag("Enemy") || gameObject.CompareTag("Projectile"))
+            {
+                objectHit.gameObject.GetComponent<ShieldHandler>().TakeDamage(_weaponDamage);
+                RemoveProjectile();
+            }
         }
 
     }

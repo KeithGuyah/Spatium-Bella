@@ -13,6 +13,7 @@ public class EnemyShotHandler : MonoBehaviour
     public float _frequency = 0;
     private float _timer = 0;
     private GameStateManager _gameStateManager;
+    public EntityAudio _enemyAudio;
     void Start()
     {
         _gameStateManager = GameObject.Find("Game State Manager").GetComponent<GameStateManager>();
@@ -51,6 +52,7 @@ public class EnemyShotHandler : MonoBehaviour
     public void FireProjectile()
     {
         Instantiate(_currentProjectile, new Vector2(transform.position.x + _horizontalOffset,transform.position.y + _verticalOffset),transform.rotation);
+        _enemyAudio.PlayShotAudio(1);
     }
 
     public void ChangeFrequency(float _newFrequency)

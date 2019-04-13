@@ -574,7 +574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 142323528}
   - component: {fileID: 142323529}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Parallax60
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -853,7 +853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 322378619}
   - component: {fileID: 322378620}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Parallax60
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35670,6 +35670,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game State Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2791052733325189956, guid: d4c7be7d5bdfd7448be924b8d77dd6e1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2791052733325189958, guid: d4c7be7d5bdfd7448be924b8d77dd6e1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36768,7 +36773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 708176347}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Star Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37869,7 +37874,7 @@ PrefabInstance:
     - target: {fileID: 1523979941927286109, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
       propertyPath: m_Positions.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1523979941927286109, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
@@ -45684,7 +45689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1009338358}
   - component: {fileID: 1009338359}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Parallax100
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47525,7 +47530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1580945597}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47540,7 +47545,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580945596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.199512, y: 21.413132, z: -0.61647654}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47556,7 +47561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1609151816}
   - component: {fileID: 1609151817}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Parallax100
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48298,7 +48303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1822162391}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Movement Nodes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48313,7 +48318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1822162390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.199512, y: 21.413132, z: -0.61647654}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

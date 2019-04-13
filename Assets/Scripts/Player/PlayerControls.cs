@@ -17,6 +17,7 @@ public class PlayerControls : MonoBehaviour
    private ShieldHandler _shield;
    private Animator _playerAnimator;
    private GameStateManager _gameStateManager;
+   public EntityAudio _playerAudio;
    public bool _laserCannonEnabled = false;
    public bool _spreadShotEnabled = false;
    private bool _controlsEnabled = true;
@@ -106,6 +107,9 @@ public class PlayerControls : MonoBehaviour
                 //Weapon Switching
                 if (Input.GetButtonDown("Fire2"))
                 {
+                    //Audio
+                    _playerAudio.PlaySwitchAudio();
+
                     //Disable laser cannon
                     shootProjectile.LaserCannonDisable();
 

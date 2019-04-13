@@ -21,7 +21,8 @@ public class WeaponsHandler : MonoBehaviour
    private RaycastHit2D hitInfo;
    private Vector2 shotStartPos;
    private float _timer = 0;
-   
+   public EntityAudio _playerAudio;
+
     void FixedUpdate()
     {
         LaserCannon();
@@ -43,11 +44,13 @@ public class WeaponsHandler : MonoBehaviour
             if (weaponNumber == 2)
             {
                 _timer = _spreadFireRate;
+                _playerAudio.PlayShotAudio(2);
                 SpreadShot();
             }
             else
             {
                 _timer = _burstFireRate;
+                _playerAudio.PlayShotAudio(1);
                 BurstShot();
             }
         }
@@ -89,18 +92,14 @@ public class WeaponsHandler : MonoBehaviour
             }
             else if(hitInfo.transform.CompareTag("Destructible") || hitInfo.transform.CompareTag("Indestructable"))
             {
-                if(hitInfo.transform.CompareTag("Destructible"))
+                _laserCannon.SetPosition(1, hitInfo.point);
+
+                if(hitInfo.transform.CompareTag("Destructible") && _timer == 0)
                 {
                     EnvironmentCollisionHandler _enviromentCollisionScript = hitInfo.transform.gameObject.GetComponent<EnvironmentCollisionHandler>();
 
                     Vector3 _collisionVector = new Vector3(hitInfo.point.x,hitInfo.point.y + 0.3f,0);
                     _enviromentCollisionScript.RemoveTile(_collisionVector);
-
-                    _laserCannon.SetPosition(1, hitInfo.point);
-                }
-                else
-                {
-                    _laserCannon.SetPosition(1, hitInfo.point);
                 }
             }
             else
