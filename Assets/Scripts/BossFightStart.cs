@@ -5,9 +5,12 @@ using UnityEngine;
 public class BossFightStart : MonoBehaviour
 {
     public GameObject _enemiesContainer;
+    public RepeatingElementMovement _element1;
+    public bool _pauseElements = false;
     private int _activeEnemies;
     private GameStateManager _gameStateManager;
     private bool _startCheck = false;
+    private bool _firstStart = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,12 @@ public class BossFightStart : MonoBehaviour
     {
         if(_startCheck)
         {
+            if(_firstStart && _pauseElements)
+            {
+                _element1.SetPause(true);
+                _firstStart = false;
+            }
+
             //Find out how many enemies are in the enemies container.
             _activeEnemies = _enemiesContainer.transform.childCount;
 

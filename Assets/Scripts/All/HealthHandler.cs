@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,7 +46,9 @@ public class HealthHandler : MonoBehaviour
         }
 
         setHealthUI();
+
         _entityAnimator.SetInteger("currentHP", _currentHP);
+
         if(!_entityAnimator.gameObject.CompareTag("Player"))
         {
             _entityAnimator.SetTrigger("playDamageAnimation");
@@ -87,7 +90,14 @@ public class HealthHandler : MonoBehaviour
         else //Enemy
         {
             //Stop enemy movement while the destroy animation is playing.
-            GetComponent<EnemyMovementHandler>().StopMovement();
+            try
+            {
+                GetComponent<EnemyMovementHandler>().StopMovement();
+            }
+            catch(NullReferenceException e)
+            {
+
+            }
 
             // Allows player projectiles to pass through enemy objects playing the 'destroy' animation.
             _entityCollider2D.enabled = false;

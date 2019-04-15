@@ -9,8 +9,7 @@ public class RepeatingElementMovement : MonoBehaviour
     public float _repeatOffset = 10;
     public bool _doNotRepeat = false;
     public bool _moveWithPlayer = false;
-    private float _xMoveDirection = 0;
-    public float _xMoveDirectionMax = 1.13f;
+    private bool _pause = false;
     private Rigidbody2D _entityBody;
     private GameStateManager _gameStateManager;
     private PlayerControls _playerControlScript;
@@ -35,53 +34,69 @@ public class RepeatingElementMovement : MonoBehaviour
     {
         if(_gameStateManager.StateIsRunning())
         {
-            _entityBody.velocity = new Vector2(0,_speed);
-
-            if(_moveWithPlayer && _playerControlScript.ControlsEnabled())
+            if(!_pause)
             {
-                int _playerControllerX = _playerControlScript.ReturnPlayerControllerXAxis();
+                _entityBody.velocity = new Vector2(0,_speed);
 
-                if(Mathf.Abs(_playerControllerX) > 0)
+                if(_moveWithPlayer && _playerControlScript.ControlsEnabled())
                 {
-                    float _playerX = _playerTransform.position.x;
-                    float _cameraEdgeDist = 0;
+                    int _playerControllerX = _playerControlScript.ReturnPlayerControllerXAxis();
 
-                    // Determine player distance from the edge of the camera.
-                    if(_playerX > 0)
+                    if(Mathf.Abs(_playerControllerX) > 0)
                     {
-                        _cameraEdgeDist = _playerX / 6.4f;
-                    }
-                    else if(_playerX < 0)
-                    {
-                        _cameraEdgeDist = _playerX / -6.4f;
-                    }
+                        float _playerX = _playerTransform.position.x;
+                        float _cameraEdgeDist = 0;
 
-                    // If we aren't at the edge of the camera.
-                    if(_cameraEdgeDist < 1)
-                    {
-                        if(_playerControllerX > 0)
+                        // Determine player distance from the edge of the camera.
+                        if(_playerX > 0)
                         {
-                            if(_entityBody.position.x < 1.13f)
+                            _cameraEdgeDist = _playerX / 6.4f;
+                        }
+                        else if(_playerX < 0)
+                        {
+                            _cameraEdgeDist = _playerX / -6.4f;
+                        }
+
+                        // If we aren't at the edge of the camera.
+                        if(_cameraEdgeDist < 1)
+                        {
+                            if(_playerControllerX > 0)
                             {
-                                _entityBody.velocity = new Vector2(2.5f,_entityBody.velocity.y);
+                                if(_entityBody.position.x < 1.13f)
+                                {
+                                    _entityBody.velocity = new Vector2(2.5f,_entityBody.velocity.y);
+                                }
+                            }
+                            else if(_playerControllerX < 0)
+                            {
+                                if(_entityBody.position.x > -1.13f)
+                                {
+                                    _entityBody.velocity = new Vector2(-2.5f,_entityBody.velocity.y);
+                                }
                             }
                         }
-                        else if(_playerControllerX < 0)
-                        {
-                            if(_entityBody.position.x > -1.13f)
-                            {
-                                _entityBody.velocity = new Vector2(-2.5f,_entityBody.velocity.y);
-                            }
-                        }
                     }
-
                 }
+            }
+            else
+            {
+                StopMovement();
             }
         }
         else
         {
-            _entityBody.velocity = new Vector2(0,0);
+            StopMovement();
         }
+    }
+
+    void StopMovement()
+    {
+        _entityBody.velocity = new Vector2(0,0);
+    }
+
+    public void SetPause(bool value)
+    {
+        _pause = value;
     }
 
     void OnTriggerEnter2D(Collider2D other)

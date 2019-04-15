@@ -172,8 +172,8 @@ MonoBehaviour:
   _spreadShot: {fileID: 4778241601636300087, guid: 9cd6ce1c547761d40b9fd091c156cfbe,
     type: 3}
   _laserCannon: {fileID: 1523979941927286109}
-  _laserCannonDamage: 2
-  _laserCannonDamageRate: 0.05
+  _laserCannonDamage: 1
+  _laserCannonDamageRate: 0.1
   _burstFireRate: 0.15
   _spreadFireRate: 0.25
   _horzOffset: 1
