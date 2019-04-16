@@ -6,13 +6,24 @@ public class FinalBoss : MonoBehaviour
 {
     public bool _enabled = false;
     public int _phase = 1;
+    public GameObject _explosion;
+
+    //Timers
     public float _timer = 0;
-    public float _timeBetweenAttacks = 4;
+    public float _phaseExplodeTimer = 0;
+
+    //Timer max
+    public float _timeBetweenAttacks = 3;
     public float _timeBetweenLaser = 3;
     public float _phaseTimeBetweenAttacks = 4;
     public float _shieldRespawnTimer = 0;
+    public float _phaseExplodeMax = 0.417f;
+
+    //Attack variables
     public int _attackRotation = 0;
     public int _attackRotationMax = 4;
+
+    //Shield
     public GameObject _bossShieldStatus;
     public GameObject _bossShieldPrefab;
 
@@ -20,6 +31,7 @@ public class FinalBoss : MonoBehaviour
     public HealthHandler _bossHealthHandler;
     public EnemyShotHandler _bossShotHandler;
     public BossLaserController _bossLaserController;
+    public SpriteRenderer _bossSpriteRenderer;
 
     void Start()
     {
@@ -66,7 +78,6 @@ public class FinalBoss : MonoBehaviour
         switch(attack)
         {
             case 0:
-                Debug.Log("ZERO");
                 switch(_phase)
                 {
                     case 1:
@@ -104,6 +115,20 @@ public class FinalBoss : MonoBehaviour
 
         _attackRotation++;
     }
+    void SpawnExplosion()
+    {
+        Instantiate(_explosion, new Vector3(
+            transform.position.x + Random.Range(-0.5f,0.5f),
+            transform.position.y + Random.Range(-0.5f,0.5f),
+            transform.position.z),transform.rotation);
+    }
+    void PhaseChangeExplosions(int amount)
+    {
+        for(int i = 0; i < amount; i++)
+        {
+            Invoke("SpawnExplosion", i * 0.3f);
+        }
+    }
 
     void CheckShield()
     {
@@ -127,16 +152,18 @@ public class FinalBoss : MonoBehaviour
     {
         if(_bossHealthHandler._currentHP <= 300 && _bossHealthHandler._currentHP > 200 && _phase != 2)
         {
+            PhaseChangeExplosions(5);
             _phase = 2;
             _phaseTimeBetweenAttacks = 2.5f;
-            _bossShotHandler._frequency = 1.8f;
+            _bossShotHandler._frequency = 1.5f;
             _attackRotationMax = 3;
             SpawnShield();
         }
         else if(_bossHealthHandler._currentHP < 200 && _bossHealthHandler._currentHP > 0 && _phase != 3)
         {
+            PhaseChangeExplosions(6);
             _phase = 3;
-            _bossShotHandler._frequency = 1.5f;
+            _bossShotHandler._frequency = 1.3f;
             _phaseTimeBetweenAttacks = 1.7f;
         }
     }
