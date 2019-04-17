@@ -152,6 +152,7 @@ MonoBehaviour:
   _scoreValue: 200
   _healthBarText: {fileID: 0}
   _healthSlider: {fileID: 0}
+  _entityAudio: {fileID: 346204197913539536}
 --- !u!114 &2467325593522403741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +219,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntityAudio
       objectReference: {fileID: 0}
+    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
+        type: 3}
+      propertyPath: _destroy
+      value: 
+      objectReference: {fileID: 8300000, guid: e527e8ec0c31cf34ebeb605e219c8c83, type: 3}
+    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
+        type: 3}
+      propertyPath: _weapon1
+      value: 
+      objectReference: {fileID: 8300000, guid: 4aba4a3fafc60b24dbc6e3684d00495a, type: 3}
     - target: {fileID: 3291687305222456375, guid: fc2f95cae92155546a04f95e2676c1ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -273,16 +284,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
-        type: 3}
-      propertyPath: _destroy
-      value: 
-      objectReference: {fileID: 8300000, guid: e527e8ec0c31cf34ebeb605e219c8c83, type: 3}
-    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
-        type: 3}
-      propertyPath: _weapon1
-      value: 
-      objectReference: {fileID: 8300000, guid: 4aba4a3fafc60b24dbc6e3684d00495a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc2f95cae92155546a04f95e2676c1ea, type: 3}
 --- !u!4 &1461399365932358301 stripped

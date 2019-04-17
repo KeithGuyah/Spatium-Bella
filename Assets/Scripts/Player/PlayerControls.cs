@@ -148,6 +148,12 @@ public class PlayerControls : MonoBehaviour
                 }
                 if (Input.GetButton("Fire3"))
                 {
+                    //Disable laser cannon
+                    if(shootProjectile._laserCannon.enabled == true)
+                    {
+                        shootProjectile.LaserCannonDisable();
+                    }
+
                     _shield.EnableShield();
                 }
 

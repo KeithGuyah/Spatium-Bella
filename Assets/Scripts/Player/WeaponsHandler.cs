@@ -126,10 +126,12 @@ public class WeaponsHandler : MonoBehaviour
     public void LaserCannonEnable()
     {
         _laserCannon.enabled = true;
+        _playerAudio.PlayShotAudio(3);
     }
     public void LaserCannonDisable()
     {
         ResetLaserPosition();
         _laserCannon.enabled = false;
+        _playerAudio.StopCurrentAudioClip();
     }
 }

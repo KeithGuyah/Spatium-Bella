@@ -70,10 +70,10 @@ public class LivesHandler : MonoBehaviour
 
     public void PlayerDeathStart()
     {
+        _playerWeaponsHandler.LaserCannonDisable();
         _playerAudio.PlayDestroyAudio();
         _playerControls.ForceStopAllMovement();
         _playerControls.DisableControls();
-        _playerWeaponsHandler.LaserCannonDisable();
         _playerCollider.enabled = false;
         _isDead = true;
     }
@@ -106,6 +106,11 @@ public class LivesHandler : MonoBehaviour
     public bool IsPlayerInvincible()
     {
         return _isInvincible;
+    }
+
+    public void SetPlayerInvincible()
+    {
+        _isInvincible = true;
     }
 
     void RefreshUIText()

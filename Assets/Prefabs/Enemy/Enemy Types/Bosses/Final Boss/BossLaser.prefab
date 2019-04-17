@@ -53,7 +53,7 @@ MonoBehaviour:
   _startup: 1
   _timer: 0
   _startUpMax: 2
-  _laserActive: 2
+  _laserActive: 1
   _laserLeft: {fileID: 1032192627953949417}
   _laserRight: {fileID: 1032192628035722617}
   _laserFill: {fileID: 1032192627562188327}
@@ -100,7 +100,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.15
     widthCurve:
       serializedVersion: 2
       m_Curve:

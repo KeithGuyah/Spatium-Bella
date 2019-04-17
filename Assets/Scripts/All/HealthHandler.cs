@@ -8,6 +8,7 @@ public class HealthHandler : MonoBehaviour
 {
     public bool _isPlayer = false;
     public bool _isShield = false;
+    public bool _isFinalBoss = false;
     public int _maxHP = 1;
     public int _currentHP = 1;
     public int _scoreValue = 0;
@@ -16,6 +17,7 @@ public class HealthHandler : MonoBehaviour
     private LivesHandler _playerLivesHandler;
     public Text _healthBarText;
     public Image _healthSlider;
+    public EntityAudio _entityAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +49,14 @@ public class HealthHandler : MonoBehaviour
 
         setHealthUI();
 
-        _entityAnimator.SetInteger("currentHP", _currentHP);
+        if(_isFinalBoss && _currentHP == 0)
+        {
+            //Debug.Log("FINAL BOSS HEALTH IS 0");
+        }
+        else
+        {
+            _entityAnimator.SetInteger("currentHP", _currentHP);
+        }
 
         if(!_entityAnimator.gameObject.CompareTag("Player"))
         {
@@ -64,7 +73,7 @@ public class HealthHandler : MonoBehaviour
     }
     public void score()
     {
-        if (_isPlayer==false)
+        if (_isPlayer == false)
         {
             GameObject.Find("Player").GetComponent<PlayerScore>().IncreaseScore(_scoreValue);
         }
@@ -96,8 +105,10 @@ public class HealthHandler : MonoBehaviour
             }
             catch(NullReferenceException e)
             {
-
+                Debug.Log(e.Message);
             }
+
+            _entityAudio.PlayDestroyAudio();
 
             // Allows player projectiles to pass through enemy objects playing the 'destroy' animation.
             _entityCollider2D.enabled = false;

@@ -16,38 +16,45 @@ public class BossLaser : MonoBehaviour
     public Transform _laserFill;
     public GameObject _laserBG;
     private float _laserFillMax = 4.5f;
-
+    private GameStateManager _gameStateManager;
+    void Start()
+    {
+        _gameStateManager = GameObject.Find("Game State Manager").GetComponent<GameStateManager>();
+    }
     // Update is called once per frame
     void Update()
     {
-        if(_enabled)
+        if(_gameStateManager.StateIsRunning())
         {
-            if(_startup)
+            if(_enabled)
             {
-                float _percent = _timer / _startUpMax;
-
-                _laserFill.localScale = new Vector3(
-                    _laserFillMax * _percent,
-                    _laserFill.localScale.y,
-                    _laserFill.localScale.z);
-
-                if(_timer >= _startUpMax)
+                if(_startup)
                 {
-                    StartupComplete();
-                    _timer = 0;
-                }
-            }
-            else
-            {
-                RecalculateLaser();
+                    float _percent = _timer / _startUpMax;
 
-                if(_timer >= _laserActive)
-                {
-                    _timer = 0;
-                    DisableLaser();
+                    _laserFill.localScale = new Vector3(
+                        _laserFillMax * _percent,
+                        _laserFill.localScale.y,
+                        _laserFill.localScale.z);
+
+                    if(_timer >= _startUpMax)
+                    {
+                        StartupComplete();
+                        _timer = 0;
+                    }
                 }
+                else
+                {
+                    RecalculateLaser();
+
+                    if(_timer >= _laserActive)
+                    {
+                        _timer = 0;
+                        DisableLaser();
+                    }
+                }
+                _timer += Time.deltaTime;
             }
-            _timer += Time.deltaTime;
         }
     }
 

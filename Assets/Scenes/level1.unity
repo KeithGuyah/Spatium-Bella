@@ -1082,6 +1082,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4618967705533797563, guid: d9f647594f9fb6c4f992a187cd73bdbd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 3819819243224774212, guid: d9f647594f9fb6c4f992a187cd73bdbd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3049,7 +3054,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _enemyObject
       value: 
-      objectReference: {fileID: 3242035153366219665, guid: debce6ce95551754bb7eb42ad688bb06,
+      objectReference: {fileID: 3242035153366219665, guid: 36e534fd47acf4c47bcf0b50ab42ffe4,
         type: 3}
     - target: {fileID: 5805557676167785880, guid: 788bedfcee96b3642ada40c5e7f49be9,
         type: 3}
@@ -3384,7 +3389,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590185036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -260.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 719442441}
@@ -3506,7 +3511,7 @@ MonoBehaviour:
   _enemyContainer: {fileID: 171475076}
   _timer: 0
   _waitTime: 0.6
-  _enabled: 0
+  _enabled: 1
 --- !u!4 &595184412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8714959774007550381, guid: dce8d13dbdd907b4792d1fa95549c591,
@@ -10799,7 +10804,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _enemyObject
       value: 
-      objectReference: {fileID: 550774498265490470, guid: ba6c0a2379b98f94ab2f313a570685e3,
+      objectReference: {fileID: 550774498265490470, guid: 73b7b5b424034e842a4996f5917c3d56,
         type: 3}
     - target: {fileID: 5805557676167785880, guid: 788bedfcee96b3642ada40c5e7f49be9,
         type: 3}
@@ -11827,6 +11832,16 @@ PrefabInstance:
       propertyPath: _laserCannonDamageRate
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 8459141553681625563, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: _weapon3
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c852c6ffe8db6c42971258b61c1693a, type: 3}
+    - target: {fileID: 8459141553681625563, guid: 660288c76b9979a40a4dcc32b71383ee,
+        type: 3}
+      propertyPath: _destroy
+      value: 
+      objectReference: {fileID: 8300000, guid: d7550df87e06fba479f77c93f02e5a58, type: 3}
     - target: {fileID: 1523979941927286110, guid: 660288c76b9979a40a4dcc32b71383ee,
         type: 3}
       propertyPath: m_LocalScale.x

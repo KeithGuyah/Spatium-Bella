@@ -193,11 +193,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isPlayer: 1
   _isShield: 0
+  _isFinalBoss: 0
   _maxHP: 1
   _currentHP: 1
   _scoreValue: 0
   _healthBarText: {fileID: 0}
   _healthSlider: {fileID: 0}
+  _entityAudio: {fileID: 0}
 --- !u!114 &1523979941307414012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,6 +572,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
+        type: 3}
+      propertyPath: _destroy
+      value: 
+      objectReference: {fileID: 8300000, guid: d7550df87e06fba479f77c93f02e5a58, type: 3}
+    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
+        type: 3}
+      propertyPath: _weapon1
+      value: 
+      objectReference: {fileID: 8300000, guid: 832e82e767c7612418ffac76c0626333, type: 3}
+    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
+        type: 3}
+      propertyPath: _weapon2
+      value: 
+      objectReference: {fileID: 8300000, guid: 8182bae7ff9930349870102e3600a25b, type: 3}
+    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
+        type: 3}
+      propertyPath: _switchWeapon
+      value: 
+      objectReference: {fileID: 8300000, guid: 5b6c429be2c054371928f2d8a121e484, type: 3}
+    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
+        type: 3}
+      propertyPath: _weapon3
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c852c6ffe8db6c42971258b61c1693a, type: 3}
     - target: {fileID: 3291687305222456375, guid: fc2f95cae92155546a04f95e2676c1ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -625,26 +652,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
-        type: 3}
-      propertyPath: _destroy
-      value: 
-      objectReference: {fileID: 8300000, guid: d7550df87e06fba479f77c93f02e5a58, type: 3}
-    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
-        type: 3}
-      propertyPath: _weapon1
-      value: 
-      objectReference: {fileID: 8300000, guid: 832e82e767c7612418ffac76c0626333, type: 3}
-    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
-        type: 3}
-      propertyPath: _weapon2
-      value: 
-      objectReference: {fileID: 8300000, guid: 8182bae7ff9930349870102e3600a25b, type: 3}
-    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
-        type: 3}
-      propertyPath: _switchWeapon
-      value: 
-      objectReference: {fileID: 8300000, guid: 5b6c429be2c054371928f2d8a121e484, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc2f95cae92155546a04f95e2676c1ea, type: 3}
 --- !u!4 &7345072429988042902 stripped

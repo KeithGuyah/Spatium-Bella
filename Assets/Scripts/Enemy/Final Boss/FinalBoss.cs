@@ -23,7 +23,7 @@ public class FinalBoss : MonoBehaviour
     public int _attackRotation = 0;
     public int _attackRotationMax = 4;
 
-    //Shield
+    //Shield References
     public GameObject _bossShieldStatus;
     public GameObject _bossShieldPrefab;
 
@@ -32,44 +32,51 @@ public class FinalBoss : MonoBehaviour
     public EnemyShotHandler _bossShotHandler;
     public BossLaserController _bossLaserController;
     public SpriteRenderer _bossSpriteRenderer;
+    public TrackingBulletSpawner _bossBulletSpawner;
+    public AudioSource _stageAudio;
+    private GameStateManager _gameStateManager;
 
     void Start()
     {
         _timer = _timeBetweenAttacks;
+        _gameStateManager = GameObject.Find("Game State Manager").GetComponent<GameStateManager>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(_enabled)
+        if(_gameStateManager.StateIsRunning())
         {
-            DetectPhase();
-
-            // Check Shield (Phase 2 only)
-            if(_phase == 2)
+            if(_enabled)
             {
-                CheckShield();
+                DetectPhase();
 
-                if(_bossShieldStatus == null)
+                // Check Shield (Phase 2 only)
+                if(_phase == 2)
                 {
-                    _shieldRespawnTimer += Time.deltaTime;
-                }
-            }
+                    CheckShield();
 
-            if(_timer >= _timeBetweenAttacks)
-            {
-                Debug.Log("Activating Attack " + _attackRotation);
-                ActivateAttackRotation(_attackRotation);
-
-                if(_attackRotation > _attackRotationMax)
-                {
-                    _attackRotation = 0;
+                    if(_bossShieldStatus == null)
+                    {
+                        _shieldRespawnTimer += Time.deltaTime;
+                    }
                 }
 
-                _timer = 0;
-            }
+                if(_timer >= _timeBetweenAttacks)
+                {
+                    Debug.Log("Activating Attack " + _attackRotation);
+                    ActivateAttackRotation(_attackRotation);
 
-            _timer += Time.deltaTime;
+                    if(_attackRotation > _attackRotationMax)
+                    {
+                        _attackRotation = 0;
+                    }
+
+                    _timer = 0;
+                }
+
+                _timer += Time.deltaTime;
+            }
         }
     }
 
@@ -82,6 +89,15 @@ public class FinalBoss : MonoBehaviour
                 {
                     case 1:
                         _bossShotHandler._frequency = 2;
+                        _timeBetweenAttacks = 4;
+                    break;
+                    case 2:
+                        _bossShotHandler._frequency = 1.5f;
+                        _timeBetweenAttacks = 2.5f;
+                    break;
+                    case 3:
+                        _bossShotHandler._frequency = 1f;
+                        _timeBetweenAttacks = 1.5f;
                     break;
                 }
             break;
@@ -102,14 +118,18 @@ public class FinalBoss : MonoBehaviour
             break;
             case 3:
                 _bossLaserController.StartAttack3();
-                if(_phase == 2)
-                {
-                    _timeBetweenAttacks = _phaseTimeBetweenAttacks;
-                }
-                else
-                {
-                    _timeBetweenAttacks = _timeBetweenLaser;
-                }
+            break;
+            case 4:
+                _bossLaserController.StartAttack4();
+            break;
+            case 5:
+                _bossShotHandler._frequency = 99;
+                _timeBetweenAttacks = 2.5f;
+                _bossBulletSpawner.StartAttack1();
+            break;
+            case 6:
+                _timeBetweenAttacks = 6f;
+                _bossBulletSpawner.StartAttack2();
             break;
         }
 
@@ -118,15 +138,15 @@ public class FinalBoss : MonoBehaviour
     void SpawnExplosion()
     {
         Instantiate(_explosion, new Vector3(
-            transform.position.x + Random.Range(-0.5f,0.5f),
-            transform.position.y + Random.Range(-0.5f,0.5f),
+            transform.position.x + Random.Range(-0.3f,0.3f),
+            transform.position.y + Random.Range(-0.3f,0.3f),
             transform.position.z),transform.rotation);
     }
-    void PhaseChangeExplosions(int amount)
+    void PhaseChangeExplosions(int amount, float delay)
     {
         for(int i = 0; i < amount; i++)
         {
-            Invoke("SpawnExplosion", i * 0.3f);
+            Invoke("SpawnExplosion", i * delay);
         }
     }
 
@@ -150,21 +170,37 @@ public class FinalBoss : MonoBehaviour
 
     void DetectPhase()
     {
-        if(_bossHealthHandler._currentHP <= 300 && _bossHealthHandler._currentHP > 200 && _phase != 2)
+        if(_bossHealthHandler._currentHP <= 200 && _bossHealthHandler._currentHP > 100 && _phase != 2)
         {
-            PhaseChangeExplosions(5);
+            PhaseChangeExplosions(5 ,0.3f);
             _phase = 2;
             _phaseTimeBetweenAttacks = 2.5f;
             _bossShotHandler._frequency = 1.5f;
             _attackRotationMax = 3;
             SpawnShield();
         }
-        else if(_bossHealthHandler._currentHP < 200 && _bossHealthHandler._currentHP > 0 && _phase != 3)
+        else if(_bossHealthHandler._currentHP < 100 && _bossHealthHandler._currentHP > 0 && _phase != 3)
         {
-            PhaseChangeExplosions(6);
+            PhaseChangeExplosions(6 ,0.3f);
             _phase = 3;
-            _bossShotHandler._frequency = 1.3f;
-            _phaseTimeBetweenAttacks = 1.7f;
+            _attackRotationMax = 6;
+            _bossShotHandler._frequency = 1f;
+            _phaseTimeBetweenAttacks = 1.5f;
         }
+        else if (_bossHealthHandler._currentHP <= 0)
+        {
+            GameObject _playerRef = GameObject.Find("Player");
+            _playerRef.GetComponent<LivesHandler>().SetPlayerInvincible();
+            _playerRef.GetComponent<PlayerControls>().DisableControls();
+            _stageAudio.volume = 0;
+            _enabled = false;
+            PhaseChangeExplosions(9 ,0.3f);
+            Invoke("EndBossFight", 2.7f);
+        }
+    }
+
+    void EndBossFight()
+    {
+        _bossHealthHandler.SetHealth(0);
     }
 }

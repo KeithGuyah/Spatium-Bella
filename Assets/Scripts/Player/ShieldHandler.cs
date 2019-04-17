@@ -11,6 +11,11 @@ public class ShieldHandler : MonoBehaviour
     public int _shieldMaxHP = 5;
     public Text _shieldBarText;
     public Image _shieldSlider;
+    public AudioSource _mainAudio;
+    public AudioSource _extraAudio;
+    public AudioClip _shieldLoop;
+    public AudioClip _shieldBreak;
+    public AudioClip _shieldDamage;
     public bool _isPlayer;
     public int _shieldHP = 0;
 
@@ -41,20 +46,33 @@ public class ShieldHandler : MonoBehaviour
         if (_shieldHP <= damage)
         {
             _shieldHP = 0;
+            _mainAudio.clip = _shieldBreak;
+            _mainAudio.Play();
             DisableShield();
             setShieldUI();
         }
         else
         {
+            shieldRenderer.color = new Color(0,0.5f,1,1);
+            Invoke("ResetShieldColor", 0.05f);
+            _mainAudio.clip = _shieldDamage;
+            _mainAudio.Play();
             _shieldHP = _shieldHP - damage;
             setShieldUI();
         }
+    }
+
+    void ResetShieldColor()
+    {
+        shieldRenderer.color = new Color(0,0.5f,1,0.3f);
     }
 
     public void EnableShield()
     {
         if (_shieldHP != 0)
         {
+            _extraAudio.clip = _shieldLoop;
+            _extraAudio.Play();
             shieldCollider.enabled = true;
             shieldRenderer.enabled = true;
             _playerControls.DisableFiring();
@@ -63,6 +81,7 @@ public class ShieldHandler : MonoBehaviour
 
     public void DisableShield()
     {
+        _extraAudio.Stop();
         shieldCollider.enabled = false;
         shieldRenderer.enabled = false;
         _playerControls.EnableFiring();

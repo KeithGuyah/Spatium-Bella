@@ -14,11 +14,10 @@ GameObject:
   - component: {fileID: 833846723495177394}
   - component: {fileID: 833846723495177395}
   - component: {fileID: 833846723495177396}
-  - component: {fileID: 4543540468083335550}
-  - component: {fileID: 1194681504213100095}
+  - component: {fileID: 5503604082020499154}
   - component: {fileID: 5668907244064897002}
   m_Layer: 0
-  m_Name: FinalBoss
+  m_Name: BossShield
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 833846723495177358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 12, y: 12, z: 0}
+  m_LocalScale: {x: 8, y: 8, z: 0}
   m_Children:
   - {fileID: 5977792678013057182}
   m_Father: {fileID: 0}
@@ -148,11 +147,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isPlayer: 0
   _isShield: 0
-  _maxHP: 200
+  _maxHP: 20
   _currentHP: 1
-  _scoreValue: 50000
+  _scoreValue: 5000
   _healthBarText: {fileID: 0}
   _healthSlider: {fileID: 0}
+  _entityAudio: {fileID: 4791683621992108499}
 --- !u!114 &833846723495177396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,15 +165,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ec8f7e0852de74f9194b0d80737e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectile: {fileID: 7083754642880601202, guid: 870f8604b101826448ab3523bc058a31,
+  _projectile: {fileID: 6710090935501649076, guid: 9543e8106d100dd4194dea9edfd940bb,
     type: 3}
-  _projectile2: {fileID: 7083754642880601202, guid: 870f8604b101826448ab3523bc058a31,
-    type: 3}
+  _projectile2: {fileID: 0}
   _verticalOffset: 0
   _horizontalOffset: 0
-  _frequency: 4
+  _frequency: 999
   _enemyAudio: {fileID: 4791683621992108499}
---- !u!114 &4543540468083335550
+--- !u!114 &5503604082020499154
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,27 +181,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 833846723495177358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 849d984ee38068b4db9c1405e106a6a6, type: 3}
+  m_Script: {fileID: 11500000, guid: d515121982bcd804d934d9e37dae1737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextMoveNode: {fileID: 0}
+  _shotHandler: {fileID: 833846723495177396}
+  _rigidBody2D: {fileID: 833846723495177397}
+  _shotTimer: 2
+  _shotTimerMax: 2
   _speed: 5
-  _waitTime: 10
-  _currentBehaviour: 0
---- !u!114 &1194681504213100095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833846723495177358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6022b299526ab9448d72517706b889e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _phase: 1
-  _bossHealth: {fileID: 0}
+  _movingRight: 0
 --- !u!95 &5668907244064897002
 Animator:
   serializedVersion: 3
@@ -234,6 +221,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntityAudio
       objectReference: {fileID: 0}
+    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
+        type: 3}
+      propertyPath: _destroy
+      value: 
+      objectReference: {fileID: 8300000, guid: e527e8ec0c31cf34ebeb605e219c8c83, type: 3}
+    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
+        type: 3}
+      propertyPath: _weapon1
+      value: 
+      objectReference: {fileID: 8300000, guid: 4aba4a3fafc60b24dbc6e3684d00495a, type: 3}
     - target: {fileID: 3291687305222456375, guid: fc2f95cae92155546a04f95e2676c1ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -289,16 +286,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
-        type: 3}
-      propertyPath: _destroy
-      value: 
-      objectReference: {fileID: 8300000, guid: e527e8ec0c31cf34ebeb605e219c8c83, type: 3}
-    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
-        type: 3}
-      propertyPath: _weapon1
-      value: 
-      objectReference: {fileID: 8300000, guid: 4aba4a3fafc60b24dbc6e3684d00495a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc2f95cae92155546a04f95e2676c1ea, type: 3}
 --- !u!4 &5977792678013057182 stripped
