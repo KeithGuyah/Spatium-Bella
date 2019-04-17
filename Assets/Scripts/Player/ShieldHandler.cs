@@ -97,13 +97,13 @@ public class ShieldHandler : MonoBehaviour
         {
             _shieldHP = _shieldMaxHP;
             setShieldUI();
-            Debug.Log(_shieldHP);
+            //Debug.Log(_shieldHP);
         }
         else
         {
              _shieldHP += addshieldHP;
             setShieldUI();
-            Debug.Log(_shieldHP);
+            //Debug.Log(_shieldHP);
         }
     }
 

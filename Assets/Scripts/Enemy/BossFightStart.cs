@@ -13,6 +13,7 @@ public class BossFightStart : MonoBehaviour
     private bool _startCheck = false;
     private bool _firstStart = true;
     public bool _finalBossTrigger = false;
+    public bool _loopBossMusic = false;
     public StageAudio _finalBossMusic;
 
     // Start is called before the first frame update
@@ -50,8 +51,15 @@ public class BossFightStart : MonoBehaviour
             if(_finalBossTrigger)
             {
                 _finalBoss._enabled = true;
-                _finalBossMusic.PlayBossTheme();
             }
+
+            _finalBossMusic.PlayBossTheme();
+
+            if(_loopBossMusic)
+            {
+                _finalBossMusic.EnableLoop();
+            }
+            
             //Find out how many enemies there are. This should be greater than one since the boss should already be active.
             _activeEnemies = _enemiesContainer.transform.childCount;
             _startCheck = true;

@@ -6,6 +6,7 @@ public class LevelBoss : MonoBehaviour
 {
     public bool _enabled = true;
     public HealthHandler _entityHealth;
+    public BoxCollider2D _boxCollider2D;
     public GameObject _explosionObject;
 
     // Update is called once per frame
@@ -16,6 +17,7 @@ public class LevelBoss : MonoBehaviour
             if(_entityHealth._currentHP <= 0)
             {
             _enabled = false;
+            _boxCollider2D.enabled = false;
             PhaseChangeExplosions(9 ,0.3f);
             Invoke("EndLevel", 2.7f);
             }

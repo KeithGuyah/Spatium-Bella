@@ -222,6 +222,7 @@ public class PlayerControls : MonoBehaviour
     public void DisableControls()
     {
         _controlsEnabled = false;
+        shootProjectile.LaserCannonDisable();
     }
 
     public void EnableControls()

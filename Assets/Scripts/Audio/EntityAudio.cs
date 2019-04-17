@@ -10,6 +10,9 @@ public class EntityAudio : MonoBehaviour
     public AudioClip _weapon2;
     public AudioClip _weapon3;
     public AudioClip _destroy;
+    public AudioClip _powerup1;
+    public AudioClip _powerup2;
+    public AudioClip _powerup3;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +28,27 @@ public class EntityAudio : MonoBehaviour
         PlayAudio();
     }
 
+    public void PlayPowerUpAudio(int powerup)
+    {
+        switch(powerup)
+        {
+            case 1:
+                _audioSource.clip = _powerup1;
+            break;
+            case 2:
+                _audioSource.clip = _powerup2;
+            break;
+            case 3:
+                _audioSource.clip = _powerup3;
+            break;
+        }
+        _audioSource.volume = 0.6f;
+        _audioSource.loop = false;
+        PlayAudio();
+    }
+
     public void PlayDestroyAudio()
     {
-        Debug.Log("Playing Destroy Audio" + gameObject.name);
         _audioSource.clip = _destroy;
         _audioSource.loop = false;
         _audioSource.volume = 1f;

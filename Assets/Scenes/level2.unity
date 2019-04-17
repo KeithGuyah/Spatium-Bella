@@ -3149,6 +3149,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4618967705533797563, guid: d9f647594f9fb6c4f992a187cd73bdbd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 443111337, guid: d9f647594f9fb6c4f992a187cd73bdbd, type: 3}
       propertyPath: m_Text
       value: M I S S I O N  2
@@ -3302,7 +3307,7 @@ PrefabInstance:
     - target: {fileID: 2701518306959322913, guid: 85d912da335cb1f4fb33b43d2d1e5c6c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 589.9
+      value: 580.06
       objectReference: {fileID: 0}
     - target: {fileID: 2701518306959322913, guid: 85d912da335cb1f4fb33b43d2d1e5c6c,
         type: 3}
@@ -3354,6 +3359,16 @@ PrefabInstance:
       propertyPath: _enemiesContainer
       value: 
       objectReference: {fileID: 770131247}
+    - target: {fileID: 5759737012624380916, guid: 85d912da335cb1f4fb33b43d2d1e5c6c,
+        type: 3}
+      propertyPath: _finalBossMusic
+      value: 
+      objectReference: {fileID: 648877133}
+    - target: {fileID: 5759737012624380916, guid: 85d912da335cb1f4fb33b43d2d1e5c6c,
+        type: 3}
+      propertyPath: _loopBossMusic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85d912da335cb1f4fb33b43d2d1e5c6c, type: 3}
 --- !u!4 &610867519 stripped
@@ -3397,6 +3412,11 @@ PrefabInstance:
       propertyPath: _stageMusic
       value: 
       objectReference: {fileID: 8300000, guid: 70a233f4d99d9df4d98b3c145d608085, type: 3}
+    - target: {fileID: 2377961670316735319, guid: ba97bfd0a9d1bf24d9505259f0b4f8d5,
+        type: 3}
+      propertyPath: _bossTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d921576a934f4c1b9da88a7c8a45397, type: 3}
     - target: {fileID: 2193425179178557621, guid: ba97bfd0a9d1bf24d9505259f0b4f8d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10028,6 +10048,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2791052733325189957, guid: d4c7be7d5bdfd7448be924b8d77dd6e1,
+        type: 3}
+      propertyPath: _stageAudio
+      value: 
+      objectReference: {fileID: 648877133}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c7be7d5bdfd7448be924b8d77dd6e1, type: 3}
 --- !u!4 &1914469313 stripped

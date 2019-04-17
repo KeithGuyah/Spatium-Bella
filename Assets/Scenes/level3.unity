@@ -179,11 +179,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7020049605891531761, guid: 97ca53b80edfff14595f4ee1bef3967b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7020049605891531760, guid: 97ca53b80edfff14595f4ee1bef3967b,
         type: 3}
       propertyPath: _hudElement1
@@ -199,6 +194,11 @@ PrefabInstance:
       propertyPath: _hudElement3
       value: 
       objectReference: {fileID: 210561149}
+    - target: {fileID: 7020049605891531761, guid: 97ca53b80edfff14595f4ee1bef3967b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97ca53b80edfff14595f4ee1bef3967b, type: 3}
 --- !u!20 &8433854 stripped
@@ -30313,20 +30313,20 @@ PrefabInstance:
     - target: {fileID: 7401837172543284672, guid: d9f647594f9fb6c4f992a187cd73bdbd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20.100029
+      value: -20.100037
       objectReference: {fileID: 0}
     - target: {fileID: 1433275475, guid: d9f647594f9fb6c4f992a187cd73bdbd, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 443111337, guid: d9f647594f9fb6c4f992a187cd73bdbd, type: 3}
-      propertyPath: m_Text
-      value: M I S S I O N  3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4618967705533797563, guid: d9f647594f9fb6c4f992a187cd73bdbd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -19.999992
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 443111337, guid: d9f647594f9fb6c4f992a187cd73bdbd, type: 3}
+      propertyPath: m_Text
+      value: M I S S I O N  3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9f647594f9fb6c4f992a187cd73bdbd, type: 3}
@@ -30367,7 +30367,7 @@ PrefabInstance:
     - target: {fileID: 3044139294259035425, guid: c36d976fb858c7c489916c11824b85c8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -140.22
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3044139294259035425, guid: c36d976fb858c7c489916c11824b85c8,
         type: 3}
@@ -30662,7 +30662,7 @@ PrefabInstance:
     - target: {fileID: 2701518306959322913, guid: 85d912da335cb1f4fb33b43d2d1e5c6c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 152.87
+      value: 154.22
       objectReference: {fileID: 0}
     - target: {fileID: 2701518306959322913, guid: 85d912da335cb1f4fb33b43d2d1e5c6c,
         type: 3}
@@ -35345,6 +35345,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2791052733325189957, guid: d4c7be7d5bdfd7448be924b8d77dd6e1,
+        type: 3}
+      propertyPath: _stageAudio
+      value: 
+      objectReference: {fileID: 1752162343}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c7be7d5bdfd7448be924b8d77dd6e1, type: 3}
 --- !u!1 &468834288
@@ -39580,6 +39585,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 2377961670316735319, guid: ba97bfd0a9d1bf24d9505259f0b4f8d5,
+        type: 3}
+      propertyPath: _stageMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 4857c6b7153190346a37e766581f1c0a, type: 3}
+    - target: {fileID: 2377961670316735319, guid: ba97bfd0a9d1bf24d9505259f0b4f8d5,
+        type: 3}
+      propertyPath: _bossTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: 23304b050c9aeef41b846306b2ccd6ef, type: 3}
+    - target: {fileID: 2377961670316735319, guid: ba97bfd0a9d1bf24d9505259f0b4f8d5,
+        type: 3}
+      propertyPath: _bossTheme2
+      value: 
+      objectReference: {fileID: 8300000, guid: e5fb38bd4afa5c2499f9a2ab23d4ec47, type: 3}
     - target: {fileID: 2193425179178557621, guid: ba97bfd0a9d1bf24d9505259f0b4f8d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39645,21 +39665,6 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2377961670316735319, guid: ba97bfd0a9d1bf24d9505259f0b4f8d5,
-        type: 3}
-      propertyPath: _stageMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 4857c6b7153190346a37e766581f1c0a, type: 3}
-    - target: {fileID: 2377961670316735319, guid: ba97bfd0a9d1bf24d9505259f0b4f8d5,
-        type: 3}
-      propertyPath: _bossTheme
-      value: 
-      objectReference: {fileID: 8300000, guid: 23304b050c9aeef41b846306b2ccd6ef, type: 3}
-    - target: {fileID: 2377961670316735319, guid: ba97bfd0a9d1bf24d9505259f0b4f8d5,
-        type: 3}
-      propertyPath: _bossTheme2
-      value: 
-      objectReference: {fileID: 8300000, guid: e5fb38bd4afa5c2499f9a2ab23d4ec47, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba97bfd0a9d1bf24d9505259f0b4f8d5, type: 3}
 --- !u!1 &964458131
@@ -48077,7 +48082,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229893704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -94.5, z: 0}
+  m_LocalPosition: {x: 0, y: 47, z: 0}
   m_LocalScale: {x: 0.66, y: 0.66, z: 1}
   m_Children:
   - {fileID: 443876244}
@@ -51957,6 +51962,9 @@ MonoBehaviour:
   _weapon2: {fileID: 0}
   _weapon3: {fileID: 0}
   _destroy: {fileID: 8300000, guid: 08f8a5b847535474090f803a96e033e4, type: 3}
+  _powerup1: {fileID: 0}
+  _powerup2: {fileID: 0}
+  _powerup3: {fileID: 0}
 --- !u!95 &5668907243389508598
 Animator:
   serializedVersion: 3

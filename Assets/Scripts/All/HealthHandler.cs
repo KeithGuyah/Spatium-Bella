@@ -75,11 +75,27 @@ public class HealthHandler : MonoBehaviour
     {
         if (_isPlayer == false)
         {
-            GameObject.Find("Player").GetComponent<PlayerScore>().IncreaseScore(_scoreValue);
+            try
+            {
+                GameObject.Find("Score Object").GetComponent<PlayerScore>().IncreaseScore(_scoreValue);
+            }
+            catch(NullReferenceException e)
+            {
+                Debug.Log(e.Message);
+                Debug.Log("Could not find score object. Cannot increase score.");
+            }
         }
         if (_isPlayer)
         {
-            GameObject.Find("Player").GetComponent<PlayerScore>().DecreaseScore();
+            try
+            {
+                GameObject.Find("Score Object").GetComponent<PlayerScore>().DecreaseScore();
+            }
+            catch(NullReferenceException e)
+            {
+                Debug.Log(e.Message);
+                Debug.Log("Could not find score object. Cannot decrease score.");
+            }
         }
     }
     public void SetHealth(int value)

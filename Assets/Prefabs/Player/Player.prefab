@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 1523979941307414015}
   - component: {fileID: 1523979941307414014}
   - component: {fileID: 1523979941307414012}
-  - component: {fileID: 8676464566988334850}
   - component: {fileID: 4615431939657623825}
   - component: {fileID: 1523979941307414013}
   m_Layer: 0
@@ -215,20 +214,6 @@ MonoBehaviour:
   _lives: 3
   _isDead: 0
   _playerAudio: {fileID: 8459141553681625563}
---- !u!114 &8676464566988334850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523979941307414005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7657c8c1b80ba4e49ae542ad1cf65699, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _score: 0
-  _scoreTextUI: {fileID: 0}
 --- !u!114 &4615431939657623825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,7 +555,7 @@ PrefabInstance:
     - target: {fileID: 5328834923306573738, guid: fc2f95cae92155546a04f95e2676c1ea,
         type: 3}
       propertyPath: m_Name
-      value: Audio
+      value: Player Audio
       objectReference: {fileID: 0}
     - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
         type: 3}
@@ -597,6 +582,21 @@ PrefabInstance:
       propertyPath: _weapon3
       value: 
       objectReference: {fileID: 8300000, guid: 7c852c6ffe8db6c42971258b61c1693a, type: 3}
+    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
+        type: 3}
+      propertyPath: _powerup1
+      value: 
+      objectReference: {fileID: 8300000, guid: 1a358488dbc0038479a3a64bb09d7090, type: 3}
+    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
+        type: 3}
+      propertyPath: _powerup2
+      value: 
+      objectReference: {fileID: 8300000, guid: d5cf78dd74f78cc4d988480d28ce024a, type: 3}
+    - target: {fileID: 4405774088311745914, guid: fc2f95cae92155546a04f95e2676c1ea,
+        type: 3}
+      propertyPath: _powerup3
+      value: 
+      objectReference: {fileID: 8300000, guid: 26fdf572d8ba64140aecd1cf2d4a2897, type: 3}
     - target: {fileID: 3291687305222456375, guid: fc2f95cae92155546a04f95e2676c1ea,
         type: 3}
       propertyPath: m_LocalPosition.x

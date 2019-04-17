@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enabled: 1
   _entityHealth: {fileID: 8041105229462318252}
+  _boxCollider2D: {fileID: 8188063141149891550}
   _explosionObject: {fileID: 7069405863727564814, guid: e9fe4971f405df04c974f378ddf2713b,
     type: 3}
 --- !u!1001 &976123968307405313

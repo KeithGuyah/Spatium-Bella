@@ -89,6 +89,7 @@ public class PowerUpHandler : MonoBehaviour
 
     void powerUpShield()
     {
+        GameObject.Find("Player Audio").GetComponent<EntityAudio>().PlayPowerUpAudio(3);
         GameObject.Find("PlayerShield").GetComponent<ShieldHandler>().AddShieldHP(_powerUpValue);
     }
 
@@ -103,10 +104,12 @@ public class PowerUpHandler : MonoBehaviour
     }
     void powerUpEnableLaserCannon()
     {
+        GameObject.Find("Player Audio").GetComponent<EntityAudio>().PlayPowerUpAudio(2);
         GameObject.Find("Player").GetComponent<PlayerControls>().EnableLaserCannon();
     }
     void powerUpEnableSpreadShot()
     {
+        GameObject.Find("Player Audio").GetComponent<EntityAudio>().PlayPowerUpAudio(1);
         GameObject.Find("Player").GetComponent<PlayerControls>().EnableSpreadShot();
     }
 

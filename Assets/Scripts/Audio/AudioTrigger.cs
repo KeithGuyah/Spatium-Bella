@@ -31,6 +31,7 @@ public class AudioTrigger : MonoBehaviour
                 case Type.fadeToVolumeUp:
                     _stageAudio.FadeVolumeTo(_volume, false);
                 break;
+
             }
 
             Destroy(this.gameObject);
